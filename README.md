@@ -24,14 +24,20 @@ rails server
 
 1. Clone this repository
 2. Install Ruby 3.0.6 with DevKit from https://rubyinstaller.org/downloads/
-   2. Direct Downlink Link: [Ruby+Devkit 3.0.6-1 (x64)](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.0.6-1/rubyinstaller-devkit-3.0.6-1-x64.exe)
-   3. Use all default installation parameters, make sure MSYS is also installed.
-   4. Default installation directory is C:\Ruby30-x64\bin\ruby.exe
+   
+   i. Direct Download Link: [Ruby+Devkit 3.0.6-1 (x64)](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.0.6-1/rubyinstaller-devkit-3.0.6-1-x64.exe)
+   
+   ii. Use all default installation parameters, make sure MSYS is also installed.
+   
+   iii. Default installation directory is C:\Ruby30-x64\bin\ruby.exe
+
 3. Install RubyMine from https://www.jetbrains.com/ruby/
 4. Open this repository as a project in RubyMine
 5. Navigate to RubyMine Settings -> Languages & Frameworks -> Ruby SDK and Gems
-   6. Click the + icon, Select 'Interpreter', and provide the path to ruby.exe from step 2
-7. Environment setup complete, see Quick Start
+
+   i. Click the + icon, Select 'Interpreter', and provide the path to ruby.exe from step 2
+
+8. Environment setup complete, see Quick Start
 
 ## Unix Setup
 
