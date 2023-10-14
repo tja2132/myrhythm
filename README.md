@@ -1,24 +1,23 @@
-# README
+# MyRhythm - Sync to the Beat of Your life
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+MyRhythm is a routine and task building application that allows you to find
+your own rhythm in a chaotic life. Create routines, reminders, and habits that
+decrease stress, save time, and help you find your flow.
 
-Things you may want to cover:
+### Ruby Info:
+```
+Ruby Version: 3.0.6
+Rails Version: >= 7.1.1
+```
 
-* Ruby version
+## Quick Start:
 
-* System dependencies
+1. TODO
 
-* Configuration
+## Windows vs Mac
 
-* Database creation
+1. TODO
 
-* Database initialization
+## Testing user stories with Cucumber
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. TODO
