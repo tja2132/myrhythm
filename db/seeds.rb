@@ -24,3 +24,14 @@ movies = [
 movies.each do |movie|
   Movie.create!(movie)
 end
+
+routines = [
+  { title: 'Evening Workout', description: "A quick evening workout"},
+  { title: 'Skincare Routine', description: "A simple skincare regiment"},
+  { title: 'Morning Routine', description: "A weekday morning"},
+  { title: 'The Perfect Grilled Cheese', description: "All the steps for a perfect sandwich"},
+]
+
+routines.each do |r|
+  Routine.create!(r)
+end

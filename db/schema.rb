@@ -20,4 +20,12 @@ ActiveRecord::Schema[7.1].define(version: 2011_11_19_180638) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "routines", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "start_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
 end

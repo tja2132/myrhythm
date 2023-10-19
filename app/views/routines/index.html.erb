@@ -1,0 +1,26 @@
+<!--  This file is app/views/movies/index.html.erb -->
+<h2>All Routines</h2>
+
+<table class="table table-striped col-md-12" id="routines">
+  <thead>
+    <tr>
+
+      <th>Title</th>
+
+      <th>More Info</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @routines.each do |r| %>
+      <tr>
+        <td>
+          <%= r.title %>
+        </td>
+        <td>
+          <%= link_to "More about #{r.title}", routine_path(r) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Add new Routine', new_routine_path, class: 'btn btn-primary' %>
