@@ -25,6 +25,18 @@ movies.each do |movie|
   Movie.create!(movie)
 end
 
+tasks = [
+  { title: 'Bench press', description: "5x5rep bench press"},
+  { title: 'Bicep curls', description: "3x12reps standing bicep curls"},
+  { title: 'Moisturize', description: "Skincare routine step 4"},
+  { title: 'Preheat oven to 375', description: "The first step in several baking recipes"},
+]
+
+tasks.each do |t|
+  Task.create!(t)
+end
+
+
 routines = [
   { title: 'Evening Workout', description: "A quick evening workout"},
   { title: 'Skincare Routine', description: "A simple skincare regiment"},

@@ -1,6 +1,6 @@
-class CreateRoutines < ActiveRecord::Migration[7.1]
+class CreateTasks < ActiveRecord::Migration[7.1]
   def up
-    create_table :routines do |t|
+    create_table :tasks do |t|
       t.string :title
       t.text :description
       t.datetime :start_date
@@ -10,6 +10,6 @@ class CreateRoutines < ActiveRecord::Migration[7.1]
   end
 
   def down
-    drop_table :routines
+    drop_table :tasks
   end
 end
