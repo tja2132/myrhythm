@@ -4,6 +4,12 @@ MyRhythm is a routine and task building application that allows you to find
 your own rhythm in a chaotic life. Create routines, reminders, and habits that
 decrease stress, save time, and help you find your flow.
 
+### Developers:
+* Melissa Pothen   - mp4138
+* Hannah Haldren   - hvh2105
+* Tyler Andrews    - tja2132
+* Nathan Coulibaly - nmc2169
+
 ### Ruby Info:
 ```
 Ruby Version: 3.0.6
@@ -14,11 +20,17 @@ Rails Version: >= 7.1.1
 
 ```
 bundle install
-db create
-db migrate
-db seed
+db:setup
 rails server
 ```
+
+## Execution Instruction 
+
+### TODO
+
+## Testing user stories with Cucumber
+
+### TODO
 
 ## Windows Setup (Development)
 
@@ -39,7 +51,7 @@ rails server
 
 8. Environment setup complete, see Quick Start
 
-## Unix Setup
+## Unix Setup (Development)
 
 1. Clone this repository
 2. Install rbenv by following the instructions at https://github.com/rbenv/rbenv
@@ -62,6 +74,3 @@ ruby --version  (confirm 3.0.6)
    i. If the db/rails commands fail saying the gem is not installed, simply click the "Run MyRhythm" triangle
       in the top right and then "resolve migrations" on the rails error page.
 
-## Testing user stories with Cucumber
-
-### TODO
