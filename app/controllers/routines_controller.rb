@@ -19,7 +19,7 @@ class RoutinesController < ApplicationController
   end
 
   def create
-    @routine = Routine.create!(routine_params)
+    @routine = Routine.create!
     flash[:notice] = "#{@routine.title} was successfully created."
     redirect_to routines_path
   end
@@ -30,7 +30,7 @@ class RoutinesController < ApplicationController
 
   def update
     @routine = Routine.find params[:id]
-    @routine.update_attributes!(routine_params)
+    @routine.update_attributes!
     flash[:notice] = "#{@routine.title} was successfully updated."
     redirect_to routine_path(@routine)
   end

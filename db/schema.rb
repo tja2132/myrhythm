@@ -10,28 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2011_11_19_180638) do
-  create_table "movies", force: :cascade do |t|
-    t.string "title"
-    t.string "rating"
-    t.text "description"
-    t.datetime "release_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
+ActiveRecord::Schema[7.1].define(version: 202310180002) do
   create_table "routines", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
+    t.string "title", default: "New Routine"
+    t.string "description"
+    t.string "tasks"
+    t.boolean "is_recurring", default: false
+    t.string "recurrence"
+    t.boolean "is_reminder", default: false
+    t.datetime "next_reminder"
+    t.datetime "next_occurrence"
     t.datetime "start_date"
+    t.datetime "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
+    t.string "title", default: "New Task"
+    t.string "description"
+    t.boolean "is_duration", default: false
+    t.integer "duration", default: 0
+    t.boolean "is_recurring", default: false
+    t.string "recurrence"
+    t.boolean "is_reminder", default: false
+    t.datetime "next_reminder"
+    t.boolean "is_relative_start", default: false
     t.datetime "start_date"
+    t.datetime "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

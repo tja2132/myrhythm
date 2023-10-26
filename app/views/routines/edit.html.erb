@@ -2,11 +2,10 @@
 <%= form_tag routine_path(@routine), :method => :put do %>
   <%= label :routine, :title, 'Title', class: 'col-form-label' %>
   <%= text_field :routine, 'title', class: 'form-control' %>
-  <%#= label :movie, :rating, 'Rating', class: 'col-form-label'  %>
-  <%#= select :movie, :rating, ['G','PG','PG-13','R'], {}, {class: 'form-control col-1'} %>
-  <%#= label :movie, :release_date, 'Released On', class: 'col-form-label'  %>
-  <%#= date_select :movie, :release_date, {}, class: 'form-control col-2 d-inline' %>
-  <br/>
+  <%= label :routine, :description, 'Description', class: 'col-form-label' %>
+  <%= text_field :routine, 'description', class: 'form-control' %>
+  <%= date_select :routine, :next_occurrence, {}, class: 'form-control col-2 d-inline' %>
+
   <%= submit_tag 'Update Routine Info', class: 'btn btn-primary' %>
   <%= link_to 'Cancel', routines_path, class: 'btn btn-secondary' %>
 <% end %>

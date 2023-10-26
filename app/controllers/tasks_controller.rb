@@ -19,7 +19,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.create!(task_params)
+    @task = Task.create!
     flash[:notice] = "#{@task.title} was successfully created."
     redirect_to tasks_path
   end

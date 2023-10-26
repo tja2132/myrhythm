@@ -7,6 +7,10 @@
 
       <th>Title</th>
 
+      <th>Created At</th>
+
+      <th>Next Occurrence</th>
+
       <th>More Info</th>
     </tr>
   </thead>
@@ -16,6 +20,15 @@
         <td>
           <%= r.title %>
         </td>
+
+        <td>
+          <%= r.created_at %>
+        </td>
+
+        <td>
+          <%= r.next_occurrence %>
+        </td>
+
         <td>
           <%= link_to "More about #{r.title}", routine_path(r) %>
         </td>
