@@ -7,7 +7,7 @@ class CreateTasks < ActiveRecord::Migration[7.1]
       t.string :title,          default: "New Task"
       t.string :description
       t.boolean :is_duration,   default: false
-      t.integer :duration,      default: 0            #task duration in seconds
+      t.integer :duration,      default: 1            #task duration in minutes
 
       t.boolean :is_recurring,  default: false
       t.string :recurrence

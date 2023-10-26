@@ -9,8 +9,8 @@
 #   end
 
 tasks = [
-  { title: 'Bench press', description: "5x5rep bench press"},
-  { title: 'Bicep curls', description: "3x12reps standing bicep curls"},
+  { title: 'Bench press', description: "5x5rep bench press", is_duration: true, duration: 8},
+  { title: 'Bicep curls', description: "3x12reps standing bicep curls", is_duration: true, duration: 4},
   { title: 'Moisturize', description: "Skincare routine step 4"},
   { title: 'Preheat oven to 375', description: "The first step in several baking recipes"},
 ]
