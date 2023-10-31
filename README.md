@@ -28,6 +28,13 @@ For database updates:
 ```sh
 rake db:reset
 ```
+If db:reset fails (error in migration)
+```sh
+rake db:drop:all
+rake db:create:all
+rake db:migrate
+rake db:seed
+```
 
 Reference Links:
 * [RSpec templates](https://github.com/rspec/rspec-rails)

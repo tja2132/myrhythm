@@ -3,16 +3,25 @@
 <%= render @routine %>
 
 <h2>Tasks</h2>
-<% for task in @routine.tasks %>
-    <ul>
-      <li><%= task.title %></li>
-  </ul>
+
+<% if @routine.tasks.size == 0 %>
+  No tasks yet
 <% end %>
 
-<div>
-  <%= link_to "Edit this routine", edit_routine_path(@routine) %> |
-  <%= link_to "Add Task", new_routine_task_path(@routine) %> |
-  <%= link_to "Back to routines", routines_path %>
+<% for task in @routine.tasks.order(:sequence) %>
+    <ul>
+      <%#= link_to task.title, edit_routine_task_path(task) %>
+      <%=  task.title %>
+    </ul>
+<% end %>
 
+<%= link_to "View Tasks", routine_tasks_path(@routine) %>
+
+<br><br>
+
+<div>
+  <%#= button_to "Add Task", new_routine_task_path(@routine), method: :get %>
+  <%= button_to "Edit this routine", edit_routine_path(@routine), method: :get %>
+  <%= button_to "Back to routines", routines_path, method: :get  %>
   <%= button_to "Destroy this routine", @routine, method: :delete %>
 </div>

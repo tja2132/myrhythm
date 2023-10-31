@@ -1,6 +1,7 @@
 <div id="<%= dom_id routine %>">
-<h2>Routine Title:
-    <%= routine.title %>
+
+  <h2>
+    Routine Title: <%= routine.title %>
   </h2>
 
   <p>
@@ -8,14 +9,22 @@
     <%= routine.description %>
   </p>
 
-<!--  <p>
-    <strong>Created:</strong>
-    <%= routine.created %>
+  <p>
+    <strong>Tasks:</strong> <%= routine.tasks.size %>
   </p>
 
   <p>
-    <strong>Updated:</strong>
-    <%= routine.updated %>
+    <strong>Recurrence:</strong> <%= routine.recurrence %>
   </p>
--->
+
+  <p>
+    <strong>Created:</strong>
+    <%= routine.created_at.strftime("%F") %>
+  </p>
+
+<!--  <p>-->
+<!--    <strong>Updated:</strong>-->
+    <%#= routine.updated_at %>
+<!--  </p>-->
+
 </div>

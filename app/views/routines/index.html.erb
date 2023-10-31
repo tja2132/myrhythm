@@ -1,6 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Routines</h1>
+<h3>
+  <%= link_to "Create New Routine", new_routine_path %>
+</h3>
+
+<h1>My Routines</h1>
 
 <div id="routines">
   <% @routines.each do |routine| %>
@@ -8,7 +12,9 @@
     <p>
       <%= link_to "Show this routine", routine %>
     </p>
+
+    <br>
+
   <% end %>
 </div>
 
-<%= link_to "New routine", new_routine_path %>
