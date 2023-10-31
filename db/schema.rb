@@ -10,20 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_31_001745) do
+ActiveRecord::Schema[7.1].define(version: 2) do
   create_table "routines", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.datetime "created"
-    t.datetime "updated"
+    t.string "recurrence", default: "None"
+    t.date "start_date", default: "2023-10-30"
+    t.date "end_date"
+    t.time "start_time", default: "2000-01-01 05:07:23"
+    t.time "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "tasks", force: :cascade do |t|
+    t.integer "routine_id", null: false
+    t.integer "sequence"
     t.string "title"
     t.string "description"
-    t.integer "routine_id", null: false
+    t.integer "duration", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["routine_id"], name: "index_tasks_on_routine_id"

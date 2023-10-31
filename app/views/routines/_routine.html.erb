@@ -1,21 +1,21 @@
 <tr id="<%= dom_id routine %>">
-<td>
-  <%= link_to "#{routine.title}", routine %>
-</td>
-<td>
-  <%= routine.description %>
-</td>
-<td>
-  <%= link_to "Edit Routine", edit_routine_path(routine), :class => 'btn btn-primary' %> 
-</td>
-<!--  <p>
-    <strong>Created:</strong>
-    <%= routine.created %>
-  </p>
-
-  <p>
-    <strong>Updated:</strong>
-    <%= routine.updated %>
-  </p>
--->
+  <td><%= link_to "#{routine.title}", routine %></td>
+  <td><%= routine.description %></td>
+    <td><% if routine.start_date %>
+      <strong>Start Time:</strong> <%= routine.start_date.strftime("%H:%M") %>
+    <% end %>
+  </td>
+  <td><% if routine.end_date %>
+      <strong>End Time:</strong> <%= routine.end_date.strftime("%H:%M") %>
+    <% end %>
+  </td>
+  <td><% if routine.start_time %>
+      <strong>Start Time:</strong> <%= routine.start_time.strftime("%H:%M") %>
+    <% end %>
+  </td>
+  <td><% if routine.end_time %>
+      <strong>End Time:</strong> <%= routine.end_time.strftime("%H:%M") %>
+    <% end %>
+  </td>
+  <td><%= link_to "Edit Routine", edit_routine_path(routine), :class => 'btn btn-primary' %></td>
 </tr>
