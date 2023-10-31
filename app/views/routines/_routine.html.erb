@@ -1,7 +1,7 @@
 <div id="<%= dom_id routine %>">
 
   <h2>
-    Routine Title: <%= routine.title %>
+    <%= routine.title %>
   </h2>
 
   <p>
@@ -14,17 +14,37 @@
   </p>
 
   <p>
+    <% if routine.start_time %>
+      <strong>Start Time:</strong> <%= routine.start_time.strftime("%H:%M") %>
+    <% end %>
+
+    <br>
+
+    <% if routine.end_time %>
+      <strong>End Time:</strong> <%= routine.end_time.strftime("%H:%M") %>
+    <% end %>
+
+  </p>
+
+  <p>
     <strong>Recurrence:</strong> <%= routine.recurrence %>
+
+    <br>
+
+    <% if routine.start_date %>
+      <strong>Start Date:</strong> <%= routine.start_date.strftime("%F") %>
+    <% end %>
+
+    <br>
+    <% if routine.end_date %>
+      <strong>End Date:</strong> <%= routine.end_date.strftime("%F") %>
+    <% end %>
+
   </p>
 
   <p>
     <strong>Created:</strong>
     <%= routine.created_at.strftime("%F") %>
   </p>
-
-<!--  <p>-->
-<!--    <strong>Updated:</strong>-->
-    <%#= routine.updated_at %>
-<!--  </p>-->
 
 </div>

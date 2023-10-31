@@ -8,10 +8,15 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-r1 = Routine.create(title: 'Evening Workout', description: "A quick evening workout", recurrence: "Weekly")
-r2 = Routine.create(title: 'Skincare Routine', description: "A simple skincare regiment", recurrence: "Daily")
-r3 = Routine.create(title: 'The Perfect Grilled Cheese', description: "All the steps for a perfect sandwich", recurrence: "")
 
+
+r1 = Routine.create(title: 'Evening Workout', description: "A quick evening workout", recurrence: "Weekly",
+                    start_date: Time.local(2023, 1, 1), end_date: Time.local(2024, 1, 1),
+                    start_time: Time.local(2023, 1, 1, 6, 0), end_time: Time.local(2023, 1, 1, 6, 35), )
+r2 = Routine.create(title: 'Skincare Routine', description: "A simple skincare regiment", recurrence: "Daily",
+                    start_date: Time.local(2023, 1, 1), end_date: Time.local(2024, 1, 1),
+                    start_time: Time.local(2023, 1, 1, 6, 0), end_time: Time.local(2023, 1, 1, 6, 35), )
+r3 = Routine.create(title: 'The Perfect Grilled Cheese', description: "All the steps for a perfect sandwich", recurrence: "None")
 
 Task.create(sequence: 1, routine: r1, title: 'Bench press', description: "5x5rep bench press", duration: 8)
 Task.create(sequence: 2, routine: r1, title: 'Bicep curls', description: "3x12reps standing bicep curls", duration: 4)

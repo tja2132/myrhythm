@@ -14,9 +14,11 @@ ActiveRecord::Schema[7.1].define(version: 2) do
   create_table "routines", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.string "recurrence", default: "Daily"
-    t.datetime "start_date"
-    t.datetime "end_date"
+    t.string "recurrence", default: "None"
+    t.date "start_date", default: "2023-10-30"
+    t.date "end_date"
+    t.time "start_time", default: "2000-01-01 05:07:23"
+    t.time "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
