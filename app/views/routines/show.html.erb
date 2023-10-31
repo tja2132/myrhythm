@@ -9,7 +9,7 @@
 </td>
 </tr>
 <br>
-<h3>Recurrence:</h3>
+<h4>Recurrence:</h4>
 <ul>
     <li>Start Date: <%= @routine.start_date %></li>
     <li>End Date: <%= @routine.end_date %></li>
@@ -18,15 +18,14 @@
 </ul>
 
 <h2>Tasks</h2>
-
-<% if @routine.tasks.size == 0 %>
-  No tasks yet
-<% end %>
-<% for task in @routine.tasks.order(:sequence) %>
-    <ul>
-      <li><%= task.title %></li>
-  </ul>
-<% end %>
+  <% if @routine.tasks.size == 0 %>
+    No tasks yet
+  <% end %>
+  <ol>
+    <% for task in @routine.tasks.order(:sequence) %>
+    <li><%= task.title %></li>
+    <% end %>
+  </ol>
 
 <div>
   <%= link_to "Edit Routine", edit_routine_path(@routine), :class => 'btn btn-primary col-2' %> 
