@@ -23,13 +23,17 @@
   <% end %>
   <ol>
     <% for task in @routine.tasks.order(:sequence) %>
-    <li><%= task.title %></li>
+    <li><%= task.title %>
+        <br>
+        <%= link_to "Edit Task", edit_routine_task_url(@routine,task), :class => 'btn btn-primary btn-sm' %> 
+        <%= link_to "Delete Task", (@routine,task), method: :delete, 'data-confirm' => 'Are you sure?', :class => 'btn btn-danger btn-sm' %> 
+    </li>
     <% end %>
   </ol>
 
 <div>
-  <%= link_to "Edit Routine", edit_routine_path(@routine), :class => 'btn btn-primary col-2' %> 
-  <%= link_to "Add Task", new_routine_task_path(@routine), :class => 'btn btn-primary col-2' %> 
-  <%= link_to "My Routines", routines_path, :class => 'btn btn-primary col-2' %>
-  <%= link_to "Delete Routine", @routine, method: :delete, 'data-confirm' => 'Are you sure?', :class => 'btn btn-danger' %>
+  <%= link_to "Edit Routine", edit_routine_path(@routine), :class => 'btn btn-primary btn-sm' %> 
+  <%= link_to "Add Task", new_routine_task_path(@routine), :class => 'btn btn-primary btn-sm' %> 
+  <%= link_to "My Routines", routines_path, :class => 'btn btn-primary btn-sm' %>
+  <%= link_to "Delete Routine", @routine, method: :delete, 'data-confirm' => 'Are you sure?', :class => 'btn btn-danger btn-sm' %>
 </div>
