@@ -19,8 +19,8 @@
     <% end %>
   </td>
   <td>
-    <%= link_to "Edit", edit_routine_path(routine), :class => 'btn btn-primary btn-sm' %>
-    <%= link_to "Delete", routine, method: :delete, 'data-confirm' => 'Are you sure?', :class => 'btn btn-danger btn-sm' %>
+    <%= link_to " Edit", edit_routine_path(routine), :class => 'bi bi-pencil-square btn btn-primary btn-sm' %>
+    <%= link_to " Delete", routine, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, :class => 'bi bi-trash btn btn-outline-danger btn-sm' %>
   </td>
 </tr>
 </tr>

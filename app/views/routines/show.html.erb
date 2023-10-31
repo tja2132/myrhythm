@@ -18,7 +18,10 @@
     <li>End Time: <%= @routine.end_time %></li>
 </ul>
 <br>
-<h3><strong>Tasks</strong><%= link_to "Add Task", new_routine_task_path(@routine), :class => 'btn btn-primary btn-sm' %></h3>
+<h3><strong>Tasks</strong>
+<%= link_to "Add Task", new_routine_task_path(@routine), :class => 'btn btn-primary btn-sm' %>
+<%= link_to "All Tasks", routine_tasks_path(@routine), :class => 'btn btn-primary btn-sm'  %>
+</h3>
   <% if @routine.tasks.size == 0 %>
     No tasks yet
   <% end %>
@@ -26,15 +29,15 @@
     <% for task in @routine.tasks.order(:sequence) %>
     <li><%= task.title %>
         <br>
-        <%= link_to "Edit Task", edit_routine_task_url(@routine,task), :class => 'btn btn-primary btn-sm' %> 
-        <%= link_to "Delete Task", [@routine,task], data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, :class => 'btn btn-danger btn-sm' %> 
+        <%= link_to " Edit", edit_routine_task_url(@routine,task), :class => 'bi bi-pencil-square btn btn-primary btn-sm' %> 
+        <%= link_to " Delete", [@routine,task], data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, :class => 'bi bi-trash btn btn-outline-danger btn-sm' %> 
     </li>
     <% end %>
   </ol>
 
 <div>
-  <%= link_to "Edit Routine", edit_routine_path(@routine), :class => 'btn btn-primary btn-sm' %> 
-  <%= link_to "Delete Routine", routine_path(@routine), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, :class => 'btn btn-danger btn-sm' %>
+  <%= link_to " Edit", edit_routine_path(@routine), :class => 'bi bi-pencil-square btn btn-primary btn-sm' %> 
+  <%= link_to " Delete", routine_path(@routine), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, :class => 'bi bi-trash btn btn-danger btn-sm' %>
 <br><br>
   <%= link_to "My Routines", routines_path, :class => 'btn btn-outline-primary btn-sm' %>
 </div>
