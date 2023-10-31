@@ -21,7 +21,7 @@ class RoutinesController < ApplicationController
 
   # POST /routines or /routines.json
   def create
-    @routine = Routine.new(routine_params)
+    @routine = Routine.create!(routine_params)
 
     respond_to do |format|
       if @routine.save
@@ -65,6 +65,6 @@ class RoutinesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def routine_params
-      params.require(:routine).permit(:title, :description, :created, :updated)
+      params.require(:routine).permit(:title, :description, :daysofweek, :recurrence, :created, :updated)
     end
 end
