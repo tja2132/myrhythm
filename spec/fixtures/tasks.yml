@@ -91,7 +91,7 @@ food_task2:
    duration:
    routine_id: 3
 
-food_task2:
+food_task3:
    sequence: 3
    title: Do Dishes
    description:
