@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @task %>
+
+<h2>Routine Name:
+  <% @routine.name %></h2>
+<div>
+  <%= link_to "Edit this task", edit_routine_task_path(@routine, @task) %> |
+  <%= link_to "Back to Routine", routine_tasks_path(@routine) %>
+
+  <%= button_to "Destroy this task", [@routine, @task], method: :delete %>
+</div>

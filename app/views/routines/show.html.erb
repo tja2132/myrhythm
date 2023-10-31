@@ -1,0 +1,18 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @routine %>
+
+<h2>Tasks</h2>
+<% for task in @routine.tasks %>
+    <ul>
+      <li><%= task.title %></li>
+  </ul>
+<% end %>
+
+<div>
+  <%= link_to "Edit this routine", edit_routine_path(@routine) %> |
+  <%= link_to "Add Task", new_routine_task_path(@routine) %> |
+  <%= link_to "Back to routines", routines_path %>
+
+  <%= button_to "Destroy this routine", @routine, method: :delete %>
+</div>
