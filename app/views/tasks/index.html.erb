@@ -1,23 +1,25 @@
-<p style="color: green"><%= notice %></p>
+<!--<p style="color: green"><%= notice %></p> -->
 
 <h1>
   <%= @routine.title + " Tasks" %>
 </h1>
 
-<div id="tasks">
+<table class="table" id="tasks">
+<thead>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Sequence</th>
+    <th>Duration</th>
+  </tr>
+</thead>
+<tbody>
   <% @tasks.each do |task| %>
     <%= render task %>
-
-<!--    TODO Edit not working for tasks-->
-    <%#= button_to "Edit this task", edit_routine_task_path(task) %>
-    <br>
   <% end %>
+</tbody>
+</table>
 
-</div>
-
-
-<%= link_to "Add New Task", new_routine_task_path(@routine) %>
-
+<%= link_to "Add New Task", new_routine_task_path(@routine), :class => 'btn btn-primary btn-sm'  %>
 <br><br>
-
-<%= link_to "Back to Routine", [@routine] %>
+<%= link_to "My Routines", routines_path, :class => 'btn btn-outline-primary btn-sm' %>

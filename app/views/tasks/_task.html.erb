@@ -1,18 +1,10 @@
-<div id="<%= dom_id task %>">
-
-  <p>
-    <strong>Title:</strong>
-    <%= task.title %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= task.description %>
-  </p>
-
-  <p>
-    <strong>Duration:</strong>
-    <%= task.duration %>
-  </p>
-
-</div>
+<tr id="<%= dom_id task %>">
+  <td><%= link_to "#{task.title}", [@routine,task] %></td>
+  <td><%= task.description %></td>
+  <td><%= task.sequence %></td>
+  <td><%= task.duration %></td>
+    <td>
+    <%= link_to "Edit", edit_routine_task_path(@routine, task), :class => 'btn btn-primary btn-sm' %>
+    <%= link_to "Delete", [@routine,task], data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, :class => 'btn btn-danger btn-sm' %>
+  </td>
+</tr>
