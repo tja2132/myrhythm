@@ -1,7 +1,7 @@
 <tr id="<%= dom_id task %>">
+  <td><%= task.sequence %></td>
   <td><%= link_to "#{task.title}", [@routine,task] %></td>
   <td><%= task.description %></td>
-  <td><%= task.sequence %></td>
   <td><%= task.duration %></td>
     <td>
     <%= link_to "Edit", edit_routine_task_path(@routine, task), :class => 'btn btn-primary btn-sm' %>
