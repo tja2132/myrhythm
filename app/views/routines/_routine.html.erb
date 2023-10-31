@@ -1,6 +1,7 @@
 <tr id="<%= dom_id routine %>">
   <td><%= link_to "#{routine.title}", routine %></td>
   <td><%= routine.description %></td>
+    <td><%= routine.daysofweek %></td>
     <td><% if routine.start_date %>
       <%= routine.start_date.strftime("%F") %>
     <% end %>
