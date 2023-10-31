@@ -13,7 +13,7 @@
 
   <div>
     <%= form.label :sequence, style: "display: block" %>
-    <%= form.select :sequence, 0..@routine.tasks.size+1 %>
+    <%= form.select :sequence, 1..@routine.tasks.size+1 %>
   </div>
 
   <div>
@@ -31,10 +31,6 @@
     <%= form.select :duration, 0..240 %>
   </div>
 
-  <div>
-    <%= form.label :routine_id, style: "display: block" %>
-    <%= form.select :routine_id, 0..Routine.all.size %>
-  </div>
 <br>
   <div>
     <%= form.submit %>

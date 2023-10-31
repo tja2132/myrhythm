@@ -53,7 +53,7 @@ class TasksController < ApplicationController
     @task.destroy!
 
     respond_to do |format|
-      format.html { redirect_to routine_tasks_path(@routine), notice: "Task was successfully destroyed." }
+      format.html { redirect_to routine_tasks_path(@routine), notice: "Task was successfully deleted." }
       format.json { head :no_content }
     end
   end

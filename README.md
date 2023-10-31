@@ -24,6 +24,11 @@ rails generate rspec:model task
 rails server
 ```
 
+Create db migration:
+```sh
+rails g migration <Migration Name> <field_name>:<field-type>
+rails db:migrate
+```
 For database updates:
 ```sh
 rake db:reset

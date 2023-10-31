@@ -9,7 +9,7 @@
   <tr>
     <th>Title</th>
     <th>Description</th>
-    <th>Sequence</th>
+    <th>Order</th>
     <th>Duration</th>
   </tr>
 </thead>
@@ -22,4 +22,5 @@
 
 <%= link_to "Add New Task", new_routine_task_path(@routine), :class => 'btn btn-primary btn-sm'  %>
 <br><br>
+<%= link_to "Back to Routine", routine_tasks_path(@routine), :class => 'btn btn-outline-primary btn-sm'  %>
 <%= link_to "My Routines", routines_path, :class => 'btn btn-outline-primary btn-sm' %>
