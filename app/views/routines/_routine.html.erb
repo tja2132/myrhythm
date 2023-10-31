@@ -1,21 +1,25 @@
 <tr id="<%= dom_id routine %>">
   <td><%= link_to "#{routine.title}", routine %></td>
   <td><%= routine.description %></td>
-    <td class="border-right"><% if routine.start_date %>
+    <td><% if routine.start_date %>
       <%= routine.start_date.strftime("%F") %>
     <% end %>
   </td>
-  <td class="border-right"><% if routine.end_date %>
+  <td><% if routine.end_date %>
       <%= routine.end_date.strftime("%F") %>
     <% end %>
   </td>
-  <td class="border-right"><% if routine.start_time %>
+  <td><% if routine.start_time %>
       <%= routine.start_time.strftime("%H:%M") %>
     <% end %>
   </td>
-  <td class="border-right"><% if routine.end_time %>
+  <td><% if routine.end_time %>
       <%= routine.end_time.strftime("%H:%M") %>
     <% end %>
   </td>
-  <td><%= link_to "Edit Routine", edit_routine_path(routine), :class => 'btn btn-primary' %></td>
+  <td>
+    <%= link_to "Edit", edit_routine_path(routine), :class => 'btn btn-primary btn-sm' %>
+    <%= link_to "Delete", routine, method: :delete, 'data-confirm' => 'Are you sure?', :class => 'btn btn-danger btn-sm' %>
+  </td>
+</tr>
 </tr>
