@@ -1,13 +1,13 @@
-<div id="<%= dom_id routine %>">
-<h2>Routine Title:
-    <%= routine.title %>
-  </h2>
-
-  <p>
-    <strong>Description:</strong>
-    <%= routine.description %>
-  </p>
-
+<tr id="<%= dom_id routine %>">
+<td>
+  <%= link_to "#{routine.title}", routine %>
+</td>
+<td>
+  <%= routine.description %>
+</td>
+<td>
+  <%= link_to "Edit Routine", edit_routine_path(routine), :class => 'btn btn-primary' %> 
+</td>
 <!--  <p>
     <strong>Created:</strong>
     <%= routine.created %>
@@ -18,4 +18,4 @@
     <%= routine.updated %>
   </p>
 -->
-</div>
+</tr>

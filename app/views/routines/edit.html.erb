@@ -1,10 +1,10 @@
-<h1>Editing routine</h1>
+<h1>Editing "<%= @routine.title %>"</h1>
 
 <%= render "form", routine: @routine %>
 
 <br>
 
 <div>
-  <%= link_to "Show this routine", @routine %> |
-  <%= link_to "Back to routines", routines_path %>
+  <%= link_to "View Routine", @routine, :class => 'btn btn-primary col-2'  %> |
+  <%= link_to "My Routines", routines_path, :class => 'btn btn-primary col-2'  %>
 </div>

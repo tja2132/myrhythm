@@ -1,14 +1,18 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Routines</h1>
+<h3><b>My Routines</b></h3>
 
-<div id="routines">
+<table id="routines">
+<thead>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+  </tr>
+</thead>
+<tbody>
   <% @routines.each do |routine| %>
     <%= render routine %>
-    <p>
-      <%= link_to "Show this routine", routine %>
-    </p>
   <% end %>
-</div>
-
-<%= link_to "New routine", new_routine_path %>
+</tbody>
+</table>
+<%= link_to "New Routine", new_routine_path, :class => 'btn btn-primary' %>
