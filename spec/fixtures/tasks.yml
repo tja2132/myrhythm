@@ -1,0 +1,99 @@
+#in spec/fixtures/routines.yml
+
+meteor_task1:
+   sequence: 1
+   title: Setup telescope
+   description:
+   duration: 20
+   routine_id: 1
+
+meteor_task2:
+   sequence: 2
+   title: Setup blanket outside
+   description:
+   duration: 20
+   routine_id: 1
+
+meteor_task3:
+   sequence: 3
+   title: Turn off all lights
+   description:
+   duration: 5
+   routine_id: 1
+
+meteor_task4:
+   sequence: 4
+   title: Watch meteors
+   description:
+   duration: 120
+   routine_id: 1
+
+work_task1:
+   sequence: 1
+   title: Make Coffee
+   description:
+   duration:
+   routine_id: 2
+
+work_task2:
+   sequence: 2
+   title: Make Breakfast
+   description:
+   duration:
+   routine_id: 2
+
+work_task3:
+   sequence: 3
+   title: Shower
+   description:
+   duration:
+   routine_id: 2
+
+work_task4:
+   sequence: 4
+   title: Moisture Face
+   description:
+   duration:
+   routine_id: 2
+
+work_task5:
+   sequence: 5
+   title: Take Meds
+   description:
+   duration:
+   routine_id: 2
+
+work_task6:
+   sequence: 6
+   title: Brush teeth
+   description:
+   duration:
+   routine_id: 2
+
+work_task7:
+   sequence: 7
+   title: Put on Clothes
+   description:
+   duration:
+   routine_id: 2
+
+food_task1:
+   sequence: 1
+   title: Turn on stove
+   description:
+   duration:
+   routine_id: 3
+
+food_task2:
+   sequence: 2
+   title: Cook food
+   description:
+   duration:
+   routine_id: 3
+
+food_task2:
+   sequence: 3
+   title: Do Dishes
+   description:
+   duration:
+   routine_id: 3
