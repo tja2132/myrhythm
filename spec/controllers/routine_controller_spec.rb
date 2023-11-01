@@ -25,15 +25,19 @@ RSpec.describe RoutinesController, type: :controller do
             expect(@routine).to be_an_instance_of Routine
         end
 
-#        xit "shows new routine with valid parameters" do
-#            put :create, @routine
-#            expect(response).to redirect_to routines_path
-#            expect(flash[:notice]).to match('Skincare Routine was successfully created.')
-#            Routine.find_by(:title => "Skincare Routine").destroy
-#        end
+        xit "shows new routine with valid parameters" do
 
-#        xit "rejects routine with invalid parameters" do
-#        end
+        end
+
+        xit "new routine with valid parameters via form submission" do
+            #put :create, @routine
+            #expect(response).to redirect_to routine_tasks_path(@routine)
+            #expect(flash[:notice]).to match('Clean up was successfully created.')
+        end
+
+        xit "rejects routine with invalid parameters" do
+            
+        end
 
         after do
             Routine.find_by(:title => "Skincare Routine").destroy

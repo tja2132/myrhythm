@@ -8,11 +8,12 @@ RSpec.describe TasksController, type: :controller do
         @routine = Routine.find_by(:title => "Watch meteor shower")
     end
 
-    it "route to the task controller" do
+    it "routes to the task controller" do
         expect(get: "/routines/1/tasks").to route_to(controller: "tasks", action: "index", routine_id: "1")
     end
 
     xit "lists all tasks for a routine" do
+        
     end
   end
 
@@ -32,11 +33,11 @@ RSpec.describe TasksController, type: :controller do
             expect(@task).to be_an_instance_of Task
         end
 
-        xit "create task via webpage" do
-                    #expect(response).to redirect_to routine_tasks_path(@routine)
+        xit "new task via form submission" do
+            #expect(response).to redirect_to routine_tasks_path(@routine)
             #expect(flash[:notice]).to match('Clean up was successfully created.')
         end
-        xit "rejects routine with invalid parameters" do
+        xit "rejects task with invalid parameters" do
 
         end
     end
@@ -50,12 +51,9 @@ RSpec.describe TasksController, type: :controller do
     end
 
     describe "update" do
-#        xit "allows routine to be edited with valid parameters" do
-#            put :update, :id => 1, :routine => { :title => 'NEW Routine!', :daysofweek => 'M' }
+        xit "allows task to be edited with valid parameters" do
+#            put :update, :id => 1, :task => { :title => 'NEW task!', :sequence => 2 }
 
-#            expect(response).to redirect_to(routine_url(@routine))
-#            expect(@routine.title).to eql attr[:title]
-#            expect(@routine.daysofweek).to eql attr[:daysofweek]
-#        end
+        end
     end
 end
