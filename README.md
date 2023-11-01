@@ -49,6 +49,9 @@ heroku addons:create heroku-postgresql
 
 #Migrate data
 heroku rake db:migrate
+
+#Shutdown dynos
+heroku ps:scale web=0
 ```
 
 
