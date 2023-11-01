@@ -44,32 +44,30 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+group :development do
+# Use console on exceptions pages [https://github.com/rails/web-console]
+  gem "web-console"
+end
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
+  gem 'byebug'
+  gem "capybara"
   gem 'rspec-rails','~> 6.0.0'
-  gem 'cucumber-rails', require: false
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
   gem 'rails-controller-testing'
-end
-
-group :development do
-  # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem "web-console"
-
-  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  # gem "rack-mini-profiler"
-
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
-
+  gem 'launchy'
+  gem 'ZenTest'
 end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
+  gem 'cucumber-rails', require: false
+  gem 'cucumber-rails-training-wheels'
   gem "selenium-webdriver"
+  gem 'simplecov', :require => false
 end
 
 group :production do
