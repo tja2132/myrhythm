@@ -6,7 +6,6 @@ Given /the following routines exist/ do |routines_table|
   end
   
   Then /I should see all the routines/ do
-    # Make sure that all the movies in the app are visible in the table
     Routine.all.each do |routine|
       step %{I should see "#{routine.title}"}
     end
@@ -16,14 +15,9 @@ Given /the following routines exist/ do |routines_table|
     expect(Routine.count).to eq n_seeds.to_i
   end
 
-  When /I add a routine (.*)/ do |routine|
-    Routine.create(routine)
+  When /I follow "(.*)" button for the "(.*)" routine/ do |button_name, routine_title|
+    within find('tr', text: "#{routine_title}") do
+        click_link("#{button_name}")
+    end
   end
 
-  When /I modify the (.*) of a routine/ do |routine_param|
-
-  end
-
-  When /I delete a routine/ do |routine_title|
-    Routine.destroy(routine_title)
-  end

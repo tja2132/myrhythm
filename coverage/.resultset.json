@@ -213,25 +213,25 @@
   },
   "RSpec": {
     "coverage": {
-      "/home/hhaldren/git-repos/myrhythm/app/helpers/application_helper.rb": {
+      "/Users/melissapothen/Documents/Columbia/COMS4152/myrhythm/app/helpers/application_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/hhaldren/git-repos/myrhythm/app/helpers/routines_helper.rb": {
+      "/Users/melissapothen/Documents/Columbia/COMS4152/myrhythm/app/helpers/routines_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/hhaldren/git-repos/myrhythm/app/helpers/tasks_helper.rb": {
+      "/Users/melissapothen/Documents/Columbia/COMS4152/myrhythm/app/helpers/tasks_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/hhaldren/git-repos/myrhythm/app/controllers/routines_controller.rb": {
+      "/Users/melissapothen/Documents/Columbia/COMS4152/myrhythm/app/controllers/routines_controller.rb": {
         "lines": [
           1,
           1,
@@ -293,92 +293,6 @@
           null,
           null,
           1,
-          null,
-          1,
-          0,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null
-        ]
-      },
-      "/home/hhaldren/git-repos/myrhythm/app/controllers/application_controller.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/home/hhaldren/git-repos/myrhythm/app/controllers/tasks_controller.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          null,
-          1,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          null,
-          1,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          null,
-          null,
-          1,
-          null,
-          1,
-          0,
-          null,
-          null,
           null,
           1,
           0,
@@ -391,7 +305,93 @@
           null
         ]
       },
-      "/home/hhaldren/git-repos/myrhythm/app/models/routine.rb": {
+      "/Users/melissapothen/Documents/Columbia/COMS4152/myrhythm/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/melissapothen/Documents/Columbia/COMS4152/myrhythm/app/controllers/tasks_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null
+        ]
+      },
+      "/Users/melissapothen/Documents/Columbia/COMS4152/myrhythm/app/models/routine.rb": {
         "lines": [
           1,
           1,
@@ -414,14 +414,14 @@
           null
         ]
       },
-      "/home/hhaldren/git-repos/myrhythm/app/models/application_record.rb": {
+      "/Users/melissapothen/Documents/Columbia/COMS4152/myrhythm/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/home/hhaldren/git-repos/myrhythm/app/models/task.rb": {
+      "/Users/melissapothen/Documents/Columbia/COMS4152/myrhythm/app/models/task.rb": {
         "lines": [
           1,
           1,
@@ -441,6 +441,6 @@
         ]
       }
     },
-    "timestamp": 1698874515
+    "timestamp": 1698878364
   }
 }

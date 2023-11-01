@@ -13,21 +13,24 @@ Feature: display list of routines
       | The Perfect Grilled Cheese    | All the steps for a perfect sandwich  | None       |                  |            |          |            |          |
 
     And I am on the MyRhythm home page
-    Then 3 seed routines should exist
-    And I should see all the routines
+    Then I should see all the routines
 
   Scenario: Add a new routine
-    When I click "Add New Routine"
-    #...
-    Then 4 seed routines should exist
-    And I should see all the routines
+    Given I am on the MyRhythm home page
+    When I follow "New Routine"
+    And I fill in "Title" with "Morning Workout"
+    And I fill in "Description" with "my morning workout"
+    And I press "Create Routine"
+    Then I should see "Morning Workout"
 
   Scenario: modify routine in database
-    When I modify the "title" of a routine titled: The Perfect Grilled Cheese
-    And I click "Update"
-    Then I should see the following routine titles: Evening Workout, Skincare Routine, The Perfect Melt
+    Given I am on the MyRhythm home page
+    When I follow " Edit" button for the "Evening Workout" routine
+    And I fill in "Title" with "Morning Workout"
+    And I follow "Update"
+    Then I should see "Morning Workout"
 
   Scenario: delete routine in database
-    When I click the delete button for a routine
-    And I press Okay on the pop-up
-    Then I should see the following routines: Evening Workout, Skincare Routine
+    When I follow "Delete"
+    And I follow "OK"
+    Then I should not see "Evening Workout, Skincare Routine"
