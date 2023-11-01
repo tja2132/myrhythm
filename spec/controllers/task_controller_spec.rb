@@ -4,7 +4,7 @@ RSpec.describe TasksController, type: :controller do
   fixtures :routines, :tasks
 
   describe "index" do
-    before do
+    before(:each) do
         @routine = Routine.find_by(:title => "Watch meteor shower")
     end
 
@@ -20,7 +20,7 @@ RSpec.describe TasksController, type: :controller do
   end
 
     describe 'get new' do
-        before do
+        before(:each) do
             @routine = Routine.find_by(:title => "Watch meteor shower")
         end
 

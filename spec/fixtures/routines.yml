@@ -4,18 +4,19 @@ meteor_routine:
   id: 1
   title: Watch meteor shower
   description: "Watch the annual meteor shower"
-  recurrence: annual
+  recurrence: "annual"
+  start_time: Time.local(2023, 1, 1, 6, 0)
 
 work_routine:
   id: 2
   title: Get ready for work
   description: R
   recurrence: daily
-  daysofweek: M,T,W,Th,F,Sa,Su
+  daysofweek: [M,T,W,Th,F,Sa,Su]
 
 food_routine:
   id: 3
   title: Make Dinner
   description: Cook food.
   recurrence: weekly
-  daysofweek: M
+  daysofweek: [M]

@@ -15,6 +15,7 @@ For initial install:
 ```sh 
 rbenv install 3.2.2
 rbenv global 3.2.2
+brew install postgresql
 bundle install
 rake db:setup
 rails generate cucumber:install

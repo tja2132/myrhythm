@@ -1,22 +1,13 @@
 <tr id="<%= dom_id routine %>">
   <td><%= link_to "#{routine.title}", routine %></td>
   <td><%= routine.description %></td>
+  <td><%= routine.recurrence %></td>
     <td><%= routine.daysofweek %></td>
-    <td><% if routine.start_date %>
-      <%= routine.start_date.strftime("%F") %>
-    <% end %>
-  </td>
-  <td><% if routine.end_date %>
-      <%= routine.end_date.strftime("%F") %>
-    <% end %>
-  </td>
   <td><% if routine.start_time %>
       <%= routine.start_time.strftime("%H:%M") %>
     <% end %>
   </td>
-  <td><% if routine.end_time %>
-      <%= routine.end_time.strftime("%H:%M") %>
-    <% end %>
+  <td><%= Routine.calculate_end_time(routine.start_time, Routine.total_duration(routine)).strftime("%H:%M") %>
   </td>
   <td>
     <%= link_to " Edit", edit_routine_path(routine), :class => 'bi bi-pencil-square btn btn-primary btn-sm' %>

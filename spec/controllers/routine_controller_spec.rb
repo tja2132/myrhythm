@@ -19,10 +19,14 @@ RSpec.describe RoutinesController, type: :controller do
     end
 
     describe "creates" do
-        before do
+        before(:each) do
             @routine = Routine.create(:title => "Skincare Routine", :description => "Keep your skin looking fabulous",
             :recurrence => "daily", :daysofweek => "M,T,W,Th,F,Sa,Su")
             expect(@routine).to be_an_instance_of Routine
+        end
+
+        after(:each) do
+            Routine.find_by(:title => "Skincare Routine").destroy
         end
 
         it "shows new routine with valid parameters" do
@@ -39,10 +43,6 @@ RSpec.describe RoutinesController, type: :controller do
         xit "rejects routine with invalid parameters" do
             
         end
-
-        after do
-            Routine.find_by(:title => "Skincare Routine").destroy
-        end
     end
 
     describe "saves" do
@@ -54,8 +54,12 @@ RSpec.describe RoutinesController, type: :controller do
     end
 
     describe "update" do
-        before do
+        before(:each) do
             @routine = Routine.create(:title => "Testing Routine", :recurrence => "daily", :daysofweek => "M,W,F")
+        end
+
+        after(:each) do
+            Routine.find_by(:title => "Testing Routine").destroy
         end
 
 #        xit "allows routine to be edited with valid parameters" do
@@ -65,9 +69,5 @@ RSpec.describe RoutinesController, type: :controller do
 #            expect(@routine.title).to eql attr[:title]
 #            expect(@routine.daysofweek).to eql attr[:daysofweek]
 #        end
-
-        after do
-            Routine.find_by(:title => "Testing Routine").destroy
-        end
     end
 end

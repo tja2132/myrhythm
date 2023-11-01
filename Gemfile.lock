@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    ZenTest (4.12.1)
     actioncable (7.1.1)
       actionpack (= 7.1.1)
       activesupport (= 7.1.1)
@@ -82,6 +83,7 @@ GEM
     bootsnap (1.17.0)
       msgpack (~> 1.2)
     builder (3.2.4)
+    byebug (11.1.3)
     capybara (3.39.2)
       addressable
       matrix
@@ -125,6 +127,8 @@ GEM
       railties (>= 5.0, < 8)
       rexml (~> 3.0)
       webrick (~> 1.7)
+    cucumber-rails-training-wheels (1.0.0)
+      cucumber-rails (>= 1.1.1)
     cucumber-tag-expressions (4.1.0)
     database_cleaner (2.0.2)
       database_cleaner-active_record (>= 2, < 3)
@@ -137,6 +141,7 @@ GEM
       irb (>= 1.5.0)
       reline (>= 0.3.1)
     diff-lcs (1.5.0)
+    docile (1.4.0)
     drb (2.1.1)
       ruby2_keywords
     erubi (1.12.0)
@@ -156,6 +161,8 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    launchy (2.5.2)
+      addressable (~> 2.8)
     loofah (2.21.4)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -266,6 +273,12 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    simplecov (0.22.0)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-html (0.12.3)
+    simplecov_json_formatter (0.1.4)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -307,19 +320,24 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  ZenTest
   bootsnap
+  byebug
   capybara
   cucumber-rails
+  cucumber-rails-training-wheels
   database_cleaner
   debug
   importmap-rails
   jbuilder
+  launchy
   pg
   puma (>= 5.0)
   rails (~> 7.1.1)
   rails-controller-testing
   rspec-rails (~> 6.0.0)
   selenium-webdriver
+  simplecov
   sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails
