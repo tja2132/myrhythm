@@ -36,8 +36,7 @@ RSpec.describe TasksController, type: :controller do
         end
 
         xit "new task via form submission" do
-            #expect(response).to redirect_to routine_tasks_path(@routine)
-            #expect(flash[:notice]).to match('Clean up was successfully created.')
+          put :new, params: {:id => Task.find_by(:title => "Setup telescope").id, :task => {:description => "Leave telescope outside for 30 minutes to allow it to adjust to outside temperature"}}
         end
         xit "rejects task with invalid parameters" do
 
@@ -53,8 +52,8 @@ RSpec.describe TasksController, type: :controller do
     end
 
     describe "update" do
-        xit "allows task to be edited with valid parameters" do
-#            put :update, :id => 1, :task => { :title => 'NEW task!', :sequence => 2 }
+      xit "allows task to be edited with valid parameters" do
+           put :update, params: {:id => Task.find_by(:title => "Setup telescope").id, :task => {:description => "Leave telescope outside for 30 minutes to allow it to adjust to outside temperature"}}
         end
     end
 end

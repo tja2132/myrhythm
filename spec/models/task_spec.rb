@@ -16,6 +16,13 @@ RSpec.describe Task, type: :model do
       tasks = Task.with_same_routine(routine)
       expect(tasks.size).to eq 4
     end
+
+    it "returns no tasks within new routine" do
+      routine = nil
+      tasks = Task.with_same_routine(routine)
+      expect(tasks.size).to eq 0
+    end
   end
 
+ 
 end
