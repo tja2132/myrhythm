@@ -12,20 +12,22 @@ Feature: display list of routines
       | Skincare Routine              | A simple skincare regiment            | Daily      | M,T,W,Th,F,Sa,Su | 2023-1-1   | 2024-1-1 | 7:00       | 7:35     |
       | The Perfect Grilled Cheese    | All the steps for a perfect sandwich  | None       |                  |            |          |            |          |
 
-    And  I am on the MyRhythm home page
+    And I am on the MyRhythm home page
     Then 3 seed routines should exist
     And I should see all the routines
 
-  Scenario: add routine to database
-    And I add a routine ""
+  Scenario: Add a new routine
+    When I click "Add New Routine"
+    #...
     Then 4 seed routines should exist
+    And I should see all the routines
 
   Scenario: modify routine in database
-    And I modify the "title" of a routine
-    Then 4 seed routines should exist
-    And I should see all the routines
+    When I modify the "title" of a routine titled: The Perfect Grilled Cheese
+    And I click "Update"
+    Then I should see the following routine titles: Evening Workout, Skincare Routine, The Perfect Melt
 
   Scenario: delete routine in database
-    And I delete a routine
-    Then 2 seed routines should exist
-    And I should see all the routines
+    When I click the delete button for a routine
+    And I press Okay on the pop-up
+    Then I should see the following routines: Evening Workout, Skincare Routine
