@@ -12,12 +12,13 @@
 
 ActiveRecord::Schema[7.1].define(version: 3) do
   create_table "routines", force: :cascade do |t|
-    t.string "title"
+    t.string "title", default: "New Routine"
     t.text "description"
     t.string "recurrence", default: "None"
-    t.date "start_date", default: "2023-10-30"
+    t.date "start_date", default: "2023-10-31"
+    t.boolean "is_end_date"
     t.date "end_date"
-    t.time "start_time", default: "2000-01-01 05:07:23"
+    t.time "start_time", default: "2000-01-01 04:58:50"
     t.time "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

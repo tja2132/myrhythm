@@ -12,8 +12,10 @@ RSpec.describe TasksController, type: :controller do
         expect(get: "/routines/1/tasks").to route_to(controller: "tasks", action: "index", routine_id: "1")
     end
 
-    xit "lists all tasks for a routine" do
-        
+    it "lists all tasks for a routine" do
+      @routine = Routine.find_by(:title => "Watch meteor shower")
+      @tasks = Task.where(:routine_id => @routine.id)
+      expect(@tasks.count).to eq(4)
     end
   end
 
@@ -53,7 +55,6 @@ RSpec.describe TasksController, type: :controller do
     describe "update" do
         xit "allows task to be edited with valid parameters" do
 #            put :update, :id => 1, :task => { :title => 'NEW task!', :sequence => 2 }
-
         end
     end
 end

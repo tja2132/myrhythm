@@ -25,8 +25,9 @@ RSpec.describe RoutinesController, type: :controller do
             expect(@routine).to be_an_instance_of Routine
         end
 
-        xit "shows new routine with valid parameters" do
-
+        it "shows new routine with valid parameters" do
+          @routine = Routine.find_by(title: "Skincare Routine")
+          expect(@routine.valid?).to be(true)
         end
 
         xit "new routine with valid parameters via form submission" do
