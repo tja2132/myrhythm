@@ -22,7 +22,36 @@ rails generate rspec:install
 rails generate rspec:model routine
 rails generate rspec:model task
 rails server
+
+#install heroku cli
+curl https://cli-assets.heroku.com/install.sh | sh
 ```
+
+Heroku Setup
+
+#Edit config/database.yml
+```sh
+under production
+  addapter: postgresql
+```
+```sh
+#Create app
+heroku apps:create myrhythm
+
+#Change set for Ruby comptability
+heroku stack:set heroku-20
+
+#Make sure to push correct branch
+git push heroku dev_main:main
+
+#Create db
+heroku addons:create heroku-postgresql
+
+#Migrate data
+heroku rake db:migrate
+```
+
+
 
 Create db migration:
 ```sh
