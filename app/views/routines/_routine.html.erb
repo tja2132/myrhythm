@@ -7,9 +7,7 @@
       <%= routine.start_time.strftime("%H:%M") %>
     <% end %>
   </td>
-  <td><% if routine.end_time %>
-      <%= routine.end_time.strftime("%H:%M") %>
-    <% end %>
+  <td><%= Routine.calculate_end_time(routine.start_time, Routine.total_duration(routine)).strftime("%H:%M") %>
   </td>
   <td>
     <%= link_to " Edit", edit_routine_path(routine), :class => 'bi bi-pencil-square btn btn-primary btn-sm' %>
