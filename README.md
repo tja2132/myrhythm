@@ -4,6 +4,8 @@ MyRhythm is a routine and task building application that allows you to find
 your own rhythm in a chaotic life. Create routines, reminders, and habits that
 decrease stress, save time, and help you find your flow.
 
+### [GitHub Repository](https://github.com/tja2132/myrhythm) | [Heroku Deployment](https://myrhythm-60a89a182585.herokuapp.com/)
+
 ### Developers:
 * Melissa Pothen   - mp4138
 * Hannah Haldren   - hvh2105
