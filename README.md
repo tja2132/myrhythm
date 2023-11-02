@@ -12,19 +12,52 @@ decrease stress, save time, and help you find your flow.
 * Tyler Andrews    - tja2132
 * Nathan Coulibaly - nmc2169
 
+## Functionality covered in iteration 1:
+* View, Create, Update, and Delete Routines
+* View, Create, Update, and Delete Tasks within routines
+* Utilize nested resources for routine:task relation
+* Minimal bootsrap UI 
+
 ### Quick Start
 For initial install:
 ```sh 
 rbenv install 3.2.2
 rbenv global 3.2.2
-brew install postgresql
+# brew install postgresql
+# or equivalent postgresql installation for your system
 bundle install
 rake db:setup
+rails server
+```
+
+## Testing User stories with cucumber
+
+```angular2html
+cucumber features/*
+```
+
+See features/*.feature for user stories.
+
+## Testing code coverage with rspec
+```
+rspec
+
+# results are generated in /coverage/.last_run.json and are visible
+# by opening index.html in a web browser.
+# rspec artifacts are not commited to the repository and must be run locally
+```
+
+
+### Development Setup
+<details> 
+<summary>Click to Expand</summary>
+
+Rails Model Generation
+```angular2html
 rails generate cucumber:install
 rails generate rspec:install
 rails generate rspec:model routine
 rails generate rspec:model task
-rails server
 ```
 
 Heroku Setup
@@ -69,6 +102,8 @@ rake db:create:all
 rake db:migrate
 rake db:seed
 ```
+</details>
+
 
 Reference Links:
 * [RSpec templates](https://github.com/rspec/rspec-rails)
@@ -77,25 +112,3 @@ Reference Links:
 * [DO - RoR App](https://www.digitalocean.com/community/tutorials/how-to-build-a-ruby-on-rails-application)
 * [DO - RoR App with Nested Resources](https://www.digitalocean.com/community/tutorials/how-to-create-nested-resources-for-a-ruby-on-rails-application)
 * [RoR Docs - Nested Resources](https://guides.rubyonrails.org/routing.html#nested-resources)
-
-## Testing User stories with cucumber
-
-```angular2html
-cucumber features/*
-```
-
-Functionality covered in iteration 1:
-* View, Create, Update, and Delete Routines
-* View, Create, Update, and Delete Tasks within routines
-
-See features/*.feature for user stories.
-
-## Testing code coverage with rspec
-```
-rspec
-
-# results are generated in /coverage/.last_run.json and are visible
-# by opening index.html in a web browser.
-# rspec artifacts are not commited to the repository and must be run locally
-```
-
