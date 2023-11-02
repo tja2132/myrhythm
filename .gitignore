@@ -44,3 +44,4 @@
 /coverage/assets/*
 /coverage/*.json
 /coverage/*.html
+coverage/.resultset.json.lock
