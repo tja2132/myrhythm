@@ -34,14 +34,15 @@ RSpec.describe RoutinesController, type: :controller do
           expect(@routine.valid?).to be(true)
         end
 
-        xit "new routine with valid parameters via form submission" do
-            #put :create, @routine
-            #expect(response).to redirect_to routine_tasks_path(@routine)
-            #expect(flash[:notice]).to match('Clean up was successfully created.')
+        it "new routine with valid parameters via form submission" do
+          get :create, params: {:title => "Leave telescope outside", :routine => {:description => "Leave telescope outside for 30 minutes to allow it to adjust to outside temperature"}}
+          @routine = Routine.find_by(:title => "Leave telescope outside")
+          expect(flash[:notice]).to eq("Routine was successfully created.")
+          expect(response).to redirect_to(routine_path(:id => 5))
         end
 
-        xit "rejects routine with invalid parameters" do
-            
+        it "rejects routine with invalid parameters" do
+          expect{get :create, params: {:name => "Leave telescope outside", :task => {:description => "Leave telescope outside for 30 minutes to allow it to adjust to outside temperature"}}}.to raise_error(ActionController::ParameterMissing)
         end
     end
 
@@ -57,7 +58,10 @@ RSpec.describe RoutinesController, type: :controller do
         before(:each) do
             @routine = Routine.create(:title => "Testing Routine", :recurrence => "daily", :daysofweek => "M,W,F")
         end
-
+        it "updates routine" do
+          post :update, params: {:id => @routine.id, :routine => {:description => "Leave telescope outside for 30 minutes to allow it to adjust to outside temperature"}}
+          expect(flash[:notice]).to eq("Routine was successfully updated.")
+        end
         after(:each) do
             Routine.find_by(:title => "Testing Routine").destroy
         end
@@ -70,4 +74,13 @@ RSpec.describe RoutinesController, type: :controller do
 #            expect(@routine.daysofweek).to eql attr[:daysofweek]
 #        end
     end
+
+  describe "delete" do
+    it "deletes routine" do
+      @routine = Routine.create(:title => "Testing Destroy", :recurrence => "daily", :daysofweek => "M,W,F")
+      get :destroy, params: {:id=>@routine.id}
+      expect{Routine.find(@routine.id)}.to raise_error(ActiveRecord::RecordNotFound)
+    end
+  end
+
 end

@@ -28,7 +28,7 @@ class RoutinesController < ApplicationController
         format.html { redirect_to routine_url(@routine), notice: "Routine was successfully created." }
         format.json { render :show, status: :created, location: @routine }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_entity}
         format.json { render json: @routine.errors, status: :unprocessable_entity }
       end
     end

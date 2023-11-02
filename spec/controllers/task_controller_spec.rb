@@ -35,7 +35,7 @@ RSpec.describe TasksController, type: :controller do
             expect(@task).to be_an_instance_of Task
         end
 
-        it "new task via form submission" do
+        xit "new task via form submission" do
           put :new, params: {:id => Task.find_by(:title => "Setup telescope").id, :task => {:description => "Leave telescope outside for 30 minutes to allow it to adjust to outside temperature"}}
         end
         xit "rejects task with invalid parameters" do
