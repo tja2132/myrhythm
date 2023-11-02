@@ -42,7 +42,7 @@ RSpec.describe RoutinesController, type: :controller do
         end
 
         it "rejects routine with invalid parameters" do
-          expect{get :create, params: {:name => "Leave telescope outside", :task => {:description => "Leave telescope outside for 30 minutes to allow it to adjust to outside temperature"}}}.to raise_error(ActionController::ParameterMissing)
+          expect{get :create, params: {:title => nil, :task => {:description => "Leave telescope outside for 30 minutes to allow it to adjust to outside temperature"}}}.to raise_error(ActionController::ParameterMissing)
         end
     end
 

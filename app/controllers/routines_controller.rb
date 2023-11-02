@@ -27,9 +27,6 @@ class RoutinesController < ApplicationController
       if @routine.save
         format.html { redirect_to routine_url(@routine), notice: "Routine was successfully created." }
         format.json { render :show, status: :created, location: @routine }
-      else
-        format.html { render :new, status: :unprocessable_entity}
-        format.json { render json: @routine.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -40,9 +37,6 @@ class RoutinesController < ApplicationController
       if @routine.update(routine_params)
         format.html { redirect_to routine_url(@routine), notice: "Routine was successfully updated." }
         format.json { render :show, status: :ok, location: @routine }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @routine.errors, status: :unprocessable_entity }
       end
     end
   end
