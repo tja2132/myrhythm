@@ -26,7 +26,7 @@ Feature: display list of tasks for a routine
     When I follow "Morning Routine"
     And I follow "Add Task"
     And I fill in "Title" with "Morning Workout"
-    And I follow "Create Task"
+    And I press "Create Task"
     Then I should see "Task was successfully created."
 #
 #  Scenario: modify task on a routine
