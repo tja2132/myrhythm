@@ -25,19 +25,13 @@ rails generate rspec:install
 rails generate rspec:model routine
 rails generate rspec:model task
 rails server
-
-#install heroku cli
-curl https://cli-assets.heroku.com/install.sh | sh
 ```
 
 Heroku Setup
+```sh
+#install heroku cli
+curl https://cli-assets.heroku.com/install.sh | sh
 
-#Edit config/database.yml
-```sh
-under production
-  addapter: postgresql
-```
-```sh
 #Create app
 heroku apps:create myrhythm
 
@@ -58,8 +52,7 @@ heroku rake db:seed
 heroku ps:scale web=0
 ```
 
-
-
+### Database Development
 Create db migration:
 ```sh
 rails g migration <Migration Name> <field_name>:<field-type>
@@ -85,20 +78,24 @@ Reference Links:
 * [DO - RoR App with Nested Resources](https://www.digitalocean.com/community/tutorials/how-to-create-nested-resources-for-a-ruby-on-rails-application)
 * [RoR Docs - Nested Resources](https://guides.rubyonrails.org/routing.html#nested-resources)
 
+## Testing User stories with cucumber
 
-### TODO
-* Testing User stories with cucumber
+```angular2html
+cucumber features/*
+```
 
-* System dependencies
+Functionality covered in iteration 1:
+* View, Create, Update, and Delete Routines
+* View, Create, Update, and Delete Tasks within routines
 
-* Configuration
+See features/*.feature for user stories.
 
-* Database creation
+## Testing code coverage with rspec
+```
+rspec
 
-* Database initialization
+# results are generated in /coverage/.last_run.json and are visible
+# by opening index.html in a web browser.
+# rspec artifacts are not commited to the repository and must be run locally
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
