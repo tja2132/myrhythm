@@ -18,8 +18,12 @@ class Routine < ApplicationRecord
   def self.total_duration(routine)
     total_duration = 0
     tasks = Task.with_same_routine(routine)
-    tasks.each do | task |
-      total_duration = (total_duration + task.duration)
+    if !tasks.nil? and !(tasks.length.eql? 0)
+      tasks.each do | task |
+        if task.duration?
+          total_duration = (total_duration + task.duration)
+        end
+      end
     end
     return total_duration
   end

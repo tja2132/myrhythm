@@ -15,6 +15,7 @@ module NavigationHelpers
   
       when /^the (MyRhythm )?home\s?page$/ then '/routines'
       when /^the routines page$/ then '/routines'
+      # when /^the (.*) routine page$/ then '/routines/($1)'
   
       # Add more mappings here.
       # Here is an example that pulls values out of the Regexp:

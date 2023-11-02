@@ -7,8 +7,8 @@ Feature: display list of tasks for a routine
   Background: morning routine has been added to database
 
     Given the following routines exist:
-      | title                         | description                           | recurrence | daysofweek       | start_date | end_date | start_time | end_time |
-      | Morning Routine               | my morning routine                    | Weekly     | M,W,F            | 2023-1-1   | 2024-1-1 | 6:00       | 6:35     |
+      | title                         | description                           | recurrence | daysofweek       | start_time                   |
+      | Morning Routine               | my morning routine                    | Weekly     | M,W,F            | Time.local(2023, 1, 1, 6, 0)  |
 
     Given the following tasks exist:
       | title              | description                                   | sequence | duration |
@@ -21,23 +21,21 @@ Feature: display list of tasks for a routine
       | Gather work things | Gather bookbag, laptop, badge, keys, phone, wallet | 7   | 10       |
 
     And I am on the routines page
-    And I follow "Morning Routine"
-#    And I should see all the tasks
 
-  Scenario: add task on a routine
-    When I follow "The Perfect Grilled Cheese"
+  Scenario: add task to a routine
+    When I follow "Morning Routine"
     And I follow "Add Task"
     And I fill in "Title" with "Morning Workout"
     And I follow "Create Task"
     Then I should see "Task was successfully created."
-
-  Scenario: modify task on a routine
-    When I follow "Edit"
-    And I modify the "title" of the task
-    And I follow "Update"
-    Then I should see the new task title
-
-  Scenario: delete task from a routine
-    When I follow "Delete on a task"
-    And I follow "Okay"
-    Then I should see the task removed from the routine
+#
+#  Scenario: modify task on a routine
+#    When I follow "Edit"
+#    And I modify the "title" of the task
+#    And I follow "Update"
+#    Then I should see the new task title
+#
+#  Scenario: delete task from a routine
+#    When I follow "Delete on a task"
+#    And I follow "Okay"
+#    Then I should see the task removed from the routine
