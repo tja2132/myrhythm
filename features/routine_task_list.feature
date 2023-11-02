@@ -22,19 +22,18 @@ Feature: display list of tasks for a routine
 
     And I am on the routines page
 
+  Scenario: view all tasks
+    When I follow "Morning Routine"
+    And I follow "All Tasks"
+    Then I should see "Morning Routine Tasks"
+
   Scenario: add task to a routine
     When I follow "Morning Routine"
     And I follow "Add Task"
     And I fill in "Title" with "Morning Workout"
     And I press "Create Task"
     Then I should see "Task was successfully created."
-#
-#  Scenario: modify task on a routine
-#    When I follow "Edit"
-#    And I modify the "title" of the task
-#    And I follow "Update"
-#    Then I should see the new task title
-#
+
 #  Scenario: delete task from a routine
 #    When I follow "Delete on a task"
 #    And I follow "Okay"

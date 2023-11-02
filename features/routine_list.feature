@@ -25,10 +25,10 @@ Feature: display list of routines
 
 #  Scenario: modify routine in database
 #    Given I am on the MyRhythm home page
-#    When I follow " Edit" button for the "1" routine
+#    When I follow "edit" button for the "1" routine
 #    And I fill in "Title" with "Morning Workout"
-#    And I follow "Update"
-#    Then I should see "Morning Workout"
+#    And I follow "Update Routine"
+#    Then I should see "Routine was successfully updated."
 #
 #  Scenario: delete routine in database
 #    When I follow "Delete"
