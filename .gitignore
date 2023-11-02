@@ -39,3 +39,6 @@
 
 # Ignore Mac files
 .DS_Store
+
+coverage/*.json
+coverage/*.html
