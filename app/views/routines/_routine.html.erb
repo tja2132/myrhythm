@@ -8,7 +8,7 @@
     <% end %>
   </td>
     <td><% if Routine.calculate_end_time(routine.start_time, Routine.total_duration(routine)) %>
-      <%= Routine.calculate_end_time(routine.start_time, Routine.total_duration(routine)).strftime("%H:%M") %>
+      <%= Routine.calculate_end_time(routine.start_time, Routine.total_duration(routine)) %>
     <% end %>
   </td>
   <td>
