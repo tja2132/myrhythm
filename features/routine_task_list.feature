@@ -2,7 +2,7 @@ Feature: display list of tasks for a routine
 
   As a busy office worker
   So that I can get to work on time in the morning
-  I want to manage my morning tasks
+  I want to manage my morning tasks by creating a morning routine with several tasks
 
   Background: morning routine has been added to database
 
@@ -33,8 +33,3 @@ Feature: display list of tasks for a routine
     And I fill in "Title" with "Morning Workout"
     And I press "Create Task"
     Then I should see "Task was successfully created."
-
-#  Scenario: delete task from a routine
-#    When I follow "Delete on a task"
-#    And I follow "Okay"
-#    Then I should see the task removed from the routine

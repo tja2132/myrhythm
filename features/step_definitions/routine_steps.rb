@@ -15,9 +15,10 @@ Given /the following routines exist/ do |routines_table|
     expect(Routine.count).to eq n_seeds.to_i
   end
 
-  When /I follow "(.*)" button for the "(.*)" routine/ do |button_name, routine_id|
-    within find('tr', text: "#{routine_id}") do
-        click_link("#{button_name}")
-    end
-  end
+# TODO
+  # When /I follow "(.*)" button for the "(.*)" routine/ do |button_name, routine_id|
+  #   within find('tr', text: "#{routine_id}") do
+  #       click_link("#{button_name}")
+  #   end
+  # end
 

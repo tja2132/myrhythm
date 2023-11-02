@@ -1,8 +1,8 @@
 Feature: display list of routines
 
   As a stressed student
-  So that I can complete my routines
-  I want to see my routines
+  So that I can focus on my studies and get to class on time
+  I want to manage my schedule more effectively
 
   Background: routines have been added to database
 
@@ -23,6 +23,7 @@ Feature: display list of routines
     And I press "Create Routine"
     Then I should see "Morning Workout"
 
+  # TODO
 #  Scenario: modify routine in database
 #    Given I am on the MyRhythm home page
 #    When I follow "edit" button for the "1" routine
@@ -30,6 +31,7 @@ Feature: display list of routines
 #    And I follow "Update Routine"
 #    Then I should see "Routine was successfully updated."
 #
+  # TODO
 #  Scenario: delete routine in database
 #    When I follow "Delete"
 #    And I follow "OK"

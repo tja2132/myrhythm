@@ -15,15 +15,3 @@ end
 Then /(.*) seed tasks should exist/ do | n_seeds |
   expect(ask.count).to eq n_seeds.to_i
 end
-
-When /I add a task (.*)/ do |task|
-  Routine.create(task)
-end
-
-When /I modify the (.*) of a task/ do |task_param|
-
-end
-
-When /I delete a task (.*) from a routine (.*)/ do |task_title, routine_title|
-  Task.destroy(task_title)
-end
