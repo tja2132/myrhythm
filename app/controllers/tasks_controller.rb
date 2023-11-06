@@ -71,8 +71,6 @@ class TasksController < ApplicationController
       @task.save
     end
 
-    enforce_unique_sequence
-
     redirect_to routine_path(@routine)
   end
 
@@ -92,8 +90,6 @@ class TasksController < ApplicationController
       @task.sequence += 1
       @task.save
     end
-
-    enforce_unique_sequence
 
     redirect_to routine_path(@routine)
   end
