@@ -1,6 +1,5 @@
 class Task < ApplicationRecord
   belongs_to :routine
-
   validates :title, presence: true
 
   def self.with_same_routine(routine)

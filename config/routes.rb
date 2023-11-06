@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :routines do
-    resources :tasks
+    resources :tasks do
+      get :up
+      get :down
+    end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -10,5 +13,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root 'routines#index'
-  # root "posts#index"
+
+
+
 end

@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :get_routine
   before_action :set_task, only: %i[ show edit update destroy ]
+  after_action :enforce_unique_sequence
 
   # GET /tasks or /tasks.json
   def index
@@ -18,6 +19,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
+
   end
 
   # POST /tasks or /tasks.json
@@ -52,6 +54,50 @@ class TasksController < ApplicationController
     end
   end
 
+  def up
+    @routine = Routine.find(params[:routine_id])
+    @task = Task.find(params[:task_id])
+
+    if @task.sequence > 1
+      tasks = Task.with_same_routine(@routine)
+      tasks.each do |t|
+        if t.sequence == @task.sequence - 1
+          t.sequence += 1
+          t.save
+        end
+      end
+
+      @task.sequence -= 1
+      @task.save
+    end
+
+    enforce_unique_sequence
+
+    redirect_to routine_path(@routine)
+  end
+
+  def down
+
+    @routine = Routine.find(params[:routine_id])
+    @task = Task.find(params[:task_id])
+
+    if @task.sequence <= @routine.tasks.size
+      tasks = Task.with_same_routine(@routine)
+      tasks.each do |t|
+        if t.sequence == @task.sequence + 1
+          t.sequence -= 1
+          t.save
+        end
+      end
+      @task.sequence += 1
+      @task.save
+    end
+
+    enforce_unique_sequence
+
+    redirect_to routine_path(@routine)
+  end
+
   private
   # Get parent routine
     def get_routine
@@ -66,5 +112,36 @@ class TasksController < ApplicationController
     # Only allow a list of trusted parameters through.
     def task_params
       params.require(:task).permit(:title, :description, :duration, :sequence)
+    end
+
+    def enforce_unique_sequence
+      tasks = Task.where(routine: @routine.id).order(:sequence)
+
+      #enforce no duplicate sequence numbers
+      seq = []
+      tasks.each do |t|
+        while seq.include?(t.sequence)
+          t.sequence += 1
+        end
+        t.save
+        seq.append(t.sequence)
+      end
+
+      #enforce starting at 1 and ending at tasks.size
+      if seq[0] < 1
+        for i in 0..(1 - seq[0])
+          tasks.each do |t|
+            t.sequence += 1
+            t.save
+          end
+        end
+      elsif seq[-1] > @routine.tasks.size
+        for i in 0..(@routine.tasks.size - seq[-1])
+          tasks.each do |t|
+            t.sequence -= 1
+            t.save
+          end
+        end
+      end
     end
 end
