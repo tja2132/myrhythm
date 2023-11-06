@@ -114,32 +114,11 @@ class TasksController < ApplicationController
 
       if @routine.tasks.size > 1
         tasks = Task.where(routine: @routine.id).order(:sequence)
-
-        #enforce no duplicate sequence numbers
-        seq = []
+        seq = 1
         tasks.each do |t|
-          while seq.include?(t.sequence)
-            t.sequence += 1
-          end
+          t.sequence = seq
           t.save
-          seq.append(t.sequence)
-        end
-
-        #enforce starting at 1 and ending at tasks.size
-        if seq[0] < 1
-          for i in 0..(1 - seq[0])
-            tasks.each do |t|
-              t.sequence += 1
-              t.save
-            end
-          end
-        elsif seq[-1] > @routine.tasks.size
-          for i in 0..(@routine.tasks.size - seq[-1])
-            tasks.each do |t|
-              t.sequence -= 1
-              t.save
-            end
-          end
+          seq += 1
         end
       end
     end
