@@ -115,31 +115,34 @@ class TasksController < ApplicationController
     end
 
     def enforce_unique_sequence
-      tasks = Task.where(routine: @routine.id).order(:sequence)
 
-      #enforce no duplicate sequence numbers
-      seq = []
-      tasks.each do |t|
-        while seq.include?(t.sequence)
-          t.sequence += 1
-        end
-        t.save
-        seq.append(t.sequence)
-      end
+      if @routine.tasks.size > 1
+        tasks = Task.where(routine: @routine.id).order(:sequence)
 
-      #enforce starting at 1 and ending at tasks.size
-      if seq[0] < 1
-        for i in 0..(1 - seq[0])
-          tasks.each do |t|
+        #enforce no duplicate sequence numbers
+        seq = []
+        tasks.each do |t|
+          while seq.include?(t.sequence)
             t.sequence += 1
-            t.save
           end
+          t.save
+          seq.append(t.sequence)
         end
-      elsif seq[-1] > @routine.tasks.size
-        for i in 0..(@routine.tasks.size - seq[-1])
-          tasks.each do |t|
-            t.sequence -= 1
-            t.save
+
+        #enforce starting at 1 and ending at tasks.size
+        if seq[0] < 1
+          for i in 0..(1 - seq[0])
+            tasks.each do |t|
+              t.sequence += 1
+              t.save
+            end
+          end
+        elsif seq[-1] > @routine.tasks.size
+          for i in 0..(@routine.tasks.size - seq[-1])
+            tasks.each do |t|
+              t.sequence -= 1
+              t.save
+            end
           end
         end
       end
