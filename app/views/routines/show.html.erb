@@ -31,8 +31,8 @@
         <br>
         <%= link_to " Edit", edit_routine_task_url(@routine,task), :class => 'bi bi-pencil-square btn btn-primary btn-sm' %> 
         <%= link_to " Delete", [@routine,task], data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, :class => 'bi bi-trash btn btn-outline-danger btn-sm' %>
-        <%= link_to " Move Up", routine_task_up_path(@routine,task), :class => 'btn btn-primary' %>
-        <%= link_to " Move Down", routine_task_down_path(@routine,task), :class => 'btn btn-primary' %>
+        <%= link_to " Move Up", routine_task_up_path(@routine,task), :class => 'btn btn-primary btn-sm' %>
+        <%= link_to " Move Down", routine_task_down_path(@routine,task), :class => 'btn btn-primary btn-sm' %>
     </li>
     <% end %>
   </ol>

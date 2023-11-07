@@ -24,13 +24,29 @@
   <div>
     <%= form.label :start_time, style: "display: block" %>
     <%= form.time_select :start_time %>
-    <%= form.label :end_time, style: "display: block" %>
-    <%= form.time_select :end_time %>
   </div>
+
+<!--  <div>-->
+    <%#= form.label :recurrence, style: "display: block" %>
+    <%#= form.select :recurrence, ['None', 'Daily', 'Weekly'] %>
+<!--  </div>-->
 
   <div>
     <%= form.label :recurrence, style: "display: block" %>
-    <%= form.select :recurrence, ['None', 'Daily', 'Weekly', 'Monthly', 'Annually'] %>
+    <%= form.label :mon %>
+    <%= form.check_box :mon %>
+    <%= form.label :tue %>
+    <%= form.check_box :tue %>
+    <%= form.label :wed %>
+    <%= form.check_box :wed %>
+    <%= form.label :thu %>
+    <%= form.check_box :thu %>
+    <%= form.label :fri %>
+    <%= form.check_box :fri %>
+    <%= form.label :sat %>
+    <%= form.check_box :sat %>
+    <%= form.label :sun %>
+    <%= form.check_box :sun %>
   </div>
 
   <!--  TODO hide this Div if None is selected-->

@@ -10,19 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 3) do
+ActiveRecord::Schema[7.1].define(version: 2) do
   create_table "routines", force: :cascade do |t|
     t.string "title", default: "New Routine"
     t.text "description"
     t.string "recurrence", default: "None"
-    t.date "start_date", default: "2023-10-31"
-    t.boolean "is_end_date"
-    t.date "end_date"
-    t.time "start_time", default: "2000-01-01 04:58:50"
+    t.string "daysofweek", default: ""
+    t.boolean "mon", default: true
+    t.boolean "tue", default: true
+    t.boolean "wed", default: true
+    t.boolean "thu", default: true
+    t.boolean "fri", default: true
+    t.boolean "sat", default: true
+    t.boolean "sun", default: true
+    t.date "start_date", default: "2023-11-06"
+    t.date "end_date", default: "2023-11-06"
+    t.time "start_time", default: "2000-01-01 00:46:01"
     t.time "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "daysofweek"
   end
 
   create_table "tasks", force: :cascade do |t|
