@@ -9,9 +9,9 @@
 #   end
 
 routines = [{:title => 'Evening Workout', :description => "A quick evening workout", :recurrence => "Weekly", :daysofweek => "M,W,F",
-                    start_date: Time.local(2023, 1, 1), start_time: Time.local(2023, 1, 1, 6, 0)},
+             start_day: 'M', start_time: Time.local(2023, 1, 1, 6, 0)},
             {:title => 'Skincare Routine', :description => "A simple skincare regiment", :recurrence => "Daily", :daysofweek => "M,T,W,Th,F,Sa,Su",
-                    :start_date => Time.local(2023, 1, 1), :start_time  => Time.local(2023, 1, 1, 6, 0)},
+             start_day: 'Sa', :start_time  => Time.local(2023, 1, 1, 6, 0)},
             {:title => 'The Perfect Grilled Cheese', :description => "All the steps for a perfect sandwich", :recurrence => "None"}]
 
 routines.each do | routine |

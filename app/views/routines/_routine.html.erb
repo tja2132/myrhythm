@@ -2,16 +2,14 @@
   <td><%= link_to "#{routine.title}", routine %></td>
   <td><%= routine.description %></td>
   <td><%= routine.recurrence %></td>
-    <td><%= routine.daysofweek %></td>
+  <td><%= routine.daysofweek %></td>
   <td><% if routine.start_time %>
       <%= routine.start_time.strftime("%H:%M") %>
     <% end %>
-  </td>
-    <td><% if Routine.calculate_end_time(routine.start_time, Routine.total_duration(routine)) %>
-      <%= Routine.calculate_end_time(routine.start_time, Routine.total_duration(routine)) %>
-    <% end %>
-  </td>
-  <td>
+    <td><% if routine.start_day %>
+        <%= routine.start_day %>
+      <% end %>
+    <td>
     <%= link_to " Edit", edit_routine_path(routine), :class => 'bi bi-pencil-square btn btn-primary btn-sm' %>
     <%= link_to " Delete", routine, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, :class => 'bi bi-trash btn btn-outline-danger btn-sm' %>
   </td>

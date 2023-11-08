@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_08_012535) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_08_054146) do
   create_table "movies", force: :cascade do |t|
     t.string "title"
     t.string "rating"
@@ -24,11 +24,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_08_012535) do
     t.string "title", default: "New Routine"
     t.text "description"
     t.string "recurrence", default: "None"
-    t.date "start_date", default: "2023-10-31"
     t.boolean "is_end_date"
-    t.date "end_date"
     t.time "start_time", default: "2000-01-01 04:58:50"
-    t.time "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "daysofweek"
@@ -39,6 +36,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_08_012535) do
     t.boolean "fri"
     t.boolean "sat"
     t.boolean "sun"
+    t.string "start_day"
   end
 
   create_table "tasks", force: :cascade do |t|

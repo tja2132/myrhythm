@@ -51,10 +51,9 @@
 
   <!--  TODO hide this Div if None is selected-->
   <div>
-    <%= form.label :start_date, style: "display: block" %>
-    <%= form.date_select :start_date %>
-    <%= form.label :end_date, style: "display: block" %>
-    <%= form.date_select :end_date %>
+    <%= form.label :start_day, style: "display: block" %>
+    <%= form.select :start_day, ["", "M","T",'W',"Th","F","Sa","Su"] %>
+
   </div>
 
   <br>
