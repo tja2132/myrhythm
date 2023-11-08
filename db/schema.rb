@@ -11,24 +11,14 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.1].define(version: 2023_11_08_054146) do
-  create_table "movies", force: :cascade do |t|
-    t.string "title"
-    t.string "rating"
-    t.text "description"
-    t.datetime "release_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "routines", force: :cascade do |t|
     t.string "title", default: "New Routine"
     t.text "description"
     t.string "recurrence", default: "None"
-    t.boolean "is_end_date"
-    t.time "start_time", default: "2000-01-01 04:58:50"
+    t.string "daysofweek", default: ""
+    t.time "start_time", default: "2000-01-01 23:08:36"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "daysofweek"
     t.boolean "mon"
     t.boolean "tue"
     t.boolean "wed"

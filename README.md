@@ -102,6 +102,13 @@ rake db:create:all
 rake db:migrate
 rake db:seed
 ```
+
+Simple Calendar Setup
+
+```angular2html
+rails g simple_calendar:views
+```
+
 </details>
 
 
@@ -112,3 +119,4 @@ Reference Links:
 * [DO - RoR App](https://www.digitalocean.com/community/tutorials/how-to-build-a-ruby-on-rails-application)
 * [DO - RoR App with Nested Resources](https://www.digitalocean.com/community/tutorials/how-to-create-nested-resources-for-a-ruby-on-rails-application)
 * [RoR Docs - Nested Resources](https://guides.rubyonrails.org/routing.html#nested-resources)
+* [Simple Calendar](https://github.com/excid3/simple_calendar)
