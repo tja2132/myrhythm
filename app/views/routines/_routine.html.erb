@@ -5,15 +5,15 @@
   <td><%= routine.daysofweek %></td>
 
   <% if routine.start_time %>
-  <td><%= routine.start_time.strftime("%H:%M") %></td>
-  <td><%= Routine.calculate_end_time(routine.start_time, Routine.total_duration(routine)).strftime("%H:%M") %></td>
+  <td><%= routine.start_time.strftime("%I:%M%P") %></td>
+  <td><%= (routine.start_time + Routine.total_duration(routine).minutes).strftime("%I:%M%P") %></td>
   <% else %>
   <td><%= "None" %></td>
   <td><%= "None" %></td>
   <% end %>
 
   <% if routine.start_day %>
-  <td><%= routine.start_day %><td>
+  <td><%= Routine.start_day_str(routine.start_day) %><td>
   <% else %>
   <td><%= "None" %></td>
   <% end %>

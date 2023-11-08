@@ -7,15 +7,6 @@ class Routine < ApplicationRecord
     return self.start_time
   end
 
-  def self.calculate_end_time(start_time, total_duration)
-    if !start_time.nil? and !total_duration.nil?
-      end_time = (start_time + (total_duration*60))
-    else
-      end_time = ''
-    end
-    return end_time
-  end
-
   def self.all_daysofweek
     ['M','T','W', 'Th', 'F', 'Sa', 'Su']
   end
@@ -23,14 +14,35 @@ class Routine < ApplicationRecord
   def self.total_duration(routine)
     total_duration = 0
     tasks = Task.with_same_routine(routine)
-    if !tasks.nil? and !(tasks.length.eql? 0)
+    if !tasks.nil? and tasks.size > 0
       tasks.each do | task |
         if task.duration?
-          total_duration = (total_duration + task.duration)
+          total_duration += task.duration
         end
       end
     end
     return total_duration
   end
 
+  def self.start_day_str(start_day)
+    # these cases much match the form.select :start_day from routines _form
+    case start_day
+    when "Mon"
+      "Monday"
+    when "Tue"
+      "Tuesday"
+    when "Wed"
+      "Wednesday"
+    when "Thu"
+      "Thursday"
+    when "Fri"
+      "Friday"
+    when "Sat"
+      "Saturday"
+    when "Sun"
+      "Sunday"
+    else
+      ""
+    end
+  end
 end

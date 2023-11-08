@@ -23,13 +23,8 @@
 <br>
   <div>
     <%= form.label :start_time, style: "display: block" %>
-    <%= form.time_select :start_time %>
+    <%= form.time_select :start_time, {ampm: true} %>
   </div>
-
-<!--  <div>-->
-    <%#= form.label :recurrence, style: "display: block" %>
-    <%#= form.select :recurrence, ['None', 'Daily', 'Weekly'] %>
-<!--  </div>-->
 
   <div>
     <%= form.label :recurrence, style: "display: block" %>
@@ -52,8 +47,7 @@
   <!--  TODO hide this Div if None is selected-->
   <div>
     <%= form.label :start_day, style: "display: block" %>
-    <%= form.select :start_day, ["", "M","T",'W',"Th","F","Sa","Su"] %>
-
+    <%= form.select :start_day, ["", "Mon","Tue",'Wed',"Thu","Fri","Sat","Sun"] %>
   </div>
 
   <br>
