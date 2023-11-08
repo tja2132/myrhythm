@@ -2,6 +2,11 @@ class Routine < ApplicationRecord
   has_many :tasks, dependent: :destroy
   validates :title, presence: true
 
+
+  def self.test_method()
+    return self.start_time
+  end
+
   def self.calculate_end_time(start_time, total_duration)
     if !start_time.nil? and !total_duration.nil?
       end_time = (start_time + (total_duration*60))
