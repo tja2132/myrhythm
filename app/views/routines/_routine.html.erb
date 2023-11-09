@@ -12,7 +12,7 @@
   <td><%= "None" %></td>
   <% end %>
 
-  <% if routine.start_day %>
+  <% if routine.start_day and routine.start_day != '' %>
   <td><%= Routine.start_day_str(routine.start_day) %><td>
   <% else %>
   <td><%= "None" %></td>
