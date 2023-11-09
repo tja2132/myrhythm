@@ -4,8 +4,8 @@ class CreateRoutines < ActiveRecord::Migration[7.1]
       t.string :title, default: "New Routine"
       t.text :description
 
-      t.string :recurrence, default: "None"   #based on checkbox selections (all vs some)
-      t.string :daysofweek, default: ""       #constructed from daily booleans
+      t.string :recurrence, default: "None"
+      t.string :daysofweek, default: ""
 
       t.date :start_date, default: Time.now     #for recurrence
       t.date :end_date, default: Time.now       #TODO remove

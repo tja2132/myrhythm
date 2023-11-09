@@ -1,46 +1,31 @@
-<!--<p style="color: green"><%= notice %></p> -->
-
 <h3><b>My Calendar</b></h3>
 
-<table class="table" id="routines">
+<%
+  # map each day to an array of routines occurring on that day
+  routine_by_day = {}
 
-
-  <%
-    # map each day to an array of routines occurring on that day
-    routine_by_day = {}
-
-    Routine.all.each do |routine|
-      Routine.all_daysofweek.each do |day|
-        if routine.daysofweek.include? day
-          unless routine_by_day.has_key? day
-            routine_by_day[day] = []
-          end
-          routine_by_day[day].append routine
+  Routine.all.order(:start_time).each do |routine|
+    Routine.all_daysofweek.each do |day|
+      if Routine.get_days_of_week_str(routine).include? day
+        unless routine_by_day.has_key? day
+          routine_by_day[day] = []
         end
+        routine_by_day[day].append routine
       end
     end
-  %>
+  end
+%>
 
-  <!--  M T W ...-->
-  <thead>
-    <% Routine.all_daysofweek.each do |day| %>
-    <th> <%= day %> </th>
-    <% end %>
-  </thead>
-
-  <!--  List of routines per day-->
-  <tbody>
-    <%Routine.all_daysofweek.each do |day| %>
-    <td>
-      <%if routine_by_day.has_key?(day) %>
-        <%routine_by_day[day].each do |r| %>
-          <li> <%= r.title %> </li>
-        <%end%>
-      <%else%>
-        <li> None </li>
-      <%end%>
-    </td>
+<%= week_calendar do |date| %>
+  <%if routine_by_day.has_key?(date.strftime("%a").to_s) %>
+    <%routine_by_day[date.strftime("%a")].each do |r| %>
+      <%= r.start_time.strftime("%I:%M%P") %> - <%= (r.start_time + Routine.total_duration(r).minutes).strftime("%I:%M%P") %>
+      <%= r.title %> <br>
+      <br><br>
     <%end%>
-  </tbody>
+  <%else%>
+    <li> None </li>
+  <%end%>
 
-</table>
+
+<% end %>

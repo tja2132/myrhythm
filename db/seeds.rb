@@ -8,11 +8,12 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-routines = [{:title => 'Evening Workout', :description => "A quick evening workout", :recurrence => "Weekly", :daysofweek => "M,W,F",
-             start_day: 'M', start_time: Time.local(2023, 1, 1, 6, 0)},
-            {:title => 'Skincare Routine', :description => "A simple skincare regiment", :recurrence => "Daily", :daysofweek => "M,T,W,Th,F,Sa,Su",
+routines = [{:title => 'Evening Workout', :description => "A quick evening workout", :mon => true, :tue => true, :fri => true,
+             start_day: 'M', start_time: Time.local(2023, 1, 1, 12, 0)},
+            {:title => 'Skincare Routine', :description => "A simple skincare regiment", :mon => true,
+             :tue => true, :wed => true, :thu => true, :fri => true, :sat => true, :sun => true,
              start_day: 'Sa', :start_time  => Time.local(2023, 1, 1, 6, 0)},
-            {:title => 'The Perfect Grilled Cheese', :description => "All the steps for a perfect sandwich", :recurrence => "None"}]
+            {:title => 'The Perfect Grilled Cheese', :description => "All the steps for a perfect sandwich"}]
 
 routines.each do | routine |
     Routine.create!(routine)

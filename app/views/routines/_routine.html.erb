@@ -1,8 +1,8 @@
 <tr id="<%= dom_id routine %>">
   <td><%= link_to "#{routine.title}", routine %></td>
   <td><%= routine.description %></td>
-  <td><%= routine.recurrence %></td>
-  <td><%= routine.daysofweek %></td>
+  <td><%= Routine.get_recurrence_str(routine) %></td>
+  <td><%= Routine.get_days_of_week_str(routine) %></td>
 
   <% if routine.start_time %>
   <td><%= routine.start_time.strftime("%I:%M%P") %></td>

@@ -10,13 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_08_054146) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_09_014537) do
   create_table "routines", force: :cascade do |t|
     t.string "title", default: "New Routine"
     t.text "description"
-    t.string "recurrence", default: "None"
-    t.string "daysofweek", default: ""
-    t.time "start_time", default: "2000-01-01 23:08:36"
+    t.time "start_time", default: "2000-01-01 01:54:34"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "mon"
