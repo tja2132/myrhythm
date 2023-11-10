@@ -5,14 +5,12 @@ class RoutinesController < ApplicationController
   def index
     @routines = Routine.all
     @sortBy = params[:sortBy]
-    if @sortBy == "title" or @sortBy == "start_time" or @sortBy == "start_day"
+    if @sortBy == "title" or @sortBy == "start_time"
       @routines = @routines.order(@sortBy)
     elsif @sortBy == "recurrence"
       @routines = @routines.sort_by { |routine | Routine.get_recurrence_str(routine) }
     elsif @sortBy == "end_time"
       @routines = @routines.sort_by { |routine | routine.start_time + Routine.total_duration(routine).minutes }
-    elsif @sortBy == "weekday"
-      @routines = @routines.sort_by { |routine | Routine.get_days_of_week_str(routine).length/3 }
     end
   end
 

@@ -2,7 +2,14 @@
   <td><%= link_to "#{routine.title}", routine %></td>
   <td><%= routine.description %></td>
   <td><%= Routine.get_recurrence_str(routine) %></td>
-  <td><%= Routine.get_days_of_week_str(routine) %></td>
+
+  <td>
+    <% @daysOfWeek = Routine.get_days_of_week_str(routine) %>
+    <% @weekdays = @daysOfWeek.chars.each_slice(3).map(&:join)%>
+    <% @weekdays.each do |weekday| %>
+      <%= link_to weekday, "", :class => 'bi bi-calendar4-range', :style => "padding: 3px"%>
+    <%end %>
+  </td>
 
   <% if routine.start_time %>
   <td><%= routine.start_time.strftime("%I:%M%P") %></td>
@@ -12,11 +19,6 @@
   <td><%= "None" %></td>
   <% end %>
 
-  <% if routine.start_day and routine.start_day != '' %>
-  <td><%= Routine.start_day_str(routine.start_day) %><td>
-  <% else %>
-  <td><%= "None" %></td>
-  <% end %>
   <td>
     <%= link_to " Edit", edit_routine_path(routine), :class => 'bi bi-pencil-square btn btn-primary btn-sm', :id => "edit_routine_#{routine.id}"%>
     <%= link_to " Delete", routine, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, :class => 'bi bi-trash btn btn-outline-danger btn-sm', :id => "delete_routine_#{routine.id}" %>

@@ -44,17 +44,24 @@ Feature: display list of routines
 
   Scenario: Sort routines by start time
     Given I am on the MyRhythm home page
-    And I follow "start_time"
+    And I follow "Start Time"
     Then I should see "Evening Workout" before "Skincare Routine"
     And I should see "Evening Workout" before "The Perfect Grilled Cheese"
     And I should see "Skincare Routine" before "The Perfect Grilled Cheese"
 
-  Scenario: Sort routines by day of week
+  Scenario: Sort routines by end time
     Given I am on the MyRhythm home page
-    And I follow "weekday"
+    And I follow "End Time"
+    Then I should see "Evening Workout" before "Skincare Routine"
+    And I should see "Evening Workout" before "The Perfect Grilled Cheese"
+    And I should see "Skincare Routine" before "The Perfect Grilled Cheese"
+
+  Scenario: Sort routines by recurrence
+    Given I am on the MyRhythm home page
+    And I follow "Recurrence"
     Then I should see "The Perfect Grilled Cheese" before "Skincare Routine"
     And I should see "The Perfect Grilled Cheese" before "Evening Workout"
-    And I should see "Skincare Routine" before "Evening Workout"
+    And I should see "Evening Workout" before "Skincare Routine"
 #
   # TODO
 #  Scenario: delete routine in database

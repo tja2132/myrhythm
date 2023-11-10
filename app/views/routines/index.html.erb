@@ -19,11 +19,7 @@
         <th><%= link_to 'Recurrence', routines_path(:sortBy => 'recurrence'), :id => 'recurrence' %></th>
       <%end %>
 
-      <%if @sortBy == 'weekday' %>
-        <th class="bg-info"><%= link_to 'Day of Week', routines_path(:sortBy => 'weekday'), :id => 'weekday' %></th>
-      <%else %>
-        <th><%= link_to 'Day of Week', routines_path(:sortBy => 'weekday'), :id => 'weekday' %></th>
-      <%end %>
+      <th>Day of the Week</th>
 
       <%if @sortBy == 'start_time' %>
         <th class="bg-info"><%= link_to 'Start Time', routines_path(:sortBy => 'start_time'), :id => 'start_time' %></th>
@@ -36,44 +32,12 @@
       <%else %>
         <th><%= link_to 'End Time', routines_path(:sortBy => 'end_time'), :id => 'end_time' %></th>
       <%end %>
-
-      <%if @sortBy == 'start_day' %>
-        <th class="bg-info"><%= link_to 'Start Day', routines_path(:sortBy => 'start_day'), :id => 'start_day' %></th>
-      <%else %>
-        <th><%= link_to 'Start Day', routines_path(:sortBy => 'start_day'), :id => 'start_day' %></th>
-      <%end %>
     </tr>
   </thead>
   <tbody>
-    <% @routines.each do |routine| %>
-      <tr>
-        <td>
-          <%= link_to routine.title, routine_path(routine), :class => 'btn btn-link' %>
-        </td>
-        <td>
-          <%= routine.description %>
-        </td>
-        <td>
-          <%= Routine.get_recurrence_str(routine) %>
-        </td>
-        <td>
-          <% @daysOfWeek = Routine.get_days_of_week_str(routine) %>
-          <% @weekdays = @daysOfWeek.chars.each_slice(3).map(&:join)%>
-          <% @weekdays.each do |weekday| %>
-            <%= link_to weekday, "/calendar", :class => 'bi bi-calendar4-range', :style => "padding: 3px"%>
-          <%end %>
-        </td>
-        <td>
-          <%= routine.start_time %>
-        </td>
-        <td>
-          <%= (routine.start_time + Routine.total_duration(routine).minutes).strftime("%I:%M%P") %>
-        </td>
-        <td>
-          <%= routine.start_day %>
-        </td>
-      </tr>
-    <% end %>
+  <% @routines.each do |routine| %>
+    <%= render routine %>
+  <% end %>
   </tbody>
 </table>
 <%= link_to "New Routine", new_routine_path, :class => 'btn btn-primary' %>
