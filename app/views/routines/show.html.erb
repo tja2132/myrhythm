@@ -31,8 +31,8 @@
     <% for task in @routine.tasks.order(:sequence) %>
     <li><%= task.title %>
         <br>
-        <%= link_to " Edit", edit_routine_task_url(@routine,task), :class => 'bi bi-pencil-square btn btn-primary btn-sm' %> 
-        <%= link_to " Delete", [@routine,task], data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, :class => 'bi bi-trash btn btn-outline-danger btn-sm' %>
+        <%= link_to " Edit", edit_routine_task_url(@routine,task), :class => 'bi bi-pencil-square btn btn-primary btn-sm', :id => "edit_task_#{task.id}"  %> 
+        <%= link_to " Delete", [@routine,task], data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, :class => 'bi bi-trash btn btn-outline-danger btn-sm', :id => "delete_task_#{task.id}"  %>
         <%= link_to " Move Up", routine_task_up_path(@routine,task), :class => 'btn btn-primary btn-sm' %>
         <%= link_to " Move Down", routine_task_down_path(@routine,task), :class => 'btn btn-primary btn-sm' %>
     </li>
@@ -40,8 +40,8 @@
   </ol>
 
 <div>
-  <%= link_to " Edit", edit_routine_path(@routine), :class => 'bi bi-pencil-square btn btn-primary btn-sm' %> 
-  <%= link_to " Delete", routine_path(@routine), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, :class => 'bi bi-trash btn btn-danger btn-sm' %>
+  <%= link_to " Edit", edit_routine_path(@routine), :class => 'bi bi-pencil-square btn btn-primary btn-sm', :id => "edit_routine_#{@routine.id}"  %> 
+  <%= link_to " Delete", routine_path(@routine), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, :class => 'bi bi-trash btn btn-danger btn-sm', :id => "delete_routine_#{@routine.id}"  %>
 <br><br>
   <%= link_to "My Routines", routines_path, :class => 'btn btn-outline-primary btn-sm' %>
 </div>

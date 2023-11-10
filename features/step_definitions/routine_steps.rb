@@ -16,9 +16,7 @@ Given /the following routines exist/ do |routines_table|
   end
 
 # TODO
-  # When /I follow "(.*)" button for the "(.*)" routine/ do |button_name, routine_id|
-  #   within find('tr', text: "#{routine_id}") do
-  #       click_link("#{button_name}")
-  #   end
-  # end
+   When /I follow "(.*)" button for the "(.*)" routine/ do |button_name, routine_id|
+      click_link("#{button_name}_routine_#{routine_id}")
+   end
 
