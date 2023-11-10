@@ -60,7 +60,7 @@
           <% @daysOfWeek = Routine.get_days_of_week_str(routine) %>
           <% @weekdays = @daysOfWeek.chars.each_slice(3).map(&:join)%>
           <% @weekdays.each do |weekday| %>
-            <%= link_to weekday, "/calendar", :class => 'bi bi-calendar4-range' %>
+            <%= link_to weekday, "/calendar", :class => 'bi bi-calendar4-range', :style => "padding: 3px"%>
           <%end %>
         </td>
         <td>
