@@ -2,90 +2,78 @@
 
 <h3><b>My Routines</b></h3>
 
-<h4 style="text-align: center">Your Week</h4>
-<table class="table" id="weekView">
+<table class="table" id="routines">
   <thead>
-  <tr>
-    <th>Monday</th>
-    <th>Tuesday</th>
-    <th>Wednesday</th>
-    <th>Thursday</th>
-    <th>Friday</th>
-    <th>Saturday</th>
-    <th>Sunday</th>
-  </tr>
+    <tr>
+      <%if @sortBy == 'title' %>
+        <th class="bg-info"><%= link_to 'Name', routines_path(:sortBy => 'title'), :id => 'name' %></th>
+      <%else %>
+        <th><%= link_to 'Name', routines_path(:sortBy => 'title'), :id => 'name' %></th>
+      <%end %>
+
+      <th>Description</th>
+
+      <%if @sortBy == 'recurrence' %>
+        <th class="bg-info"><%= link_to 'Recurrence', routines_path(:sortBy => 'recurrence'), :id => 'recurrence' %></th>
+      <%else %>
+        <th><%= link_to 'Recurrence', routines_path(:sortBy => 'recurrence'), :id => 'recurrence' %></th>
+      <%end %>
+
+      <%if @sortBy == 'weekday' %>
+        <th class="bg-info"><%= link_to 'Day of Week', routines_path(:sortBy => 'weekday'), :id => 'weekday' %></th>
+      <%else %>
+        <th><%= link_to 'Day of Week', routines_path(:sortBy => 'weekday'), :id => 'weekday' %></th>
+      <%end %>
+
+      <%if @sortBy == 'start_time' %>
+        <th class="bg-info"><%= link_to 'Start Time', routines_path(:sortBy => 'start_time'), :id => 'start_time' %></th>
+      <%else %>
+        <th><%= link_to 'Start Time', routines_path(:sortBy => 'start_time'), :id => 'start_time' %></th>
+      <%end %>
+
+      <%if @sortBy == 'end_time' %>
+        <th class="bg-info"><%= link_to 'End Time', routines_path(:sortBy => 'end_time'), :id => 'end_time' %></th>
+      <%else %>
+        <th><%= link_to 'End Time', routines_path(:sortBy => 'end_time'), :id => 'end_time' %></th>
+      <%end %>
+
+      <%if @sortBy == 'start_day' %>
+        <th class="bg-info"><%= link_to 'Start Day', routines_path(:sortBy => 'start_day'), :id => 'start_day' %></th>
+      <%else %>
+        <th><%= link_to 'Start Day', routines_path(:sortBy => 'start_day'), :id => 'start_day' %></th>
+      <%end %>
+    </tr>
   </thead>
   <tbody>
-  <tr>
-    <td>
-      <% @routines.each do |routine| %>
-        <%if routine.mon == true %>
-          <%= link_to "#{routine.title}", routine_path(routine), :class => 'btn btn-link' %>
-        <%end %>
-      <% end %>
-    </td>
-    <td>
-      <% @routines.each do |routine| %>
-        <%if routine.tue == true %>
-          <%= link_to "#{routine.title}", routine_path(routine), :class => 'btn btn-link' %>
-        <%end %>
-      <% end %>
-    </td>
-    <td>
-      <% @routines.each do |routine| %>
-        <%if routine.wed == true %>
-          <%= link_to "#{routine.title}", routine_path(routine), :class => 'btn btn-link' %>
-        <%end %>
-      <% end %>
-    </td>
-    <td>
-      <% @routines.each do |routine| %>
-        <%if routine.thu == true %>
-          <%= link_to "#{routine.title}", routine_path(routine), :class => 'btn btn-link' %>
-        <%end %>
-      <% end %>
-    </td>
-    <td>
-      <% @routines.each do |routine| %>
-        <%if routine.fri == true %>
-          <%= link_to "#{routine.title}", routine_path(routine), :class => 'btn btn-link' %>
-        <%end %>
-      <% end %>
-    </td>
-    <td>
-      <% @routines.each do |routine| %>
-        <%if routine.sat == true %>
-          <%= link_to "#{routine.title}", routine_path(routine), :class => 'btn btn-link' %>
-        <%end %>
-      <% end %>
-    </td>
-    <td>
-      <% @routines.each do |routine| %>
-        <%if routine.sun == true %>
-          <%= link_to "#{routine.title}", routine_path(routine), :class => 'btn btn-link' %>
-        <%end %>
-      <% end %>
-    </td>
-  </tr>
+    <% @routines.each do |routine| %>
+      <tr>
+        <td>
+          <%= routine.title %>
+        </td>
+        <td>
+          <%= routine.description %>
+        </td>
+        <td>
+          <%= Routine.get_recurrence_str(routine) %>
+        </td>
+        <td>
+          <% @daysOfWeek = Routine.get_days_of_week_str(routine) %>
+          <% @weekdays = @daysOfWeek.chars.each_slice(3).map(&:join)%>
+          <% @weekdays.each do |weekday| %>
+            <%= link_to weekday, "/calendar", :class => 'bi bi-calendar4-range' %>
+          <%end %>
+        </td>
+        <td>
+          <%= routine.start_time %>
+        </td>
+        <td>
+          <%= (routine.start_time + Routine.total_duration(routine).minutes).strftime("%I:%M%P") %>
+        </td>
+        <td>
+          <%= routine.start_day %>
+        </td>
+      </tr>
+    <% end %>
   </tbody>
-</table>
-
-<table class="table" id="routines">
-<thead>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Recurrence</th>
-    <th>Days of Week</th>
-    <th>Start Time</th>
-    <th>End Time</th>
-    <th>Start Day</th>
-  </tr>
-</thead>
-<tbody>
-  <% @routines.each do |routine| %>
-    <%= render routine %>
-  <% end %>
-</tbody>
 </table>
 <%= link_to "New Routine", new_routine_path, :class => 'btn btn-primary' %>

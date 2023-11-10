@@ -9,7 +9,7 @@ Feature: display list of routines
     Given the following routines exist:
       | title                         | description                           | mon  | wed  | start_time |
       | Evening Workout               | A quick evening workout               | true | true | 06:58:50   |
-      | Skincare Routine              | A simple skincare regiment            | true | true | 18:00:00   |
+      | Skincare Routine              | A simple skincare regiment            | true | false | 18:00:00   |
       | The Perfect Grilled Cheese    | All the steps for a perfect sandwich  | false| false| 22:00:00   |
 
     And I am on the MyRhythm home page
@@ -23,18 +23,38 @@ Feature: display list of routines
     And I press "Create Routine"
     Then I should see "Morning Workout"
 
-  Scenario: View routines for the week
+  Scenario: View what days of the week routines occur
     Given I am on the MyRhythm home page
-    Then I should see "Skincare Routine" 7 times
-    And I should see "Evening Workout" 3 times
-    And I should not see "The Perfect Grilled Cheese"
+    Then I should see "Mon" 2 times
+    And I should see "Wed" 1 time
 
   Scenario: modify routine in database
-     Given I am on the MyRhythm home page
+    Given I am on the MyRhythm home page
     When I follow "edit" button for the "1" routine
     And I fill in "Title" with "Morning Workout"
     And I press "Update Routine"
     Then I should see "Routine was successfully updated."
+
+  Scenario: Sort routines by name
+    Given I am on the MyRhythm home page
+    And I follow "Name"
+    Then I should see "Evening Workout" before "Skincare Routine"
+    And I should see "Evening Workout" before "The Perfect Grilled Cheese"
+    And I should see "Skincare Routine" before "The Perfect Grilled Cheese"
+
+  Scenario: Sort routines by start time
+    Given I am on the MyRhythm home page
+    And I follow "start_time"
+    Then I should see "Evening Workout" before "Skincare Routine"
+    And I should see "Evening Workout" before "The Perfect Grilled Cheese"
+    And I should see "Skincare Routine" before "The Perfect Grilled Cheese"
+
+  Scenario: Sort routines by day of week
+    Given I am on the MyRhythm home page
+    And I follow "weekday"
+    Then I should see "The Perfect Grilled Cheese" before "Skincare Routine"
+    And I should see "The Perfect Grilled Cheese" before "Evening Workout"
+    And I should see "Skincare Routine" before "Evening Workout"
 #
   # TODO
 #  Scenario: delete routine in database
