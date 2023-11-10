@@ -48,7 +48,7 @@
     <% @routines.each do |routine| %>
       <tr>
         <td>
-          <%= routine.title %>
+          <%= link_to routine.title, routine_path(routine), :class => 'btn btn-link' %>
         </td>
         <td>
           <%= routine.description %>
