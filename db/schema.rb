@@ -14,7 +14,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_09_014537) do
   create_table "routines", force: :cascade do |t|
     t.string "title", default: "New Routine"
     t.text "description"
-    t.time "start_time", default: "2000-01-01 01:54:34"
+    t.boolean "is_end_date"
+    t.time "start_time", default: "2000-01-01 04:58:50"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "mon"

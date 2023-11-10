@@ -23,6 +23,12 @@ Feature: display list of routines
     And I press "Create Routine"
     Then I should see "Morning Workout"
 
+  Scenario: View routines for the week
+    Given I am on the MyRhythm home page
+    Then I should see "Skincare Routine" 7 times
+    And I should see "Evening Workout" 3 times
+    And I should not see "The Perfect Grilled Cheese"
+
   # TODO
 #  Scenario: modify routine in database
 #    Given I am on the MyRhythm home page

@@ -2,6 +2,74 @@
 
 <h3><b>My Routines</b></h3>
 
+<h4 style="text-align: center">Your Week</h4>
+<table class="table" id="weekView">
+  <thead>
+  <tr>
+    <th>Monday</th>
+    <th>Tuesday</th>
+    <th>Wednesday</th>
+    <th>Thursday</th>
+    <th>Friday</th>
+    <th>Saturday</th>
+    <th>Sunday</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      <% @routines.each do |routine| %>
+        <%if routine.mon == true %>
+          <%= link_to "#{routine.title}", routine_path(routine), :class => 'btn btn-link' %>
+        <%end %>
+      <% end %>
+    </td>
+    <td>
+      <% @routines.each do |routine| %>
+        <%if routine.tue == true %>
+          <%= link_to "#{routine.title}", routine_path(routine), :class => 'btn btn-link' %>
+        <%end %>
+      <% end %>
+    </td>
+    <td>
+      <% @routines.each do |routine| %>
+        <%if routine.wed == true %>
+          <%= link_to "#{routine.title}", routine_path(routine), :class => 'btn btn-link' %>
+        <%end %>
+      <% end %>
+    </td>
+    <td>
+      <% @routines.each do |routine| %>
+        <%if routine.thu == true %>
+          <%= link_to "#{routine.title}", routine_path(routine), :class => 'btn btn-link' %>
+        <%end %>
+      <% end %>
+    </td>
+    <td>
+      <% @routines.each do |routine| %>
+        <%if routine.fri == true %>
+          <%= link_to "#{routine.title}", routine_path(routine), :class => 'btn btn-link' %>
+        <%end %>
+      <% end %>
+    </td>
+    <td>
+      <% @routines.each do |routine| %>
+        <%if routine.sat == true %>
+          <%= link_to "#{routine.title}", routine_path(routine), :class => 'btn btn-link' %>
+        <%end %>
+      <% end %>
+    </td>
+    <td>
+      <% @routines.each do |routine| %>
+        <%if routine.sun == true %>
+          <%= link_to "#{routine.title}", routine_path(routine), :class => 'btn btn-link' %>
+        <%end %>
+      <% end %>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
 <table class="table" id="routines">
 <thead>
   <tr>
