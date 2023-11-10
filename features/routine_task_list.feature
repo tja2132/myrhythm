@@ -7,8 +7,8 @@ Feature: display list of tasks for a routine
   Background: morning routine has been added to database
 
     Given the following routines exist:
-      | title                         | description                           | recurrence | daysofweek       | start_time                   |
-      | Morning Routine               | my morning routine                    | Weekly     | M,W,F            | Time.local(2023, 1, 1, 6, 0)  |
+      | title                         | description                           | mon  | tue | start_time  |
+      | Morning Routine               | my morning routine                    | true | true| 06:30:00 |
 
     Given the following tasks exist:
       | title              | description                                   | sequence | duration |

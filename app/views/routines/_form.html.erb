@@ -47,7 +47,7 @@
   <!--  TODO hide this Div if None is selected-->
   <div>
     <%= form.label :start_day, style: "display: block" %>
-    <%= form.select :start_day, ["", "Mon","Tue",'Wed',"Thu","Fri","Sat","Sun"] %>
+    <%= form.select :start_day, [""].concat(Routine::DAYS_OF_WEEK_ABBR) %>
   </div>
 
   <br>

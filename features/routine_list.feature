@@ -7,10 +7,10 @@ Feature: display list of routines
   Background: routines have been added to database
 
     Given the following routines exist:
-      | title                         | description                           | recurrence | daysofweek       | start_time                   |
-      | Evening Workout               | A quick evening workout               | Weekly     | M,W,F            | Time.local(2023, 1, 1, 6, 0) |
-      | Skincare Routine              | A simple skincare regiment            | Daily      | M,T,W,Th,F,Sa,Su | Time.local(2023, 1, 1, 6, 0) |
-      | The Perfect Grilled Cheese    | All the steps for a perfect sandwich  | None       |                  |                              |
+      | title                         | description                           | mon  | wed  | start_time |
+      | Evening Workout               | A quick evening workout               | true | true | 06:58:50   |
+      | Skincare Routine              | A simple skincare regiment            | true | true | 18:00:00   |
+      | The Perfect Grilled Cheese    | All the steps for a perfect sandwich  | false| false| 22:00:00   |
 
     And I am on the MyRhythm home page
     Then I should see all the routines
@@ -29,13 +29,12 @@ Feature: display list of routines
     And I should see "Evening Workout" 3 times
     And I should not see "The Perfect Grilled Cheese"
 
-  # TODO
-#  Scenario: modify routine in database
-#    Given I am on the MyRhythm home page
-#    When I follow "edit" button for the "1" routine
-#    And I fill in "Title" with "Morning Workout"
-#    And I follow "Update Routine"
-#    Then I should see "Routine was successfully updated."
+  Scenario: modify routine in database
+     Given I am on the MyRhythm home page
+    When I follow "edit" button for the "1" routine
+    And I fill in "Title" with "Morning Workout"
+    And I press "Update Routine"
+    Then I should see "Routine was successfully updated."
 #
   # TODO
 #  Scenario: delete routine in database
