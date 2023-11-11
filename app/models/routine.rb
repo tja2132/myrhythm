@@ -4,7 +4,7 @@ class Routine < ApplicationRecord
 
   # three day abbreviations consistent with strftime("%a")
   def self.get_days_of_week()
-    ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+     ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
   end
 
   def self.get_recurrence_str(routine)
