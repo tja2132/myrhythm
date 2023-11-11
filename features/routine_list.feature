@@ -25,8 +25,8 @@ Feature: display list of routines
 
   Scenario: View what days of the week routines occur
     Given I am on the MyRhythm home page
-    Then I should see "Mon" 2 times
-    And I should see "Wed" 1 time
+    Then I should see "Mon" 4 times
+    And I should see "Wed" 2 time
 
   Scenario: modify routine in database
     Given I am on the MyRhythm home page
@@ -52,6 +52,7 @@ Feature: display list of routines
   Scenario: Sort routines by end time
     Given I am on the MyRhythm home page
     And I follow "End Time"
+    #Then I should be on the MyRhythm home page sorted by "end_time"
     Then I should see "Evening Workout" before "Skincare Routine"
     And I should see "Evening Workout" before "The Perfect Grilled Cheese"
     And I should see "Skincare Routine" before "The Perfect Grilled Cheese"
@@ -59,6 +60,7 @@ Feature: display list of routines
   Scenario: Sort routines by recurrence
     Given I am on the MyRhythm home page
     And I follow "Recurrence"
+    #Then I should be on the MyRhythm home page sorted by "recurrence"
     Then I should see "The Perfect Grilled Cheese" before "Skincare Routine"
     And I should see "The Perfect Grilled Cheese" before "Evening Workout"
     And I should see "Evening Workout" before "Skincare Routine"

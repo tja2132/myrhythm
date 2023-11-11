@@ -21,7 +21,7 @@ RSpec.describe RoutinesController, type: :controller do
     describe "creates" do
         before(:each) do
             @routine = Routine.create(:title => "Skincare Routine", :description => "Keep your skin looking fabulous",
-            :recurrence => "daily", :daysofweek => "M,T,W,Th,F,Sa,Su")
+             :mon => true, :tue => true, :wed => true, :thu => true, :fri => true, :sat => true, :sun => true)
             expect(@routine).to be_an_instance_of Routine
         end
 
@@ -49,14 +49,14 @@ RSpec.describe RoutinesController, type: :controller do
     describe "saves" do
         it "valid routine to the database" do
             starting_db_count = Routine.count
-            @routine = Routine.create(:title => "Testing Routine", :recurrence => "daily", :daysofweek => "M,W,F")
+            @routine = Routine.create(:title => "Testing Routine", :mon => true, :wed => true, :fri => true)
             expect(Routine.count).to eq (starting_db_count + 1)
         end
     end
 
     describe "update" do
         before(:each) do
-            @routine = Routine.create(:title => "Testing Routine", :recurrence => "daily", :daysofweek => "M,W,F")
+            @routine = Routine.create(:title => "Testing Routine", :mon => true, :wed => true, :fri => true)
         end
         it "updates routine" do
           post :update, params: {:id => @routine.id, :routine => {:description => "Leave telescope outside for 30 minutes to allow it to adjust to outside temperature"}}
@@ -77,7 +77,7 @@ RSpec.describe RoutinesController, type: :controller do
 
   describe "delete" do
     it "deletes routine" do
-      @routine = Routine.create(:title => "Testing Destroy", :recurrence => "daily", :daysofweek => "M,W,F")
+      @routine = Routine.create(:title => "Testing Destroy", :mon => true, :wed => true, :fri => true)
       get :destroy, params: {:id=>@routine.id}
       expect{Routine.find(@routine.id)}.to raise_error(ActiveRecord::RecordNotFound)
     end

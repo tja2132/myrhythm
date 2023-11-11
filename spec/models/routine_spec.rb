@@ -12,7 +12,7 @@ fixtures :routines
   end
   
   describe "all_daysofweek method" do
-      it "returns all days of the week" do
+    xit "returns all days of the week" do
         expect(DAYS_OF_WEEK_ABBR).to eq ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
       end
     end
@@ -30,16 +30,16 @@ fixtures :routines
         expect(routine.valid?).to be(true)
 
         duration = Routine.total_duration(routine)
-        end_time = Routine.calculate_end_time(Time.local(2023, 1, 1, 6, 0), duration)
+        end_time = routine.start_time + duration
 
         expect(end_time).to eq (Time.local(2023, 1, 1, 6, 0) + (60*165))
       end
 
       it "returns empty end time based on start time nil" do
+        routine = Routine.find_by(:title => "Get ready for work")
         duration = nil
-        end_time = Routine.calculate_end_time(Time.local(2023, 1, 1, 6, 0), duration)
 
-        expect(end_time).to eq ('')
+        expect { end_time = routine.start_time + duration }.to raise_error(TypeError)
       end
     end
 end

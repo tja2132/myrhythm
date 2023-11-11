@@ -10,7 +10,7 @@ class RoutinesController < ApplicationController
     elsif @sortBy == "recurrence"
       @routines = @routines.sort_by { |routine | Routine.get_recurrence_str(routine) }
     elsif @sortBy == "end_time"
-      @routines = @routines.sort_by { |routine | routine.start_time + Routine.total_duration(routine).minutes }
+      @routines = @routines.sort_by { |routine | routine.start_time.nil? ? Time.zone.parse('1970-01-01 0:0:0') : routine.start_time + Routine.total_duration(routine).minutes}
     end
   end
 
