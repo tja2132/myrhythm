@@ -5,7 +5,7 @@
   routine_by_day = {}
 
   Routine.all.order(:start_time).each do |routine|
-    Routine::DAYS_OF_WEEK_ABBR.each do |day|
+    Routine.get_days_of_week.each do |day|
       if Routine.get_days_of_week_str(routine).include? day
         unless routine_by_day.has_key? day
           routine_by_day[day] = []

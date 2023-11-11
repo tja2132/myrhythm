@@ -13,7 +13,7 @@ fixtures :routines
   
   describe "all_daysofweek method" do
     xit "returns all days of the week" do
-        expect(DAYS_OF_WEEK_ABBR).to eq ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        expect(Routine.get_days_of_week).to eq ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
       end
     end
 
