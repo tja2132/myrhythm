@@ -15,7 +15,7 @@ module NavigationHelpers
   
       when /^the (MyRhythm )?home\s?page$/ then '/routines'
       when /^the routines page$/ then '/routines'
-
+      when /^the calendar page$/ then '/calendar'
       when /^the (MyRhythm )?home\s?page sorted by "(.*)"$/ then routines_path(:sortBy => $2)
       # when /^the (.*) routine page$/ then '/routines/($1)'
   

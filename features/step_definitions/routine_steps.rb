@@ -20,7 +20,19 @@ Given /the following routines exist/ do |routines_table|
   end
 
   Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
-    expect(page.find_by_id("routines").text).to match(/.*#{e1}.*#{e2}.*/)
+    expect(page.text).to match(/.*#{e1}.*#{e2}.*/)
+  end
+
+  Then /I should not see "(.*)" before "(.*)"/ do |e1, e2|
+    expect(page.text).not_to match(/.*#{e1}.*#{e2}.*/)
+  end
+
+  Then /I should see "(.*)" after "(.*)"/ do |e1, e2|
+    expect(page.text).to match(/.*#{e2}.*#{e1}.*/)
+  end
+
+  Then /I should not see "(.*)" after "(.*)"/ do |e1, e2|
+    expect(page.text).not_to match(/.*#{e2}.*#{e1}.*/)
   end
 
 # TODO
