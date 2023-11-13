@@ -17,7 +17,7 @@ Feature: display all relevant information about a single routine and ensure it u
     Given I am on the MyRhythm home page
     When I follow "Study Routine"
     Then I should see "Study Routine"
-    And I should see "Recurrence: MonTueWedThuFriSat"
+    And I should see "Recurrence: Mon, Tue, Wed, Thu, Fri, Sat"
     And I should see "Total Duration: 0 min"
     And I should see "Start Time: 12:00pm"
     And I should see "End Time: 12:00pm"
