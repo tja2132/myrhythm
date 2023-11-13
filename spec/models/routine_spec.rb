@@ -36,12 +36,25 @@ fixtures :routines
       end
 
       describe "get recurrence string" do
-        xit "returns the recurrence string based on which days of week the routine occurs on" do
-          expect(Routine.get_recurrence_str(routines(:work_routine)).to eq "Daily")
-          expect(Routine.get_recurrence_str(routines(:meteor_routine)).to eq "None")
-          expect(Routine.get_recurrence_str(routines(:food_routine)).to eq "Weekly")
+        it "returns the recurrence string based on which days of week the routine occurs on" do
+          routine = Routine.find_by(:title => "Get ready for work")
+          expect(Routine.get_recurrence_str(routine)).to eq "Daily"
+          
+          routine2 = Routine.find_by(:title => "Make Dinner")
+          expect(Routine.get_recurrence_str(routine2)).to eq "Weekly"
+
+          routine3 = Routine.find_by(:title => "Watch meteor shower")
+          expect(Routine.get_recurrence_str(routine3)).to eq "None"
         end
       end
+
+      describe "get days of week" do
+        it "returns the recurrence string based on which days of week the routine occurs on" do
+          routine = Routine.find_by(:title => "Get ready for work")
+          expect(Routine.get_days_of_week_str(routine)).to eq "Mon, Tue, Wed, Thu, Fri, Sat, Sun"
+        end
+      end
+
 
       it "returns empty end time based on start time nil" do
         routine = Routine.find_by(:title => "Get ready for work")

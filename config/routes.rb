@@ -2,14 +2,14 @@ Rails.application.routes.draw do
 
   resources :routines do
     resources :tasks do
-      get :up
-      get :down
+      get :up, on: :member
+      get :down, on: :member
     end
   end
 
   resources :calendar
-  resources :signin
-  resources :users
+  #resources :signin
+  #resources :users
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

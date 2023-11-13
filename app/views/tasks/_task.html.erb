@@ -6,7 +6,7 @@
     <td>
     <%= link_to " Edit", edit_routine_task_path(@routine, task), :class => 'bi bi-pencil-square btn btn-outline-primary btn-sm', :id => "edit_task_#{task.id}" %>
     <%= link_to " Delete", [@routine,task], data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, :class => 'bi bi-trash btn btn-outline-danger btn-sm', :id => "delete_task_#{task.id}"  %>
-    <%= link_to " Move Up", routine_task_up_path(@routine,task), :class => 'btn btn-primary' %>
-    <%= link_to " Move Down", routine_task_down_path(@routine,task), :class => 'btn btn-primary' %>
+    <%= link_to " Move Up", up_routine_task_path(@routine,task), :class => 'btn btn-primary btn-sm', :id => "up_task_#{task.id}" %>
+    <%= link_to " Move Down", down_routine_task_path(@routine,task), :class => 'btn btn-primary btn-sm', :id => "down_task_#{task.id}"  %>
     </td>
 </tr>

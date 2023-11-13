@@ -16,31 +16,38 @@
     <li>Start Time: <%= @routine.start_time.strftime("%I:%M%P") %></li>
     <li>End Time: <%= (@routine.start_time + Routine.total_duration(@routine).minutes).strftime("%I:%M%P") %></li>
 </ul>
-
-<br>
-
-<h3><strong>Tasks</strong>
-<%= link_to "Add Task", new_routine_task_path(@routine), :class => 'btn btn-primary btn-sm' %>
-<%= link_to "All Tasks", routine_tasks_path(@routine), :class => 'btn btn-primary btn-sm'  %>
-</h3>
-  <% if @routine.tasks.size == 0 %>
-    No tasks yet
-  <% end %>
-  <ol>
-    <% for task in @routine.tasks.order(:sequence) %>
-    <li><%= task.title %>
-        <br>
-        <%= link_to " Edit", edit_routine_task_url(@routine,task), :class => 'bi bi-pencil-square btn btn-primary btn-sm', :id => "edit_task_#{task.id}"  %> 
-        <%= link_to " Delete", [@routine,task], data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, :class => 'bi bi-trash btn btn-outline-danger btn-sm', :id => "delete_task_#{task.id}"  %>
-        <%= link_to " Move Up", routine_task_up_path(@routine,task), :class => 'btn btn-primary btn-sm' %>
-        <%= link_to " Move Down", routine_task_down_path(@routine,task), :class => 'btn btn-primary btn-sm' %>
-    </li>
-    <% end %>
-  </ol>
-
 <div>
   <%= link_to " Edit", edit_routine_path(@routine), :class => 'bi bi-pencil-square btn btn-primary btn-sm', :id => "edit_routine_#{@routine.id}"  %> 
   <%= link_to " Delete", routine_path(@routine), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, :class => 'bi bi-trash btn btn-danger btn-sm', :id => "delete_routine_#{@routine.id}"  %>
-<br><br>
+</div>
+<br>
+<div>
+<h3><strong><%= @routine.title %> Tasks</strong>
+</h3>
+<table class="table" id="tasks">
+<thead>
+  <tr>
+    <th>#</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Duration</th>
+    <th></th>
+  </tr>
+</thead>
+<tbody>
+  <% if @routine.tasks.size == 0 %>
+    No tasks yet
+  <% else %>
+    <% for task in @routine.tasks.order(:sequence) %>
+      <%= render task %>
+    <% end %>
+  <% end %>
+</tbody>
+</table>
+<%= link_to "Add Task", new_routine_task_path(@routine), :class => 'btn btn-primary btn-sm', :id => "add_task_routine_#{@routine.id}"  %>
+<%= link_to "All Tasks", routine_tasks_path(@routine), :class => 'btn btn-primary btn-sm', :id => "all_tasks_routine_#{@routine.id}"   %>
+</div>
+<div>
+  <br><br>
   <%= link_to "My Routines", routines_path, :class => 'btn btn-outline-primary btn-sm' %>
 </div>

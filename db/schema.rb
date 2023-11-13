@@ -17,13 +17,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_09_014537) do
     t.time "start_time", default: "2000-01-01 01:56:11"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "mon"
-    t.boolean "tue"
-    t.boolean "wed"
-    t.boolean "thu"
-    t.boolean "fri"
-    t.boolean "sat"
-    t.boolean "sun"
+    t.boolean "mon", default: false
+    t.boolean "tue", default: false
+    t.boolean "wed", default: false
+    t.boolean "thu", default: false
+    t.boolean "fri", default: false
+    t.boolean "sat", default: false
+    t.boolean "sun", default: false
     t.string "start_day"
   end
 

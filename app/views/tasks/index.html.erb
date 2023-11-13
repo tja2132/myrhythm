@@ -20,7 +20,7 @@
 </tbody>
 </table>
 
-<%= link_to "Add New Task", new_routine_task_path(@routine), :class => 'btn btn-primary btn-sm'  %>
+<%= link_to "Add New Task", new_routine_task_path(@routine), :class => 'btn btn-primary btn-sm',:id => "add_task_routine_#{@routine.id}"  %>
 <br><br>
 <%= link_to "Back to Routine", routine_path(@routine), :class => 'btn btn-outline-primary btn-sm'  %>
 <%= link_to "My Routines", routines_path, :class => 'btn btn-outline-primary btn-sm' %>

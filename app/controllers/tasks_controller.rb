@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :get_routine
-  before_action :set_task, only: %i[ show edit update destroy ]
+  before_action :set_task, only: %i[ show edit update destroy up down ]
   after_action :enforce_unique_sequence
 
   # GET /tasks or /tasks.json
@@ -54,13 +54,10 @@ class TasksController < ApplicationController
     end
   end
 
+  # GET /tasks/1/up
   def up
-    @routine = Routine.find(params[:routine_id])
-    @task = Task.find(params[:task_id])
-
     if @task.sequence > 1
-      tasks = Task.with_same_routine(@routine)
-      tasks.each do |t|
+      @routine.tasks.each do |t|
         if t.sequence == @task.sequence - 1
           t.sequence += 1
           t.save
@@ -74,14 +71,10 @@ class TasksController < ApplicationController
     redirect_to routine_path(@routine)
   end
 
+  # GET /tasks/1/down
   def down
-
-    @routine = Routine.find(params[:routine_id])
-    @task = Task.find(params[:task_id])
-
     if @task.sequence <= @routine.tasks.size
-      tasks = Task.with_same_routine(@routine)
-      tasks.each do |t|
+      @routine.tasks.each do |t|
         if t.sequence == @task.sequence + 1
           t.sequence -= 1
           t.save
@@ -110,12 +103,12 @@ class TasksController < ApplicationController
       params.require(:task).permit(:title, :description, :duration, :sequence)
     end
 
+    # Ensure tasks all have a unique order number in routine
     def enforce_unique_sequence
 
       if @routine.tasks.size > 1
-        tasks = Task.where(routine: @routine.id).order(:sequence)
         seq = 1
-        tasks.each do |t|
+        @routine.tasks.order(:sequence).each do |t|
           t.sequence = seq
           t.save
           seq += 1

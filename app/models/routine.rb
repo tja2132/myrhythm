@@ -8,43 +8,35 @@ class Routine < ApplicationRecord
   end
 
   def self.get_recurrence_str(routine)
-    if routine.mon and routine.tue and routine.wed and routine.thu and routine.fri and routine.sat and routine.sun
-      "Daily"
-    elsif !routine.mon and !routine.tue and !routine.wed and !routine.thu and !routine.fri and !routine.sat and !routine.sun
-      "None"
+
+    alldaysofweek = Routine.get_days_of_week()
+    alldaysofweek = alldaysofweek.map { |day| day.downcase }
+    columns = alldaysofweek.join(',')
+    days = Routine.where(id: routine.id).pick(columns)
+
+    if !days.include?(false)
+      return "Daily"
+    elsif !days.include?(true)
+      return "None"
     else
       "Weekly"
     end
   end
 
   def self.get_days_of_week_str(routine)
-    if routine
-      daysofweek = ""
 
-      if routine.mon
-        daysofweek += get_days_of_week[0]
+    alldaysofweek = Routine.get_days_of_week()
+    alldaysofweek = alldaysofweek.map { |day| day.downcase }
+    
+    daysofweek = []
+    alldaysofweek.each do |day| 
+      if routine.read_attribute(day)
+        daysofweek.append(day.capitalize)
       end
-      if routine.tue
-        daysofweek += get_days_of_week[1]
-      end
-      if routine.wed
-        daysofweek += get_days_of_week[2]
-      end
-      if routine.thu
-        daysofweek += get_days_of_week[3]
-      end
-      if routine.fri
-        daysofweek += get_days_of_week[4]
-      end
-      if routine.sat
-        daysofweek += get_days_of_week[5]
-      end
-      if routine.sun
-        daysofweek += get_days_of_week[6]
-      end
-
-      return daysofweek
     end
+
+    return daysofweek.join(', ')
+
   end
 
   def self.total_duration(routine)
