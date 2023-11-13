@@ -29,10 +29,9 @@ fixtures :routines
         routine = Routine.find_by(:title => "Watch meteor shower")
         expect(routine.valid?).to be(true)
 
-        duration = Routine.total_duration(routine)
-        end_time = routine.start_time + duration
+        end_time = Routine.end_time(routine)
 
-        expect(end_time).to eq (Time.local(2023, 1, 1, 6, 0) + (60*165))
+        expect(end_time).to eq(Time.local(2023, 1, 1, 6, 0) + (60*165))
       end
 
       describe "get recurrence string" do
