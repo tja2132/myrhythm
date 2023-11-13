@@ -63,7 +63,24 @@ RSpec.describe TasksController, type: :controller do
         put :update, params: {:id => Task.find_by(:title => "Setup telescope").id, :routine_id => @routine.id, :task => {:description =>  "Leave telescope outside for 30 minutes to allow it to adjust to outside temperature"}}
         expect(flash[:notice]).to eq("Task was successfully updated.")
         #put :update, params: {:id => Task.find_by(:title => "Setup telescope").id, :task => {:description => "Leave telescope outside for 30 minutes to allow it to adjust to outside temperature"}}
-        end
+      end
+
+      xit "allows task to move up in sequence" do
+        @routine = Routine.find_by(:title => "Watch meteor shower")
+        @task = Task.find_by(:title => "Turn off all lights")
+        expect(@task.sequence).to eq(3)
+        get up_routine_task_path(@routine, @task)
+        expect(@task.sequence).to eq(2)
+      end
+
+      xit "allows task to move down in sequence" do
+        @routine = Routine.find_by(:title => "Watch meteor shower")
+        @task = Task.find_by(:title => "Turn off all lights")
+        expect(@task.sequence).to eq(3)
+        get down_routine_task_path(@routine, @task)
+        expect(@task.sequence).to eq(4)
+      end
+
     end
 
   describe "deletes" do
