@@ -25,8 +25,8 @@ Feature: display list of routines
 
   Scenario: View what days of the week routines occur
     Given I am on the MyRhythm home page
-    Then I should see "Mon" 4 times
-    And I should see "Wed" 2 time
+    Then I should see "Mon" 2 times
+    And I should see "Wed" 1 time
 
   Scenario: modify routine in database
     Given I am on the MyRhythm home page

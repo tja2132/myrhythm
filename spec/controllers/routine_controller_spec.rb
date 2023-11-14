@@ -83,4 +83,24 @@ RSpec.describe RoutinesController, type: :controller do
     end
   end
 
+  describe "sort" do
+    it "sorts by title" do
+      get :index, params: {:sortBy => "title"}
+      expect(response).to be_successful
+    end
+    it "sorts by start time" do
+      get :index, params: {:sortBy => "start_time"}
+      expect(response).to be_successful
+    end
+    it "sorts by recurrence" do
+      get :index, params: {:sortBy => "recurrence"}
+      expect(response).to be_successful
+    end
+    it "sorts by end time" do
+      get :index, params: {:sortBy => "end_time"}
+      expect(response).to be_successful
+    end
+  end
+
+
 end

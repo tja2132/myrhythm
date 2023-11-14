@@ -4,7 +4,6 @@
 
 <table class="table" id="routines">
   <thead>
-    <tr>
       <%if @sortBy == 'title' %>
         <th class="bg-info"><%= link_to 'Name', routines_path(:sortBy => 'title'), :id => 'name' %></th>
       <%else %>
@@ -32,7 +31,6 @@
       <%else %>
         <th><%= link_to 'End Time', routines_path(:sortBy => 'end_time'), :id => 'end_time' %></th>
       <%end %>
-    </tr>
   </thead>
   <tbody>
   <% @routines.each do |routine| %>
