@@ -12,8 +12,8 @@ fixtures :routines
   end
   
   describe "all_daysofweek method" do
-    xit "returns all days of the week" do
-        expect(Routine.get_days_of_week).to eq ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    it "returns all days of the week" do
+        expect(Routine.get_days_of_week).to eq(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'])
       end
     end
 
