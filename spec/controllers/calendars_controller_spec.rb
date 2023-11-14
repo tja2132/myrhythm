@@ -12,8 +12,14 @@ RSpec.describe CalendarsController, type: :controller do
 
   describe "day" do
     it "lists all routines for a given day" do
-      get :show
-      expect(Routine.get_days_of_week.include? :day)
+      get :day
+      expect(Routine.get_days_of_week.include?(@day))
+    end
+  end
+
+  describe "get routines by day" do
+    it "returns routines mapped by day" do
+    expect(CalendarsController.get_routines_by_day.keys).to eq(Routine.get_days_of_week)
     end
   end
 
