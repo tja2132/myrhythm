@@ -25,13 +25,22 @@ fixtures :routines
     end
 
     describe "calculate end_time method" do
-      xit "returns end time based on start time and duration" do
+      it "returns end time based on start time and duration" do
         routine = Routine.find_by(:title => "Watch meteor shower")
         expect(routine.valid?).to be(true)
 
         end_time = Routine.end_time(routine)
 
-        expect(end_time).to eq(Time.local(2023, 1, 1, 6, 0) + (60*165))
+        expect(end_time).to eq(Time.zone.parse('2000-01-01 6:0:0') + (60*165))
+      end
+
+      it "returns default start time value for end_time if no start_time is specified" do
+        routine = Routine.find_by(:title => "Get ready for work")
+        expect(routine.valid?).to be(true)
+
+        end_time = Routine.end_time(routine)
+
+        expect(end_time).to eq(Time.zone.parse('2000-01-01 1:56:11'))
       end
 
       describe "get recurrence string" do

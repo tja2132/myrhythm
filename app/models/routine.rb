@@ -53,9 +53,7 @@ class Routine < ApplicationRecord
   end
 
   def self.end_time(routine)
-    if routine.start_time.nil?
-      return ""
-    else
+    unless routine.start_time.nil?
       return routine.start_time + Routine.total_duration(routine).minutes
     end
   end

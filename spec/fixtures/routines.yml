@@ -4,7 +4,7 @@ meteor_routine:
   id: 1
   title: Watch meteor shower
   description: "Watch the annual meteor shower"
-  start_time: Time.local(2023, 1, 1, 6, 0)
+  start_time: Time.zone.parse('2000-01-01 6:0:0')
 
 work_routine:
   id: 2
