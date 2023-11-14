@@ -60,7 +60,8 @@ Feature: display list of routines
   Scenario: Sort routines by recurrence
     Given I am on the MyRhythm home page
     And I follow "Recurrence"
-    #Then I should be on the MyRhythm home page sorted by "recurrence"
+    And I refresh the page
+    Then I should be on the MyRhythm home page sorted by "recurrence"
     Then I should see "The Perfect Grilled Cheese" before "Skincare Routine"
     And I should see "The Perfect Grilled Cheese" before "Evening Workout"
     And I should see "Evening Workout" before "Skincare Routine"
