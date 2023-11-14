@@ -41,7 +41,7 @@ class Routine < ApplicationRecord
 
   def self.total_duration(routine)
     total_duration = 0
-    tasks = Task.with_same_routine(routine)
+    tasks = routine.tasks
     if !tasks.nil? and tasks.size > 0
       tasks.each do | task |
         if task.duration?
