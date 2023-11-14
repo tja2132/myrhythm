@@ -7,9 +7,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :calendar
-  #resources :signin
-  #resources :users
+  resource :calendar do
+    get :day, on: :member
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

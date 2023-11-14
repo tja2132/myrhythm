@@ -1,0 +1,25 @@
+
+<div class="container">
+
+  <% Routine.get_days_of_week.each do |d|  %>
+    <%= link_to d, day_calendar_path(:day => d), :class => 'btn btn-primary btn-sm' %>
+  <% end %>
+
+
+  <br> <br>
+  <h3><b>My <%= @day %> </b></h3>
+
+  <% routine_by_day = CalendarsController.get_routines_by_day %>
+
+  <%if routine_by_day.has_key?(@day) %>
+    <%routine_by_day[@day].each do |r| %>
+      <%= r.start_time.strftime("%I:%M%P") %> - <%= Routine.end_time(r).strftime("%I:%M%P") %> <br>
+      <%= r.title %> <br>
+      <br>
+    <%end%>
+  <%else%>
+    <li> None </li>
+  <%end%>
+
+</div>
+
