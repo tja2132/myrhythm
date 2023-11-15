@@ -1,8 +1,15 @@
 
-Given /the following tasks exist/ do |tasks_table|
+Given /the following tasks exist for the "(.*)"/ do |routine_name, tasks_table|
+  routine = Routine.find_by(:title => "#{routine_name}")
   tasks_table.hashes.each do |task|
-    Task.create(task)
+    routine.tasks.create(task)
   end
+end
+
+And /I follow the "(.*)" button for the "(.*)" task/ do |button_name, task_name|
+  task = Task.find_by(:title => "#{task_name}")
+  #find(id: "").visible?
+  click_link(:id => "#{button_name}_task_#{task.id}")
 end
 
 Then /I should see all the tasks/ do

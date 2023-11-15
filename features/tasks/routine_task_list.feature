@@ -10,7 +10,7 @@ Feature: display list of tasks for a routine
       | title                         | description                           | mon  | tue | start_time  |
       | Morning Routine               | my morning routine                    | true | true| 06:30:00 |
 
-    Given the following tasks exist:
+    Given the following tasks exist for the "Morning Routine":
       | title              | description                                        | sequence | duration |
       | Make Coffee        | Start Kettle, Grind Coffee Beans, Brew Coffee      | 1        | 15       |
       | Shower             | Shower                                             | 2        | 15       |
@@ -21,11 +21,6 @@ Feature: display list of tasks for a routine
       | Gather work things | Gather bookbag, laptop, badge, keys, phone, wallet | 7        | 10       |
 
     And I am on the routines page
-
-  Scenario: view all tasks
-    When I follow "Morning Routine"
-    And I follow "All Tasks"
-    Then I should see "Morning Routine Tasks"
 
   Scenario: add task to a routine
     When I follow "Morning Routine"
@@ -45,3 +40,11 @@ Feature: display list of tasks for a routine
     And I follow "Back to Routine"
     Then I should see "Total Duration: 84 minutes"
     And I should see "End Time: 07:54am"
+
+  Scenario: editing a task within a routine
+    When I follow "Morning Routine"
+    And I follow "Brush teeth"
+    And I follow the "edit" button for the "Brush teeth" task
+    And I fill in "Description" with "Brush teeth for two minutes"
+    And I press "Update Task"
+    Then I should see "Task was successfully updated."
