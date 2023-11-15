@@ -17,11 +17,11 @@
 %>
 
 <%= week_calendar do |date| %>
-  <%if routine_by_day.has_key?(date.strftime("%a").to_s) %>
-    <%routine_by_day[date.strftime("%a")].each do |r| %>
-      <%= r.start_time.strftime("%I:%M%P") %> - <%= Routine.end_time(r).strftime("%I:%M%P") %> <br>
+  <% if routine_by_day.has_key?(date.strftime("%a").to_s) %>
+    <% routine_by_day[date.strftime("%a")].each do |r| %>
+      <%= r.start_time.strftime("%I:%M%P") %> - <%= Routine.end_time(r).strftime("%I:%M%P") %>
       <%= r.title %> <br>
-      <br>
+      <br><br>
     <%end%>
   <%else%>
     <li> None </li>
@@ -29,3 +29,4 @@
 
 
 <% end %>
+</tbody>

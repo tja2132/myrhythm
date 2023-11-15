@@ -11,28 +11,28 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :sequence, style: "display: block" %>
-    <%= form.select :sequence, 1..@routine.tasks.size %>
+  <div class="form-group">
+    <%= form.label :title,"Task Name", class: "form-label" %>
+    <%= form.text_field :title, class: "form-control"  %>
   </div>
-
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+<br>
+  <div class="form-group">
+    <%= form.label :description, class: "form-label"%>
+    <%= form.text_field :description, class: "form-control"  %>
   </div>
-
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
+<br>
+  <div class="form-group">
+    <%= form.label :sequence, "Order of task in Routine", class: "form-label" %>
+    <%= form.select :sequence, 1..@routine.tasks.size , :class => "form-select" %>
   </div>
-
-  <div>
-    <%= form.label :duration, style: "display: block" %>
-    <%= form.select :duration, 0..240 %>
+<br>
+  <div class="form-group">
+    <%= form.label :duration, "Minutes to complete task", class: "form-label" %>
+    <%= form.select :duration, 0..240 , :class => "form-range"%>
   </div>
 
 <br>
-  <div>
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.submit :class => 'btn btn-outline-success'%>
   </div>
 <% end %>
