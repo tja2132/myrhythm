@@ -67,6 +67,6 @@ class RoutinesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def routine_params
-      params.require(:routine).permit(:title, :description, :daysofweek, :recurrence, :start_day, :start_time, :created, :updated, :mon, :tue, :wed, :thu, :fri, :sat, :sun)
+      params.require(:routine).permit(:title, :description, :daysofweek, :recurrence, :start_time, :created, :updated, :mon, :tue, :wed, :thu, :fri, :sat, :sun)
     end
 end

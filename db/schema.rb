@@ -10,21 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_09_014537) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_14_051449) do
+  create_table "movies", force: :cascade do |t|
+    t.string "title"
+    t.string "rating"
+    t.text "description"
+    t.datetime "release_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "routines", force: :cascade do |t|
     t.string "title", default: "New Routine"
     t.text "description"
-    t.time "start_time", default: "2000-01-01 01:56:11"
+    t.boolean "is_end_date"
+    t.time "start_time", default: "2000-01-01 04:58:50"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "mon", default: false
-    t.boolean "tue", default: false
-    t.boolean "wed", default: false
-    t.boolean "thu", default: false
-    t.boolean "fri", default: false
-    t.boolean "sat", default: false
-    t.boolean "sun", default: false
-    t.string "start_day"
+    t.boolean "mon"
+    t.boolean "tue"
+    t.boolean "wed"
+    t.boolean "thu"
+    t.boolean "fri"
+    t.boolean "sat"
+    t.boolean "sun"
   end
 
   create_table "tasks", force: :cascade do |t|
