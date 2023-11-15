@@ -33,6 +33,8 @@
 
 <br>
   <div class="form-group">
+    <%= link_to "Cancel", [@routine, @task], :class => 'btn btn-outline-primary'  %>
     <%= form.submit :class => 'btn btn-outline-success'%>
+    <%= link_to "Back to Routine", routine_url(@routine), :class => 'btn btn-primary'  %>
   </div>
 <% end %>

@@ -47,7 +47,7 @@ Feature: display list of routines
     And I press "Update Routine"
     Then I should see "Routine was successfully updated."
 
-    # TODO
+  @wip
   Scenario: delete routine in database
     Given I am on the MyRhythm home page
     When I follow the "delete" button for the routine "Evening Workout"
