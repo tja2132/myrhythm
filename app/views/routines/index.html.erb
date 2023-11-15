@@ -4,7 +4,7 @@
 <table class="table table-hover" id="routines">
   <thead>
       <%if @sortBy == 'title' %>
-        <th class="bg-info"><%= link_to 'Name', routines_path(:sortBy => 'title'), :id => 'name' %></th>
+        <th class="bg-warning"><%= link_to 'Name', routines_path(:sortBy => 'title'), :id => 'name' %></th>
       <%else %>
         <th><%= link_to 'Name', routines_path(:sortBy => 'title'), :id => 'name' %></th>
       <%end %>
@@ -12,7 +12,7 @@
       <th>Description</th>
 
       <%if @sortBy == 'recurrence' %>
-        <th class="bg-info"><%= link_to 'Recurrence', routines_path(:sortBy => 'recurrence'), :id => 'recurrence' %></th>
+        <th class="bg-warning"><%= link_to 'Recurrence', routines_path(:sortBy => 'recurrence'), :id => 'recurrence' %></th>
       <%else %>
         <th><%= link_to 'Recurrence', routines_path(:sortBy => 'recurrence'), :id => 'recurrence' %></th>
       <%end %>
@@ -20,13 +20,13 @@
       <th>Day of the Week</th>
 
       <%if @sortBy == 'start_time' %>
-        <th class="bg-info"><%= link_to 'Start Time', routines_path(:sortBy => 'start_time'), :id => 'start_time' %></th>
+        <th class="bg-warning"><%= link_to 'Start Time', routines_path(:sortBy => 'start_time'), :id => 'start_time' %></th>
       <%else %>
         <th><%= link_to 'Start Time', routines_path(:sortBy => 'start_time'), :id => 'start_time' %></th>
       <%end %>
 
       <%if @sortBy == 'end_time' %>
-        <th class="bg-info"><%= link_to 'End Time', routines_path(:sortBy => 'end_time'), :id => 'end_time' %></th>
+        <th class="bg-warning"><%= link_to 'End Time', routines_path(:sortBy => 'end_time'), :id => 'end_time' %></th>
       <%else %>
         <th><%= link_to 'End Time', routines_path(:sortBy => 'end_time'), :id => 'end_time' %></th>
       <%end %>
