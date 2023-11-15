@@ -13,13 +13,14 @@ class Routine < ApplicationRecord
     alldaysofweek = alldaysofweek.map { |day| day.downcase }
     columns = alldaysofweek.join(',')
     days = Routine.where(id: routine.id).pick(columns)
+    days_str = days.join(',')
 
-    if !days.include?(false)
+    if !days_str.include?("false")
       return "Daily"
-    elsif !days.include?(true)
-      return "None"
+    elsif days_str.include?("true") and days_str.include?("false")
+      return "Weekly"
     else
-      "Weekly"
+      "None"
     end
   end
 
