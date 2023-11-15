@@ -24,10 +24,10 @@ Feature: display list of tasks for a routine
 
   Scenario: moving a task up
     When I follow "Morning Routine"
-    And I follow the "up" button for the "2" task
+    And I follow the "up" button for the "Shower" task
     Then I should see "Shower" before "Make Coffee"
 
   Scenario: moving a task down
     When I follow "Morning Routine"
-    And I follow the "down" button for the "6" task
+    And I follow the "down" button for the "Brush teeth" task
     Then I should see "Gather work things" before "Brush teeth"

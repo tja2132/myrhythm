@@ -36,7 +36,8 @@ Given /the following routines exist/ do |routines_table|
   end
 
 # TODO
-   When /I follow "(.*)" button for the "(.*)" routine/ do |button_name, routine_id|
-      click_link("#{button_name}_routine_#{routine_id}")
+   And /I follow the "(.*)" button for the routine "(.*)"/ do |button_name, routine_name|
+    routine = Routine.find_by(:title => "#{routine_name}")  
+    click_link("#{button_name}_routine_#{routine.id}")
    end
 

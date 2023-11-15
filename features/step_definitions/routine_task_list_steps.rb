@@ -6,8 +6,10 @@ Given /the following tasks exist for the "(.*)"/ do |routine_name, tasks_table|
   end
 end
 
-When /I follow the "(.*)" button for the "(.*)" task/ do |button_name, task_id|
-  click_link(:id => "#{button_name}_task_#{task_id}")
+And /I follow the "(.*)" button for the "(.*)" task/ do |button_name, task_name|
+  task = Task.find_by(:title => "#{task_name}")
+  #find(id: "").visible?
+  click_link(:id => "#{button_name}_task_#{task.id}")
 end
 
 Then /I should see all the tasks/ do

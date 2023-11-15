@@ -34,7 +34,7 @@ Feature: display list of routines
 
   Scenario: modify routine in database
     Given I am on the MyRhythm home page
-    When I follow "edit" button for the "1" routine
+    When I follow the "edit" button for the routine "Evening Workout"
     And I fill in "Title" with "Morning Workout"
     And I press "Update Routine"
     Then I should see "Routine was successfully updated."
@@ -42,7 +42,7 @@ Feature: display list of routines
   Scenario: modify routine on the routine page
     Given I am on the MyRhythm home page
     When I follow "The Perfect Grilled Cheese"
-    When I follow "edit" button for the "3" routine
+    When I follow the "edit" button for the routine "The Perfect Grilled Cheese"
     And I fill in "Title" with "The Best Grilled Cheese"
     And I press "Update Routine"
     Then I should see "Routine was successfully updated."
@@ -50,13 +50,13 @@ Feature: display list of routines
     # TODO
   Scenario: delete routine in database
     Given I am on the MyRhythm home page
-    When I follow "delete" button for the "1" routine
+    When I follow the "delete" button for the routine "Evening Workout"
 #    And I follow "OK"
     Then I should not see "Evening Workout"
 
   Scenario: delete routine from the routine page
     Given I am on the MyRhythm home page
     When I follow "Skincare Routine"
-    When I follow "delete" button for the "2" routine
+    When I follow the "delete" button for the routine "Skincare Routine"
 #    And I follow "OK"
     Then I should not see "Skincare Routine"

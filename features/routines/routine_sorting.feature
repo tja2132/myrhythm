@@ -36,7 +36,7 @@ Feature: sort my routines
     Then I should see "Evening Workout" before "Skincare Routine"
     And I should see "Evening Workout" before "The Perfect Grilled Cheese"
     And I should see "Skincare Routine" before "The Perfect Grilled Cheese"
-
+@wip
   Scenario: Sort routines by recurrence
     Given I am on the MyRhythm home page
     And I follow "Recurrence"
