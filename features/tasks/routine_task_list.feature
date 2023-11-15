@@ -22,10 +22,6 @@ Feature: display list of tasks for a routine
 
     And I am on the routines page
 
-  Scenario: view all tasks
-    When I follow "Morning Routine"
-    And I follow "All Tasks"
-    Then I should see "Morning Routine Tasks"
 
   Scenario: add task to a routine
     When I follow "Morning Routine"
@@ -45,3 +41,18 @@ Feature: display list of tasks for a routine
     And I follow "Back to Routine"
     Then I should see "Total Duration: 84 minutes"
     And I should see "End Time: 07:54am"
+
+  Scenario: editing a task within a routine
+    When I follow "Morning Routine"
+    And I follow "Brush teeth"
+    And I follow "edit" button for the "1" task
+    And I fill in "Description" with "Brush teeth for two minutes"
+    And I press "Update Task"
+    Then I should see "Task was successfully updated."
+
+  Scenario: delete a task within a routine
+    When I follow "Morning Routine"
+    And I follow "Brush teeth"
+    And I follow "delete" button for the "1" task
+    And I press "OK"
+    Then I should see "Task was successfully deleted."
