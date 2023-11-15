@@ -25,7 +25,7 @@ Feature: display list of tasks for a routine
   Scenario: add task to a routine
     When I follow "Morning Routine"
     And I follow "Add Task"
-    And I fill in "Title" with "Morning Workout"
+    And I fill in "Task Name" with "Morning Workout"
     And I press "Create Task"
     Then I should see "Task was successfully created."
 
@@ -34,8 +34,8 @@ Feature: display list of tasks for a routine
     Then I should see "Total Duration: 64 minutes"
     And I should see "End Time: 07:34am"
     When I follow "Add Task"
-    And I fill in "Title" with "Morning Workout"
-    And I select "20" from "Duration"
+    And I fill in "Task Name" with "Morning Workout"
+    And I select "20" from "Minutes to complete task"
     And I press "Create Task"
     And I follow "Back to Routine"
     Then I should see "Total Duration: 84 minutes"
