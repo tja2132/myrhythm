@@ -12,7 +12,7 @@ decrease stress, save time, and help you find your flow.
 * Tyler Andrews    - tja2132
 * Nathan Coulibaly - nmc2169
 
-## New functionality covered in iteration 2:
+## New functionality covered in [iteration 2](https://github.com/tja2132/myrhythm/tree/iter-2):
 
 * New bootstrap UI with navbar and drastically improved routine visualization
 * Calendar view - quickly see your week of routines at a glance
