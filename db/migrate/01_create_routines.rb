@@ -3,15 +3,7 @@ class CreateRoutines < ActiveRecord::Migration[7.1]
     create_table :routines do |t|
       t.string :title, default: "New Routine"
       t.text :description
-
-      t.string :recurrence, default: "None"
-      t.string :daysofweek, default: ""
-
-      t.date :start_date, default: Time.now     #for recurrence
-      t.date :end_date, default: Time.now       #TODO remove
-      t.time :start_time, default: Time.now     #for reminders
-      t.time :end_time                          #for reminders
-
+      t.time :start_time, default: Time.now
       t.boolean :mon, null: false, default: false
       t.boolean :tue, null: false, default: false
       t.boolean :wed, null: false, default: false
