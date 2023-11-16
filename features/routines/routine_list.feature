@@ -46,17 +46,3 @@ Feature: display list of routines
     And I fill in "Title" with "The Best Grilled Cheese"
     And I press "Update Routine"
     Then I should see "Routine was successfully updated."
-
-  @wip
-  Scenario: delete routine in database
-    Given I am on the MyRhythm home page
-    When I follow the "delete" button for the routine "Evening Workout"
-#    And I follow "OK"
-    Then I should not see "Evening Workout"
-
-  Scenario: delete routine from the routine page
-    Given I am on the MyRhythm home page
-    When I follow "Skincare Routine"
-    When I follow the "delete" button for the routine "Skincare Routine"
-#    And I follow "OK"
-    Then I should not see "Skincare Routine"

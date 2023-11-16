@@ -84,18 +84,22 @@ RSpec.describe TasksController, type: :controller do
       #put :update, params: {:id => Task.find_by(:title => "Setup telescope").id, :task => {:description => "Leave telescope outside for 30 minutes to allow it to adjust to outside temperature"}}
     end
 
-    xit "allows task to move up in sequence" do
+    it "allows task to move up in sequence" do
       task = Task.find_by(:title => "Turn off all lights")
+      sequence = task.sequence
       expect(task.sequence).to eq(3)
       get :up, params: {routine_id: task.routine.id, id: task.id}
-      expect(task.sequence).to eq(2)
+      task = Task.find_by(:title => "Turn off all lights")
+      expect(task.sequence).to eq(sequence - 1)
     end
 
-    xit "allows task to move down in sequence" do
-      task = Task.find_by(:title => "Turn off all lights")
-      expect(task.sequence).to eq(3)
-      get :up, params: {routine_id: task.routine.id, id: task.id}
-      expect(task.sequence).to eq(4)
+    it "allows task to move down in sequence" do
+      task = Task.find_by(:title => "Setup telescope")
+      sequence = task.sequence
+      expect(task.sequence).to eq(1)
+      get :down, params: {routine_id: task.routine.id, id: task.id}
+      task = Task.find_by(:title => "Setup telescope")
+      expect(task.sequence).to eq(sequence + 1)
     end
 
   end
