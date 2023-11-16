@@ -4,17 +4,16 @@
 <table class="table table-hover" id="routines">
   <thead>
       <%if @sortBy == 'title' %>
-        <th class="bg-warning"><%= link_to 'Name', routines_path(:sortBy => 'title'), :id => 'name' %></th>
+        <th scope="col" class="bg-warning"><%= link_to 'Name', routines_path(:sortBy => 'title'), :id => 'name' %></th>
       <%else %>
-        <th><%= link_to 'Name', routines_path(:sortBy => 'title'), :id => 'name' %></th>
+        <th scope="col"><%= link_to 'Name', routines_path(:sortBy => 'title'), :id => 'name'%></th>
       <%end %>
-
       <th>Description</th>
 
       <%if @sortBy == 'recurrence' %>
-        <th class="bg-warning"><%= link_to 'Recurrence', routines_path(:sortBy => 'recurrence'), :id => 'recurrence' %></th>
+        <th scope="col" class="bg-warning"><%= link_to 'Recurrence', routines_path(:sortBy => 'recurrence'), :id => 'recurrence' %></th>
       <%else %>
-        <th><%= link_to 'Recurrence', routines_path(:sortBy => 'recurrence'), :id => 'recurrence' %></th>
+        <th scope="col"><%= link_to 'Recurrence', routines_path(:sortBy => 'recurrence'), :id => 'recurrence' %></th>
       <%end %>
 
       <th>Day of the Week</th>
