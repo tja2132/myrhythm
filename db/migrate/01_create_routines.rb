@@ -12,13 +12,13 @@ class CreateRoutines < ActiveRecord::Migration[7.1]
       t.time :start_time, default: Time.now     #for reminders
       t.time :end_time                          #for reminders
 
-      t.boolean :mon, :boolean, null: false, default: false
-      t.boolean :tue, :boolean, null: false, default: false
-      t.boolean :wed, :boolean, null: false, default: false
-      t.boolean :thu, :boolean, null: false, default: false
-      t.boolean :fri, :boolean, null: false, default: false
-      t.boolean :sat, :boolean, null: false, default: false
-      t.boolean :sun, :boolean, null: false, default: false
+      t.boolean :mon, null: false, default: false
+      t.boolean :tue, null: false, default: false
+      t.boolean :wed, null: false, default: false
+      t.boolean :thu, null: false, default: false
+      t.boolean :fri, null: false, default: false
+      t.boolean :sat, null: false, default: false
+      t.boolean :sun, null: false, default: false
       t.timestamps
     end
   end
