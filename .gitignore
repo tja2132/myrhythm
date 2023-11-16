@@ -39,9 +39,3 @@
 
 # Ignore Mac files
 .DS_Store
-
-# Ignore rspec coverage artifacts
-/coverage/assets/*
-/coverage/*.json
-/coverage/*.html
-coverage/.resultset.json.lock

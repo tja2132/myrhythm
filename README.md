@@ -12,11 +12,16 @@ decrease stress, save time, and help you find your flow.
 * Tyler Andrews    - tja2132
 * Nathan Coulibaly - nmc2169
 
-## Functionality covered in iteration 1:
-* View, Create, Update, and Delete Routines
-* View, Create, Update, and Delete Tasks within routines
-* Utilize nested resources for routine:task relation
-* Minimal bootsrap UI 
+## New functionality covered in iteration 2:
+
+* New bootstrap UI, Morph and drastically improved routine visualization
+* Calendar view - quickly see your week of routines at a glance
+* Routine sorting - Sort your routine list by Name, recurrence, or start/end time
+* Task re-ordering - Update the sequence of tasks in a routine using the up/down buttons
+* Streamlined and improved routine creation form
+* Database optimizations and improved seed data
+* Initial steps towards tracking task completion statistics over time
+* Reorganized feature directory
 
 ### Quick Start
 For initial install:
