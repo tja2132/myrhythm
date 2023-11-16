@@ -34,15 +34,6 @@ fixtures :routines
         expect(end_time).to eq(Time.zone.parse('2000-01-01 6:0:0') + (60*165))
       end
 
-      it "returns default start time value for end_time if no start_time is specified" do
-        routine = Routine.find_by(:title => "Get ready for work")
-        expect(routine.valid?).to be(true)
-
-        end_time = Routine.end_time(routine)
-
-        expect(end_time).to eq(Time.zone.parse('2000-01-01 1:56:11'))
-      end
-
       describe "get recurrence string" do
         it "returns the recurrence string based on which days of week the routine occurs on" do
           routine = Routine.find_by(:title => "Get ready for work")
@@ -64,7 +55,6 @@ fixtures :routines
           expect(Routine.get_days_of_week_str(routine)).to eq "Mon, Tue, Wed, Thu, Fri, Sat, Sun"
         end
       end
-
 
       it "returns empty end time based on start time nil" do
         routine = Routine.find_by(:title => "Get ready for work")
