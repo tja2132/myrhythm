@@ -14,14 +14,14 @@ decrease stress, save time, and help you find your flow.
 
 ## New functionality covered in iteration 2:
 
-* New bootstrap UI, Morph and drastically improved routine visualization
+* New bootstrap UI with navbar and drastically improved routine visualization
 * Calendar view - quickly see your week of routines at a glance
-* Routine sorting - Sort your routine list by Name, recurrence, or start/end time
+* Routine sorting - Sort your routine list by name, recurrence, or start/end time
 * Task re-ordering - Update the sequence of tasks in a routine using the up/down buttons
 * Streamlined and improved routine creation form
 * Database optimizations and improved seed data
 * Initial steps towards tracking task completion statistics over time
-* Reorganized feature directory
+* Reorganized feature directory - all user stories passing with 100% rspec coverage
 
 ### Quick Start
 For initial install:
@@ -49,7 +49,7 @@ rspec
 
 # results are generated in /coverage/.last_run.json and are visible
 # by opening index.html in a web browser.
-# rspec artifacts are not commited to the repository and must be run locally
+# example rspec artifacts are commited to the repository but will be overwritten
 ```
 
 
