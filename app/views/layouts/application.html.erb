@@ -1,32 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  <head class="" style="">
     <title>MyRhythm</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <%= javascript_importmap_tags %>
+  <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="" style="">
   <%# These classes come from the Bootstrap CSS framework. %>
   <%# https://getbootstrap.com/docs/4.0/components/navbar/ %>
-    <nav class="navbar navbar navbar-light bg-primary mb-3">
-      <a class="navbar-brand text-white" href="/">MyRhythm</a>
-      <div class="my-2 my-lg-0">
-        <%= link_to "My Calendar", "/calendar", :class => 'btn btn-primary btn-sm'  %>
-        <%= link_to "My Routines", routines_path, :class => 'btn btn-primary btn-sm'  %>
-        <%= link_to "Sign in", "", :class => 'btn btn-primary btn-sm'  %>
+    <div class="navbar navbar-expand bg-body-tertiary" style="">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">MyRhythm</a>
+        <div class="collapse navbar-collapse">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+          <%= link_to "My Routines", routines_path, :class => 'nav-link'  %>
+          </li><li class="nav-item">
+          <%= link_to "My Calendar", "/calendar", :class => 'nav-link'  %>
+          </li><!--<li class="nav-item">
+        <%= link_to "Sign in", "", :class => 'nav-link'  %>
+        </li>-->
+          </ul>
+          <ul class="navbar-nav ms-md-auto"></ul>
+        </div>
       </div>
-    </nav>
+    </div>
 
-    <div class="container">
+    <div class="container-fluid">
+            <br>
       <%# Render "flash" messages in our application. This loads _flash.erb %>
       <%= render 'layouts/flash' %>
+
       <main id="main">
       <%= yield %>
       </main>

@@ -11,43 +11,50 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
+  <div class="form-group">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control" %>
   </div>
 <br>
-  <div>
-    <%= form.label :start_time, style: "display: block" %>
+  <div class="form-group">
+    <%= form.label :description, class: "form-label" %>
+    <%= form.text_area :description, class: "form-control" %>
+  </div>
+<br>
+  <div class="form-group">
+    <%= form.label :start_time, class: "form-label" %>
     <%= form.time_select :start_time, {ampm: true} %>
   </div>
 
+  <fieldset class="form-group">
+    <legend class="mt-4">Recurrence</legend>
+  <div class="form-check">  
+    <%= form.check_box :mon, class: "form-check-input" %>
+    <%= form.label :mon, class: "form-check-label" %>
+  </div><div class="form-check"> 
+    <%= form.check_box :tue, class: "form-check-input"  %>
+    <%= form.label :tue, class: "form-check-label"  %>
+  </div><div class="form-check">   
+    <%= form.check_box :wed, class: "form-check-input"  %>
+    <%= form.label :wed, class: "form-check-label"  %>
+  </div><div class="form-check">   
+    <%= form.check_box :thu, class: "form-check-input"  %>
+    <%= form.label :thu, class: "form-check-label"  %>
+  </div><div class="form-check">   
+    <%= form.check_box :fri, class: "form-check-input"  %>
+    <%= form.label :fri, class: "form-check-label"  %>
+   </div><div class="form-check">  
+    <%= form.check_box :sat, class: "form-check-input"  %>
+    <%= form.label :sat, class: "form-check-label"  %>
+   </div><div class="form-check">  
+    <%= form.check_box :sun, class: "form-check-input"  %>
+    <%= form.label :sun, class: "form-check-label"  %>
+    
+  </fieldset>
+<br>
   <div>
-    <%= form.label :recurrence, style: "display: block" %>
-    <%= form.label :mon %>
-    <%= form.check_box :mon %>
-    <%= form.label :tue %>
-    <%= form.check_box :tue %>
-    <%= form.label :wed %>
-    <%= form.check_box :wed %>
-    <%= form.label :thu %>
-    <%= form.check_box :thu %>
-    <%= form.label :fri %>
-    <%= form.check_box :fri %>
-    <%= form.label :sat %>
-    <%= form.check_box :sat %>
-    <%= form.label :sun %>
-    <%= form.check_box :sun %>
-  </div>
-
-
-  <br>
-
-  <div>
-    <%= form.submit %>
+    <%= link_to "Cancel", @routine, :class => 'btn btn-outline-primary'  %>
+    <%= form.submit :class => 'btn btn-outline-success'%>
+    <!--<%= link_to "My Routines", routines_path, :class => 'btn btn-primary'  %>-->
   </div>
 <% end %>

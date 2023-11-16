@@ -1,5 +1,4 @@
 <!--<p style="color: green"><%= notice %></p> -->
-
 <tr id="task-header">
   <td>
   <h2><strong><%= @task.title %></strong></h2>
@@ -14,9 +13,9 @@
 </tr>
 <br><br>
 <div>
-  <%= link_to " Edit", edit_routine_task_path(@routine, @task), :class => 'bi bi-pencil-square btn btn-primary btn-sm', :id => "edit_task_#{@task.id}" %>
-  <%= link_to " Delete", [@routine,@task], data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, :class => 'bi bi-trash btn btn-outline-danger btn-sm', :id => "delete_task_#{@task.id}" %>
+  <%= link_to " Edit", edit_routine_task_path(@routine, @task), :class => 'bi bi-pencil-square btn btn-outline-primary', :id => "edit_task_#{@task.id}" %>
+  <%= link_to " Delete", [@routine,@task], data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, :class => 'bi bi-trash btn btn-outline-danger', :id => "delete_task_#{@task.id}" %>
   <br><br>
-  <%= link_to "Back to Routine", routine_tasks_path(@routine), :class => 'btn btn-outline-primary btn-sm'  %>
+  <%= link_to "Back to Routine", routine_url(@routine), :class => 'btn btn-primary'  %>
         
 </div>
