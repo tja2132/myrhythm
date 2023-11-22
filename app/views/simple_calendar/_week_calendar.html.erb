@@ -4,7 +4,9 @@
     <thead>
       <tr>
         <% date_range.slice(0, 7).each do |day| %>
-          <th><%= t('date.abbr_day_names')[day.wday] %></th>
+          <th>
+            <%= link_to t('date.abbr_day_names')[day.wday], day_calendar_path(:day => Routine.get_days_of_week[day.wday-1]), :class => 'nav-link'  %>
+          </th>
         <% end %>
       </tr>
     </thead>

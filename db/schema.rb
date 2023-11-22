@@ -14,7 +14,7 @@ ActiveRecord::Schema[7.1].define(version: 2) do
   create_table "routines", force: :cascade do |t|
     t.string "title", default: "New Routine"
     t.text "description"
-    t.time "start_time", default: "2000-01-01 02:41:53"
+    t.time "start_time", default: "2000-01-01 22:37:43"
     t.boolean "mon", default: false, null: false
     t.boolean "tue", default: false, null: false
     t.boolean "wed", default: false, null: false

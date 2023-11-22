@@ -46,6 +46,6 @@ class CalendarsController < ApplicationController
   end
 
   def day
-    @day = params[:day]
+    @day = params[:day] || "Mon"
   end
 end
