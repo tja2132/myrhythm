@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_22_014627) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_22_075047) do
   create_table "routines", force: :cascade do |t|
     t.string "title", default: "New Routine"
     t.text "description"
-    t.time "start_time", default: "2000-01-01 01:57:06"
+    t.time "start_time", default: "2000-01-01 05:00:00"
     t.boolean "mon", default: false, null: false
     t.boolean "tue", default: false, null: false
     t.boolean "wed", default: false, null: false
@@ -52,6 +52,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_22_014627) do
     t.string "first_name"
     t.string "last_name"
     t.string "columbia_uni"
+    t.datetime "deleted_on"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

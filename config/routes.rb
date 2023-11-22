@@ -10,12 +10,16 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   #root to: 'routines#discover'
   get '/discover' => 'routines#discover'
-  get '/', to: redirect('/discover')
+  root to: redirect('/discover')
 
   as :user do
     get '/me', :to => 'users#show', :as => :user_root
   end
 
+  authenticated :user do
+    root to: 'routines#index', as: :authenticated_root
+  end
+  
   resources :routines do
     resources :tasks do
       get :up, on: :member

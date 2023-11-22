@@ -1,20 +1,28 @@
-<div class="form-group">
+<div id="user-login">
   <fieldset>
-    <label class="form-label">Email Address</label>
-    <input class="form-control" type="text" readonly="" placeholder=<%= current_user.email %> >
-  </fieldset>
-</div><br>
-<div class="form-group">
-  <fieldset disabled="">
-    <label class="form-label">Password</label>
-    <input class="form-control" type="text" disabled="" placeholder="****************">
-
+    <legend><strong>User Login</strong>
+      <%= link_to '', edit_user_registration_path, class: "bi bi-pencil-square btn btn-sm btn-outline-primary"  %>
+    </legend>
+    <div class="form-group">
+    <fieldset>
+      <label class="form-label">Email Address</label>
+      <input class="form-control" type="text" readonly="" placeholder=<%= current_user.email %> >
+    </fieldset>
+    </div><br>
+    <div class="form-group">
+      <fieldset disabled="">
+        <label class="form-label">Password</label>
+        <input class="form-control" type="text" disabled="" placeholder="****************">
+      </fieldset>
+    </div>
   </fieldset>
 </div>
 <br><br>
 <div id="user-info">
   <fieldset>
-    <legend><strong>User Information</strong></legend>
+    <legend><strong>User Information</strong>
+    <!-- <%= link_to '', edit_user_registration_path, class: "bi bi-pencil-square btn btn-sm btn-outline-primary"  %> -->
+    </legend>
     <div class="form-group">
       <fieldset>
         <label class="form-label">Columbia UNI</label>
