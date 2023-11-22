@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root to: 'routines#index'
 
-  get '/name', action: :show, controller: 'users'
+  get '/me', action: :show, controller: 'users'
 
   resources :routines do
     resources :tasks do
