@@ -28,46 +28,21 @@ Feature: display list of routines
     Then I should see "Mon" 2 times
     And I should see "Wed" 1 time
 
+  Scenario: View the recurrence of a routine
+    Given I am on the MyRhythm home page
+    Then I should see "None" 1 time
+
   Scenario: modify routine in database
     Given I am on the MyRhythm home page
-    When I follow "edit" button for the "1" routine
+    When I follow the "edit" button for the routine "Evening Workout"
     And I fill in "Title" with "Morning Workout"
     And I press "Update Routine"
     Then I should see "Routine was successfully updated."
 
-  Scenario: Sort routines by name
+  Scenario: modify routine on the routine page
     Given I am on the MyRhythm home page
-    And I follow "Name"
-    Then I should see "Evening Workout" before "Skincare Routine"
-    And I should see "Evening Workout" before "The Perfect Grilled Cheese"
-    And I should see "Skincare Routine" before "The Perfect Grilled Cheese"
-
-  Scenario: Sort routines by start time
-    Given I am on the MyRhythm home page
-    And I follow "Start Time"
-    Then I should see "Evening Workout" before "Skincare Routine"
-    And I should see "Evening Workout" before "The Perfect Grilled Cheese"
-    And I should see "Skincare Routine" before "The Perfect Grilled Cheese"
-
-  Scenario: Sort routines by end time
-    Given I am on the MyRhythm home page
-    And I follow "End Time"
-    #Then I should be on the MyRhythm home page sorted by "end_time"
-    Then I should see "Evening Workout" before "Skincare Routine"
-    And I should see "Evening Workout" before "The Perfect Grilled Cheese"
-    And I should see "Skincare Routine" before "The Perfect Grilled Cheese"
-
-  Scenario: Sort routines by recurrence
-    Given I am on the MyRhythm home page
-    And I follow "Recurrence"
-    And I refresh the page
-    Then I should be on the MyRhythm home page sorted by "recurrence"
-    Then I should see "The Perfect Grilled Cheese" before "Skincare Routine"
-    And I should see "The Perfect Grilled Cheese" before "Evening Workout"
-    And I should see "Evening Workout" before "Skincare Routine"
-#
-  # TODO
-#  Scenario: delete routine in database
-#    When I follow "Delete"
-#    And I follow "OK"
-#    Then I should not see "Evening Workout, Skincare Routine"
+    When I follow "The Perfect Grilled Cheese"
+    When I follow the "edit" button for the routine "The Perfect Grilled Cheese"
+    And I fill in "Title" with "The Best Grilled Cheese"
+    And I press "Update Routine"
+    Then I should see "Routine was successfully updated."

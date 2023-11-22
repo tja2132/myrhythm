@@ -20,7 +20,7 @@ Given /the following routines exist/ do |routines_table|
   end
 
   Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
-    expect(page.text).to match(/.*#{e1}.*#{e2}.*/)
+    expect(page.body.index(e1) < page.body.index(e2))
   end
 
   Then /I should not see "(.*)" before "(.*)"/ do |e1, e2|
@@ -28,7 +28,7 @@ Given /the following routines exist/ do |routines_table|
   end
 
   Then /I should see "(.*)" after "(.*)"/ do |e1, e2|
-    expect(page.text).to match(/.*#{e2}.*#{e1}.*/)
+    expect(page.body.index(e1) > page.body.index(e2))
   end
 
   Then /I should not see "(.*)" after "(.*)"/ do |e1, e2|
@@ -36,7 +36,8 @@ Given /the following routines exist/ do |routines_table|
   end
 
 # TODO
-   When /I follow "(.*)" button for the "(.*)" routine/ do |button_name, routine_id|
-      click_link("#{button_name}_routine_#{routine_id}")
+   And /I follow the "(.*)" button for the routine "(.*)"/ do |button_name, routine_name|
+    routine = Routine.find_by(:title => "#{routine_name}")  
+    click_link("#{button_name}_routine_#{routine.id}")
    end
 

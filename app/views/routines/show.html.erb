@@ -1,5 +1,4 @@
 <!--<p style="color: green"><%= notice %></p> -->
-
 <tr id="routine-header">
 <td>
   <h2><strong><%= @routine.title %></strong></h2>
@@ -17,8 +16,8 @@
     <li>End Time: <%= Routine.end_time(@routine).strftime("%I:%M%P") %></li>
 </ul>
 <div>
-  <%= link_to " Edit", edit_routine_path(@routine), :class => 'bi bi-pencil-square btn btn-primary btn-sm', :id => "edit_routine_#{@routine.id}"  %> 
-  <%= link_to " Delete", routine_path(@routine), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, :class => 'bi bi-trash btn btn-danger btn-sm', :id => "delete_routine_#{@routine.id}"  %>
+  <%= link_to " Edit", edit_routine_path(@routine), :class => 'bi bi-pencil-square btn btn-outline-primary', :id => "edit_routine_#{@routine.id}"  %> 
+  <%= link_to " Delete", routine_path(@routine), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, :class => 'bi bi-trash btn btn-outline-danger', :id => "delete_routine_#{@routine.id}"  %>
 </div>
 <br>
 <div>
@@ -31,6 +30,7 @@
     <th>Name</th>
     <th>Description</th>
     <th>Duration</th>
+    <th>Done?</th>
     <th></th>
   </tr>
 </thead>
@@ -44,10 +44,5 @@
   <% end %>
 </tbody>
 </table>
-<%= link_to "Add Task", new_routine_task_path(@routine), :class => 'btn btn-primary btn-sm', :id => "add_task_routine_#{@routine.id}"  %>
-<%= link_to "All Tasks", routine_tasks_path(@routine), :class => 'btn btn-primary btn-sm', :id => "all_tasks_routine_#{@routine.id}"   %>
-</div>
-<div>
-  <br><br>
-  <%= link_to "My Routines", routines_path, :class => 'btn btn-outline-primary btn-sm' %>
+<%= link_to "Add Task", new_routine_task_path(@routine), :class => 'btn btn-outline-primary', :id => "add_task_routine_#{@routine.id}"  %>
 </div>

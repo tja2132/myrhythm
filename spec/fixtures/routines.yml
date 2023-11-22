@@ -5,6 +5,13 @@ meteor_routine:
   title: Watch meteor shower
   description: "Watch the annual meteor shower"
   start_time: Time.zone.parse('2000-01-01 6:0:0')
+  mon: false
+  tue: false
+  wed: false
+  thu: false
+  fri: false
+  sat: false
+  sun: false
 
 work_routine:
   id: 2
@@ -23,3 +30,9 @@ food_routine:
   title: Make Dinner
   description: Cook food.
   mon: true
+  tue: false
+  wed: false
+  thu: false
+  fri: false
+  sat: false
+  sun: false

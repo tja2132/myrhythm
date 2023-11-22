@@ -1,36 +1,35 @@
 <!--<p style="color: green"><%= notice %></p> -->
-
 <h3><b>My Routines</b></h3>
 
-<table class="table" id="routines">
+<table class="table table-hover" id="routines">
   <thead>
       <%if @sortBy == 'title' %>
-        <th class="bg-info"><%= link_to 'Name', routines_path(:sortBy => 'title'), :id => 'name' %></th>
+        <th scope="col" class="bg-light"><%= link_to 'Name', routines_path(:sortBy => 'title'), :id => 'name' %></th>
       <%else %>
-        <th><%= link_to 'Name', routines_path(:sortBy => 'title'), :id => 'name' %></th>
+        <th scope="col"><%= link_to 'Name', routines_path(:sortBy => 'title'), :id => 'name'%></th>
       <%end %>
-
       <th>Description</th>
 
       <%if @sortBy == 'recurrence' %>
-        <th class="bg-info"><%= link_to 'Recurrence', routines_path(:sortBy => 'recurrence'), :id => 'recurrence' %></th>
+        <th scope="col" class="bg-light"><%= link_to 'Recurrence', routines_path(:sortBy => 'recurrence'), :id => 'recurrence' %></th>
       <%else %>
-        <th><%= link_to 'Recurrence', routines_path(:sortBy => 'recurrence'), :id => 'recurrence' %></th>
+        <th scope="col"><%= link_to 'Recurrence', routines_path(:sortBy => 'recurrence'), :id => 'recurrence' %></th>
       <%end %>
 
       <th>Day of the Week</th>
 
       <%if @sortBy == 'start_time' %>
-        <th class="bg-info"><%= link_to 'Start Time', routines_path(:sortBy => 'start_time'), :id => 'start_time' %></th>
+        <th class="bg-light"><%= link_to 'Start Time', routines_path(:sortBy => 'start_time'), :id => 'start_time' %></th>
       <%else %>
         <th><%= link_to 'Start Time', routines_path(:sortBy => 'start_time'), :id => 'start_time' %></th>
       <%end %>
 
       <%if @sortBy == 'end_time' %>
-        <th class="bg-info"><%= link_to 'End Time', routines_path(:sortBy => 'end_time'), :id => 'end_time' %></th>
+        <th class="bg-light"><%= link_to 'End Time', routines_path(:sortBy => 'end_time'), :id => 'end_time' %></th>
       <%else %>
         <th><%= link_to 'End Time', routines_path(:sortBy => 'end_time'), :id => 'end_time' %></th>
       <%end %>
+      <th></th>
   </thead>
   <tbody>
   <% @routines.each do |routine| %>
@@ -38,4 +37,4 @@
   <% end %>
   </tbody>
 </table>
-<%= link_to "New Routine", new_routine_path, :class => 'btn btn-primary' %>
+<%= link_to "New Routine", new_routine_path, :class => 'btn btn-outline-primary' %>

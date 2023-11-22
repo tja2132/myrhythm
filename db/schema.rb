@@ -10,27 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_09_014537) do
+ActiveRecord::Schema[7.1].define(version: 2) do
   create_table "routines", force: :cascade do |t|
     t.string "title", default: "New Routine"
     t.text "description"
-    t.time "start_time", default: "2000-01-01 01:56:11"
+    t.time "start_time", default: "2000-01-01 02:41:53"
+    t.boolean "mon", default: false, null: false
+    t.boolean "tue", default: false, null: false
+    t.boolean "wed", default: false, null: false
+    t.boolean "thu", default: false, null: false
+    t.boolean "fri", default: false, null: false
+    t.boolean "sat", default: false, null: false
+    t.boolean "sun", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "mon", default: false
-    t.boolean "tue", default: false
-    t.boolean "wed", default: false
-    t.boolean "thu", default: false
-    t.boolean "fri", default: false
-    t.boolean "sat", default: false
-    t.boolean "sun", default: false
-    t.string "start_day"
   end
 
   create_table "tasks", force: :cascade do |t|
     t.integer "routine_id", null: false
     t.integer "sequence"
-    t.string "title"
+    t.string "title", default: "New Task"
     t.string "description"
     t.integer "duration", default: 0
     t.datetime "created_at", null: false
