@@ -1,0 +1,39 @@
+<!--<p style="color: green"><%= notice %></p> -->
+<h3><b>Discover New Routines!</b></h3>
+
+<table class="table table-hover" id="routines">
+  <thead>
+      <%if @sortBy == 'title' %>
+        <th scope="col" class="bg-light"><%= link_to 'Name', routines_path(:sortBy => 'title'), :id => 'name' %></th>
+      <%else %>
+        <th scope="col"><%= link_to 'Name', routines_path(:sortBy => 'title'), :id => 'name'%></th>
+      <%end %>
+      <th>Description</th>
+
+      <%if @sortBy == 'recurrence' %>
+        <th scope="col" class="bg-light"><%= link_to 'Recurrence', routines_path(:sortBy => 'recurrence'), :id => 'recurrence' %></th>
+      <%else %>
+        <th scope="col"><%= link_to 'Recurrence', routines_path(:sortBy => 'recurrence'), :id => 'recurrence' %></th>
+      <%end %>
+
+      <th>Day of the Week</th>
+
+      <%if @sortBy == 'start_time' %>
+        <th class="bg-light"><%= link_to 'Start Time', routines_path(:sortBy => 'start_time'), :id => 'start_time' %></th>
+      <%else %>
+        <th><%= link_to 'Start Time', routines_path(:sortBy => 'start_time'), :id => 'start_time' %></th>
+      <%end %>
+
+      <%if @sortBy == 'end_time' %>
+        <th class="bg-light"><%= link_to 'End Time', routines_path(:sortBy => 'end_time'), :id => 'end_time' %></th>
+      <%else %>
+        <th><%= link_to 'End Time', routines_path(:sortBy => 'end_time'), :id => 'end_time' %></th>
+      <%end %>
+      <th></th>
+  </thead>
+  <tbody>
+  <% @routines.each do |routine| %>
+    <%= render partial: "discover", locals: { routine: routine } %>
+  <% end %>
+  </tbody>
+</table>

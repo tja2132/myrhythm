@@ -8,9 +8,15 @@ Rails.application.routes.draw do
   #end
 
   # Defines the root path route ("/")
-  root to: 'routines#index'
+  root to: 'routines#discover'
 
-  get '/me', action: :show, controller: 'users'
+  as :user do
+    get '/me', :to => 'users#show', :as => :user_root # Rails 3
+  end
+  #as :user do
+  #  get 'users/profile', :to => 'users/registrations#edit'
+  #end
+  get '/discover', :to => 'routines#discover'
 
   resources :routines do
     resources :tasks do

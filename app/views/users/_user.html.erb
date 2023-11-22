@@ -1,6 +1,37 @@
-<tr id="<%= dom_id user %>">
-  <td><%= current_user.first_name %></td>
-  <td><%= current_user.last_name %></td>
-  <td><%= current_user.email %></td>
-  <td><%= current_user.columbia_uni %></td>
-</tr>
+<div class="form-group">
+  <fieldset>
+    <label class="form-label">Email Address</label>
+    <input class="form-control" type="text" readonly="" placeholder=<%= current_user.email %> >
+  </fieldset>
+</div><br>
+<div class="form-group">
+  <fieldset disabled="">
+    <label class="form-label">Password</label>
+    <input class="form-control" type="text" disabled="" placeholder="****************">
+
+  </fieldset>
+</div>
+<br><br>
+<div id="user-info">
+  <fieldset>
+    <legend><strong>User Information</strong></legend>
+    <div class="form-group">
+      <fieldset>
+        <label class="form-label">Columbia UNI</label>
+        <input class="form-control" type="text" readonly="" placeholder=<%= current_user.columbia_uni %> >
+      </fieldset>
+    </div><br>
+    <div class="form-group">
+      <fieldset>
+        <label class="form-label">First Name</label>
+        <input class="form-control" type="text" readonly="" placeholder=<%= current_user.first_name %> >
+      </fieldset>
+    </div><br>
+    <div class="form-group">
+      <fieldset>
+        <label class="form-label">Last Name</label>
+        <input class="form-control" type="text" readonly="" placeholder=<%= current_user.last_name %> >
+      </fieldset>
+    </div><br>
+  </fieldset>
+</div>

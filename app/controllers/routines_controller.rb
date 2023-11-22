@@ -1,6 +1,12 @@
 class RoutinesController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[ discover ]
   before_action :set_routine, only: %i[ show edit update destroy ]
 
+  # GET /routines/discover
+  def discover
+    @routines = Routine.all
+  end
+  
   # GET /routines or /routines.json
   def index
     @routines = current_user.routines.all
@@ -14,13 +20,13 @@ class RoutinesController < ApplicationController
     end
   end
 
-  # GET /routines/1 or /routines/1.json
-  def show
-  end
-
   # GET /routines/new
   def new
     @routine = current_user.routines.new
+  end
+
+  # GET /routines/1 or /routines/1.json
+  def show
   end
 
   # GET /routines/1/edit

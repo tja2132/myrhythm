@@ -20,22 +20,29 @@
         <div class="collapse navbar-collapse">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-          <%= link_to "My Routines", routines_path, :class => 'nav-link'  %>
-          </li><li class="nav-item">
-          <%= link_to "My Calendar", "/calendar", :class => 'nav-link'  %>
+          <%= link_to "Discover", "/discover", :class => 'nav-link'  %>
           </li>
+          <% if user_signed_in? %>
+            <li class="nav-item">
+            <%= link_to "My Routines", routines_path, :class => 'nav-link'  %>
+            </li><li class="nav-item">
+            <%= link_to "My Calendar", "/calendar", :class => 'nav-link'  %>
+            </li>
+          <% end %>
           <li class="nav-item">
-          <%= link_to "My Profile", "/me", :class => 'nav-link'  %>
           </li><!--<li class="nav-item">
         <%= link_to "Sign in", "", :class => 'nav-link'  %>
+        <%= link_to 'Logout', destroy_user_session_path, 'data-turbo-method': :delete  %>  
+                  <%= link_to "My Profile", "/me", :class => 'nav-link'  %>
         </li>-->
           </ul>
           <ul class="navbar-nav ms-md-auto">
-            <% if user_signed_in? %>Welcome <%= current_user.email %>!
-  <%= link_to 'Logout', destroy_user_session_path, 'data-turbo-method': :delete  %>        
-<% else %>
-  <%= link_to 'Login', new_user_session_path  %>  
-<% end %>
+            <% if user_signed_in? %>
+              <%= link_to "Me", "/me", :class => 'bi bi-person btn btn-sm btn-outline-dark' %>      
+            <% else %>
+              <%= link_to ' Login', new_user_session_path, :class => 'bi bi-person btn btn-sm btn-outline-success'  %>  
+            <% end %>
+            
           </ul>
         </div>
       </div>
