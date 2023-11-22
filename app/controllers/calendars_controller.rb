@@ -1,22 +1,25 @@
 class CalendarsController < ApplicationController
 
 
-  def self.get_routines_by_day
-    # map each day to an array of routines occurring on that day
-    routine_by_day = {}
-
-    Routine.all.order(:start_time).each do |routine|
-      Routine.get_days_of_week.each do |day|
-        if Routine.get_days_of_week_str(routine).include? day
-          unless routine_by_day.has_key? day
-            routine_by_day[day] = []
-          end
-          routine_by_day[day].append routine
-        end
-      end
+  def self.get_routines_by_day(day)
+    case day
+    when "Mon"
+      Routine.where(mon: true).order(:start_time)
+    when "Tue"
+      Routine.where(tue: true).order(:start_time)
+    when "Wed"
+      Routine.where(wed: true).order(:start_time)
+    when "Thu"
+      Routine.where(thu: true).order(:start_time)
+    when "Fri"
+      Routine.where(fri: true).order(:start_time)
+    when "Sat"
+      Routine.where(sat: true).order(:start_time)
+    when "Sun"
+      Routine.where(sun: true).order(:start_time)
+    else
+      Routine.all.order(:start_time)
     end
-
-    return routine_by_day
   end
   def show
     @routines = Routine.all

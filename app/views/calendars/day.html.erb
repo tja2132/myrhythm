@@ -1,3 +1,4 @@
+<%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
 
 <div class="container">
 
@@ -9,17 +10,63 @@
   <br> <br>
   <h3><b>My <%= @day %> </b></h3>
 
-  <% routine_by_day = CalendarsController.get_routines_by_day %>
+  <% routines = CalendarsController.get_routines_by_day(@day) %>
+  <% start_hour = routines[0].start_time.beginning_of_hour %>
+  <% end_hour = Routine.end_time(routines[-1]).beginning_of_hour %>
+  <% hr =  start_hour %>
 
-  <%if routine_by_day.has_key?(@day) %>
-    <%routine_by_day[@day].each do |r| %>
-      <%= r.start_time.strftime("%I:%M%P") %> - <%= Routine.end_time(r).strftime("%I:%M%P") %> <br>
-      <%= r.title %> <br>
-      <br>
+
+  <%= bar_chart({"2021-01-01" => 2, "2021-01-02" => 3}) %>
+
+
+  <% while hr < end_hour %>
+
+        <div class="row">
+          <div class="col-6 col-sm-3">
+            <%= hr.strftime("%I:%M%p") %>
+            <br><br>
+          </div>
+
+          <% routines.each do |r|  %>
+
+            <% if (r.start_time >= hr) and (r.start_time <= (hr + 3600))  %>
+
+              <div class="col-6 col-sm-3">
+                <div class="list-group-item list-group-item-primary">
+
+                <%= link_to "#{r.title}", r %>
+
+                </div>
+              </div>
+
+           <% end %>
+
+          <% end %>
+        </div>
+
+
+
+
+<!--    <div class="col-6 col-sm-3">-->
+<!--            <p class="list-group-item list-group-item-action list-group-item-primary">-->
+<!--                          <%#= r.start_time.strftime("%I:%M%P") %> - <%#= Routine.end_time(r).strftime("%I:%M%P") %> <br>-->
+
+<!--                          <%#= r.title %> <br><br><br><br>-->
+<!--            </p>-->
+<!--          </div>-->
+
+<!--          Force next columns to break to new line -->
+<!--          <div class="w-100"></div>-->
+
+<!--        </div>-->
+
+    <% hr += 3600 %>
+
+
     <%end%>
-  <%else%>
-    <li> None </li>
-  <%end%>
+
+
+
 
 </div>
 

@@ -14,6 +14,12 @@ gem "sqlite3", "~> 1.4"
 # https://github.com/excid3/simple_calendar
 gem "simple_calendar", "~> 2.4"
 
+# https://chartkick.com/
+gem "chartkick"
+
+# https://github.com/ankane/groupdate
+gem "groupdate"
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 

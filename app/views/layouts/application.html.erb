@@ -19,15 +19,21 @@
         <a class="navbar-brand" href="/">MyRhythm</a>
         <div class="collapse navbar-collapse">
         <ul class="navbar-nav me-auto">
+
           <li class="nav-item">
           <%= link_to "My Routines", routines_path, :class => 'nav-link'  %>
-          </li><li class="nav-item">
+          </li>
+
+          <li class="nav-item">
           <%= link_to "My Calendar", "/calendar", :class => 'nav-link'  %>
-          </li><!--<li class="nav-item">
-        <%= link_to "Sign in", "", :class => 'nav-link'  %>
-        </li>-->
-          </ul>
-          <ul class="navbar-nav ms-md-auto"></ul>
+          </li>
+
+          <%= link_to "My Day", day_calendar_path(:day => "Mon"), :class => 'nav-link'  %>
+
+          <%#= link_to "Sign in", "", :class => 'nav-link'  %>
+
+        </ul>
+        <ul class="navbar-nav ms-md-auto"></ul>
         </div>
       </div>
     </div>

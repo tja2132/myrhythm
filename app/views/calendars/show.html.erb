@@ -1,16 +1,17 @@
 <h3><b>My Calendar</b></h3>
 
-<% routine_by_day = CalendarsController.get_routines_by_day %>
-
 <%= week_calendar do |date| %>
-  <%if routine_by_day.has_key?(date.strftime("%a").to_s) %>
-    <%routine_by_day[date.strftime("%a")].each do |r| %>
-      <%= r.start_time.strftime("%I:%M%P") %> - <%= Routine.end_time(r).strftime("%I:%M%P") %> <br>
-      <%= r.title %> <br>
-      <br>
+    <% CalendarsController.get_routines_by_day(date.strftime("%a").to_s).each do |r| %>
+      <div class="card bg-light mb-3">
+        <div class="card-header">
+          <%= r.start_time.strftime("%I:%M%P") %> - <%= Routine.end_time(r).strftime("%I:%M%P") %>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to "#{r.title}", r, class: "card-link" %></h5>
+          <p><%= r.description %></p>
+        </div>
+
+      </div>
     <%end%>
-  <%else%>
-    <li> None </li>
-  <%end%>
 
 <% end %>
