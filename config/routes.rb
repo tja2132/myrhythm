@@ -9,9 +9,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   #root to: 'routines#discover'
-  get '/discover' => 'routines#discover'
-  root to: redirect('/discover')
+  get '/home' => 'home#index'
+  root to: redirect('/home')
 
+  get '/discover' => 'routines#discover'
+  
   as :user do
     get '/me', :to => 'users#show', :as => :user_root
   end
