@@ -1,72 +1,32 @@
 <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
 
+<% routines = CalendarsController.get_routines_by_day(@day) %>
+<% routine_timeline = [] %>
+
+<% routines.each do |r| %>
+
+  <% routine_timeline.append([r.title, Time.local(2023,1,1,
+                                                        r.start_time.strftime("%H"),
+                                                        r.start_time.strftime("%M")),
+                                                        Time.local(2023,1,
+                                                        Routine.end_time(r).strftime("%d"),
+                                                        Routine.end_time(r).strftime("%H"),
+                                                        Routine.end_time(r).strftime("%M"))]) %>
+<% end %>
+
 <div class="container">
 
   <% Routine.get_days_of_week.each do |d|  %>
     <%= link_to d, day_calendar_path(:day => d), :class => 'btn btn-primary btn-sm' %>
   <% end %>
 
-
   <br> <br>
-  <h3><b>My <%= @day %> </b></h3>
 
-  <% routines = CalendarsController.get_routines_by_day(@day) %>
-  <% start_hour = routines[0].start_time.beginning_of_hour %>
-  <% end_hour = Routine.end_time(routines[-1]).beginning_of_hour %>
-  <% hr =  start_hour %>
+  <h3> <b> My <%= CalendarsController.get_full_day_str(@day) %> </b> </h3>
 
+  <br>
 
-  <%= bar_chart({"2021-01-01" => 2, "2021-01-02" => 3}) %>
-
-
-  <% while hr < end_hour %>
-
-        <div class="row">
-          <div class="col-6 col-sm-3">
-            <%= hr.strftime("%I:%M%p") %>
-            <br><br>
-          </div>
-
-          <% routines.each do |r|  %>
-
-            <% if (r.start_time >= hr) and (r.start_time <= (hr + 3600))  %>
-
-              <div class="col-6 col-sm-3">
-                <div class="list-group-item list-group-item-primary">
-
-                <%= link_to "#{r.title}", r %>
-
-                </div>
-              </div>
-
-           <% end %>
-
-          <% end %>
-        </div>
-
-
-
-
-<!--    <div class="col-6 col-sm-3">-->
-<!--            <p class="list-group-item list-group-item-action list-group-item-primary">-->
-<!--                          <%#= r.start_time.strftime("%I:%M%P") %> - <%#= Routine.end_time(r).strftime("%I:%M%P") %> <br>-->
-
-<!--                          <%#= r.title %> <br><br><br><br>-->
-<!--            </p>-->
-<!--          </div>-->
-
-<!--          Force next columns to break to new line -->
-<!--          <div class="w-100"></div>-->
-
-<!--        </div>-->
-
-    <% hr += 3600 %>
-
-
-    <%end%>
-
-
-
+  <%= timeline routine_timeline  %>
 
 </div>
 

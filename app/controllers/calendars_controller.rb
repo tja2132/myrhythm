@@ -21,6 +21,26 @@ class CalendarsController < ApplicationController
       Routine.all.order(:start_time)
     end
   end
+
+  def self.get_full_day_str(day)
+    case day
+    when "Mon"
+      "Monday"
+    when "Tue"
+      "Tuesday"
+    when "Wed"
+      "Wednesday"
+    when "Thu"
+      "Thursday"
+    when "Fri"
+      "Friday"
+    when "Sat"
+      "Saturday"
+    else
+      "Sunday"
+    end
+  end
+
   def show
     @routines = Routine.all
   end
