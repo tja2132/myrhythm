@@ -3,7 +3,7 @@ class RoutinesController < ApplicationController
 
   # GET /routines or /routines.json
   def index
-    @routines = Routine.all
+    @routines = current_user.routines.all
     @sortBy = params[:sortBy]
     if @sortBy == "title" or @sortBy == "start_time"
       @routines = @routines.order(@sortBy)
@@ -20,7 +20,7 @@ class RoutinesController < ApplicationController
 
   # GET /routines/new
   def new
-    @routine = Routine.new
+    @routine = current_user.routines.new
   end
 
   # GET /routines/1/edit
@@ -29,7 +29,7 @@ class RoutinesController < ApplicationController
 
   # POST /routines or /routines.json
   def create
-    @routine = Routine.create!(routine_params)
+    @routine = current_user.routines.create!(routine_params)
 
     respond_to do |format|
       if @routine.save
@@ -60,9 +60,14 @@ class RoutinesController < ApplicationController
   end
 
   private
+    # Get parent routine
+    #def get_user
+    #  @user = Routine.find(params[:routine_id])
+    #end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_routine
-      @routine = Routine.find(params[:id])
+      @routine = current_user.routine.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
