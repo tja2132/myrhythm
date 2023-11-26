@@ -21,7 +21,7 @@ Feature: display a weekly calendar view of routines for the week.
     And I should see "Skincare Routine"
     And I should see "Evening Workout"
     And I should see "Weekend Routine"
-@wip
+
   Scenario: routines are displayed on the correct days
     When I am on the calendar page
     Then I should see "Mon" before "Skincare Routine"

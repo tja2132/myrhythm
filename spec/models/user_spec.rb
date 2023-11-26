@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  fixtures :users
+
+  describe "all users" do
+     it "includes all users" do
+       expect(User.all.size()).to eq 1
+     end
+   end
 end

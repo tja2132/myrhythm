@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe TasksController, type: :controller do
+  fixtures :users
+  login_user
   fixtures :routines, :tasks
 
   describe "index" do
@@ -63,9 +65,10 @@ RSpec.describe TasksController, type: :controller do
 
   describe "saves" do
     it "valid task to the database" do
-      starting_db_count = Task.count
-      task = Task.create(:title => "Testing Task", :routine_id => 1)
-      expect(Task.count).to eq (starting_db_count + 1)
+      @routine = Routine.find_by(:title => "Watch meteor shower")
+      starting_count = @routine.tasks.all.count
+      task = @routine.tasks.create!(:title => "Testing Task")
+      expect(@routine.tasks.all.count).to eq (starting_count + 1)
       task.destroy
     end
   end

@@ -1,0 +1,6 @@
+guest_user:
+  email: email@columbia.edu
+  encrypted_password: $2a$12$zk8ZT1GXYPjADI//cU7QmeZskWeBfM3z6uvCPljYupXUgX9eOU4km
+  first_name: guest
+  last_name: user
+  columbia_uni: guest1204

@@ -13,6 +13,7 @@
 # it.
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
 RSpec.configure do |config|
   config.after(:suite) do
     DatabaseCleaner.clean_with :truncation  # clean DB of any leftover data
