@@ -4,7 +4,7 @@ RSpec.describe CalendarController, type: :controller do
   fixtures :users
   login_user
   fixtures :routines
-
+  
   describe "index" do
     it "should have a current_user" do
       # note the fact that you should remove the "validate_session" parameter if this was a scaffold-generated controller

@@ -6,7 +6,11 @@ Feature: display list of tasks for a routine
 
   Background: morning routine has been added to database
 
-    Given the following routines exist:
+    Given the following user exists and is logged in:
+    | first_name | last_name | columbia_uni | email              | password | 
+    | Guest      | User      | aaaa1234     | guest@columbia.edu | 1234qwer |
+
+    Given the following routines exist for the user "guest@columbia.edu":
       | title                         | description                           | mon  | tue | wed | thu | fri | sat | sun |start_time  |
       | Morning Routine               | my morning routine                    | true | true| false | false | false | false| false| 06:30:00 |
 

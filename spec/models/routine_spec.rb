@@ -3,8 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe Routine, type: :model do
-
-fixtures :routines
+  fixtures :routines
+  
   describe "all routines" do
     it "includes all routines" do
       expect(Routine.all.size()).to eq 3
