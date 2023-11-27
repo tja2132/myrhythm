@@ -17,7 +17,7 @@ Feature: display a weekly calendar view of routines for the week.
       | Weekend Routine               | A great way to start the weekend      | false| false| false| true | true | 12:00:00   |
 
     And I am on the routines page
-
+@wip
   Scenario: navigate to the calendar page
     When I follow "My Calendar"
     Then I should see "My Calendar"

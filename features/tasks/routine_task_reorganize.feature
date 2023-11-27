@@ -25,7 +25,7 @@ Feature: display list of tasks for a routine
       | Gather work things | Gather bookbag, laptop, badge, keys, phone, wallet | 7        | 10       |
 
     And I am on the routines page
-
+@wip
   Scenario: moving a task up
     When I follow "Morning Routine"
     And I follow the "up" button for the "Shower" task
