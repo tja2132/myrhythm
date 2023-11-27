@@ -11,25 +11,29 @@ class User < ApplicationRecord
 
   # instead of deleting, indicate the user requested a delete & timestamp it  
   def soft_delete
-    update_attribute(:deleted_on, Time.current)  
+    update_attribute(:inactive, true)  
   end  
   
   # ensure user account is active  
   def active_for_authentication?  
-    super && !deleted_on
+    super && !inactive
   end  
   
   # provide a custom message for a deleted account   
   def inactive_message
-    !deleted_on ? super : :destroyed  
+    !inactive ? super : :destroyed  
   end  
 
-  def self.from_omniauth(auth)
-	  where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-		user.provider = auth.provider
-		user.uid = auth.uid
-		user.email = auth.info.email
-		user.password = Devise.friendly_token[0,20]
-	  end
+  def get_user_routines_by_day(day)
+    self.routines.where(day.downcase => true).order(:start_time)
   end
+  # def self.from_omniauth(auth)
+	#   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+	# 	user.provider = auth.provider
+	# 	user.uid = auth.uid
+	# 	user.email = auth.info.email
+	# 	user.password = Devise.friendly_token[0,20]
+	#   end
+  # end
+
 end

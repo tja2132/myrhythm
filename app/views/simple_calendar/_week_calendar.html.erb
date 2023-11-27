@@ -3,7 +3,7 @@
 <div class="container-fluid">
   <div class="row row-cols-7" style="--bs-gutter-x:1rem;">
     <% date_range.slice(0, 7).each do |day| %>
-      <div class="col"><h3><%= t('date.abbr_day_names')[day.wday] %></h3></div>
+      <div class="col"><h3><%=link_to t('date.abbr_day_names')[day.wday], daily_path(:day => Routine.get_days_of_week[day.wday-1]), :class => 'nav-link' %></h3></div>
     <% end %>
   </div>
   <div class="row row-cols-7" style="--bs-gutter-x:1rem;">

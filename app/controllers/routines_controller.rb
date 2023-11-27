@@ -66,11 +66,6 @@ class RoutinesController < ApplicationController
   end
 
   private
-    # Get parent routine
-    #def get_user
-    #  @user = Routine.find(params[:routine_id])
-    #end
-
     # Use callbacks to share common setup or constraints between actions.
     def set_routine
       @routine = current_user.routines.find(params[:id])
