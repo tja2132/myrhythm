@@ -7,6 +7,16 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+users = [
+    { :email => 'email@columbia.edu', :password => '1234qwer',
+      :first_name => "guest", :last_name => "user", :columbia_uni => "guest1204"}
+  ]
+
+users.each do | user |
+    User.create!(user)
+end
+
+guest_user = User.find_by_email('email@columbia.edu')
 
 routines = [
   {:title => 'Evening Workout', :description => "A quick evening workout", :mon => true, :tue => true, :fri => true,
@@ -36,7 +46,7 @@ routines = [
 ]
 
 routines.each do | routine |
-    Routine.create!(routine)
+  guest_user.routines.create!(routine)
 end
 
 tasks = [{:sequence => 1, :routine => Routine.find_by_title("Evening Workout"), :title => 'Bench press', :description => "5x5rep bench press", duration: 8},

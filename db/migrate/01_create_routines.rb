@@ -3,7 +3,7 @@ class CreateRoutines < ActiveRecord::Migration[7.1]
     create_table :routines do |t|
       t.string :title, default: "New Routine"
       t.text :description
-      t.time :start_time, default: Time.now
+      t.time :start_time, default: Time.new(2000, 1, 1, 0, 0, 0) 
       t.boolean :mon, null: false, default: false
       t.boolean :tue, null: false, default: false
       t.boolean :wed, null: false, default: false

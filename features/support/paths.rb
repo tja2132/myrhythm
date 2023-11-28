@@ -13,10 +13,14 @@ module NavigationHelpers
     def path_to(page_name)
       case page_name
   
-      when /^the (MyRhythm )?home\s?page$/ then '/routines'
+      when /^the (MyRhythm )?home\s?page$/ then '/home'
+      when /^the discover page$/ then '/discover'
       when /^the routines page$/ then '/routines'
       when /^the calendar page$/ then '/calendar'
       when /^the (MyRhythm )?home\s?page sorted by "(.*)"$/ then routines_path(:sortBy => $2)
+      when /^the login page$/ then '/users/sign_in'
+      when /^the signup page$/ then '/users/sign_up'
+
       # when /^the (.*) routine page$/ then '/routines/($1)'
   
       # Add more mappings here.

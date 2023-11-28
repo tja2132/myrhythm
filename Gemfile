@@ -52,6 +52,12 @@ gem "bootsnap", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
+#gem 'therubyracer'
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-digitalocean'
+gem 'omniauth-google'
+gem 'jquery-rails'
 
 group :development do
 # Use console on exceptions pages [https://github.com/rails/web-console]
@@ -73,7 +79,7 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem 'cucumber-rails', require: false
+  gem 'cucumber-rails'
   gem 'cucumber-rails-training-wheels'
   gem "selenium-webdriver"
   gem 'simplecov', :require => false

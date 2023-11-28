@@ -1,12 +1,14 @@
 
-Given /the following routines exist/ do |routines_table|
-    routines_table.hashes.each do |routine|
-      Routine.create(routine)
+Given /the following routines exist for the user "(.*)"/ do |user_email, routines_table|
+  user = User.find_by_email("#{user_email}") 
+  routines_table.hashes.each do |routine|
+      user.routines.create!(routine)
     end
   end
   
-  Then /I should see all the routines/ do
-    Routine.all.each do |routine|
+  Then /I should see all the routines for the email "(.*)"/ do | email |
+    user = User.find_by_email("#{email}")
+    user.routines.all.each do |routine|
       step %{I should see "#{routine.title}"}
     end
   end

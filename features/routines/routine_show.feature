@@ -6,15 +6,19 @@ Feature: display all relevant information about a single routine and ensure it u
 
   Background: routines have been added to database
 
-    Given the following routines exist:
+    Given the following user exists and is logged in:
+    | first_name | last_name | columbia_uni | email              | password | 
+    | Guest      | User      | aaaa1234     | guest@columbia.edu | 1234qwer |
+
+    Given the following routines exist for the user "guest@columbia.edu":
       | title                       | description                        | mon  | tue | wed | thu | fri | sat | sun  | start_time |
       | Study Routine               | A nightly study plan               | true | true| true| true| true| true| false| 12:00:00   |
 
-    And I am on the MyRhythm home page
+    And I am on the routines page
     Then I should see "Study Routine"
 
   Scenario: View the Routine
-    Given I am on the MyRhythm home page
+    Given I am on the routines page
     When I follow "Study Routine"
     Then I should see "Study Routine"
     And I should see "Recurrence: Mon, Tue, Wed, Thu, Fri, Sat"
@@ -23,7 +27,7 @@ Feature: display all relevant information about a single routine and ensure it u
     And I should see "End Time: 12:00pm"
 
   Scenario: adding a task to a routine with a non-zero duration increases the routine end time
-    Given I am on the MyRhythm home page
+    Given I am on the routines page
     When I follow "Study Routine"
     And I should see "Total Duration: 0 min"
     And I should see "Start Time: 12:00pm"

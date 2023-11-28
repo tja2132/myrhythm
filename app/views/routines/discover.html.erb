@@ -1,0 +1,23 @@
+<!--<p style="color: green"><%= notice %></p> -->
+<h2><b>Discover New Routines!</b></h2>
+<br>
+<div class="container-fluid">
+  <div class="row row-cols-4" style="--bs-gutter-x:1.25rem;" >
+    <% @routines.each do | r | %>
+    <div class="col">
+      <div class="card bg-light mb-3">
+        <div class="card-header">
+          <%= r.title %>
+        </div>
+        <div class="card-body">
+          <p><%= r.description %></p>
+          <p class="card-title"><%= link_to "Tasks", r, class: "card-link"%>
+          <span class="badge bg-info rounded-pill"><%= r.tasks.count %></span></p>
+          <%= link_to "Show", r, :class => 'btn btn-primary btn-sm', :id => "view_routine_#{r.id}"%>
+          <%= link_to " Copy", edit_routine_path(r), :class => 'bi bi-pencil-square btn btn-outline-primary btn-sm', :id => "edit_routine_#{r.id}"%>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>
