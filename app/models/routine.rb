@@ -2,6 +2,10 @@ class Routine < ApplicationRecord
   has_many :tasks, dependent: :destroy
   validates :title, presence: true
 
+  def self.all_recurrence
+    ['Daily', 'Weekly', 'None']
+  end
+
   # three day abbreviations consistent with strftime("%a")
   def self.get_days_of_week()
      ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']

@@ -1,9 +1,12 @@
 class RoutinesController < ApplicationController
   before_action :set_routine, only: %i[ show edit update destroy ]
+  Time.zone = 'EST'
 
   # GET /routines or /routines.json
   def index
     @routines = Routine.all
+    @all_recurrence = Routine.all_recurrence
+    @recurrence_to_show_hash = recurrence_hash
     @sortBy = params[:sortBy]
     if @sortBy == "title" or @sortBy == "start_time"
       @routines = @routines.order(@sortBy)
@@ -11,6 +14,8 @@ class RoutinesController < ApplicationController
       @routines = @routines.sort_by { |routine | Routine.get_recurrence_str(routine) }
     elsif @sortBy == "end_time"
       @routines = @routines.sort_by { |routine | routine.start_time.nil? ? Time.zone.parse('1970-01-01 0:0:0') : routine.start_time + Routine.total_duration(routine).minutes}
+    elsif @sortBy == "total_duration"
+      @routines = @routines.sort_by { |routine | Routine.total_duration(routine) }
     end
   end
 
@@ -21,6 +26,7 @@ class RoutinesController < ApplicationController
   # GET /routines/new
   def new
     @routine = Routine.new
+    @routine.created_at = Time.current
   end
 
   # GET /routines/1/edit
@@ -45,6 +51,7 @@ class RoutinesController < ApplicationController
       if @routine.update(routine_params)
         format.html { redirect_to routine_url(@routine), notice: "Routine was successfully updated." }
         format.json { render :show, status: :ok, location: @routine }
+        @routine.updated_at = Time.current
       end
     end
   end
@@ -68,5 +75,15 @@ class RoutinesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def routine_params
       params.require(:routine).permit(:title, :description, :daysofweek, :recurrence, :start_time, :created, :updated, :mon, :tue, :wed, :thu, :fri, :sat, :sun)
+    end
+
+    def recurrence_list
+      params[:recurrence]&.keys || session[:recurrence] || Routine.all_recurrence
+    end
+
+    def recurrence_hash
+      puts "mel"
+      puts recurrence_list
+      Hash[recurrence_list.collect { |item| [item, "1"] }]
     end
 end
