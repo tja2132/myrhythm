@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :omniauthable#, :omniauth_providers => [:digitalocean]
 
   has_many :routines, dependent: :destroy
+  has_many :completions, dependent: :destroy
   validates :columbia_uni, uniqueness: { case_sensitive: false }
   validates :email, presence: true, uniqueness: { case_sensitive: false }
 

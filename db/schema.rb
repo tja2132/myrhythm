@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_22_075047) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_29_070107) do
+  create_table "completions", force: :cascade do |t|
+    t.integer "users_id", null: false
+    t.integer "routines_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["routines_id"], name: "index_completions_on_routines_id"
+    t.index ["users_id"], name: "index_completions_on_users_id"
+  end
+
   create_table "routines", force: :cascade do |t|
     t.string "title", default: "New Routine"
     t.text "description"
@@ -59,6 +68,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_22_075047) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "completions", "routines", column: "routines_id"
+  add_foreign_key "completions", "users", column: "users_id"
   add_foreign_key "routines", "users"
   add_foreign_key "tasks", "routines"
 end
