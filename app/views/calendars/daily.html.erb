@@ -16,17 +16,21 @@
 
 <div class="container">
 
-  <% Routine.get_short_days_of_week.each do |d|  %>
-    <%= link_to d, daily_path(:day => d), :class => 'btn btn-primary btn-sm' %>
-  <% end %>
-
-  <br> <br>
-
   <h3> <b> My <%= Routine.get_full_days_of_week().grep(/^#{@day}/).first %> </b> </h3>
 
   <br>
 
   <%= timeline routine_timeline  %>
+
+  <div class="container text-center">
+    <div class="row justify-content-center">
+      <div class="col-auto">
+        <% Routine.get_short_days_of_week.each do |d|  %>
+          <%= link_to d, daily_path(:day => d), :class => 'btn btn-primary btn-md mx-2' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
 </div>
 
