@@ -3,8 +3,11 @@
   <td><%= routine.description %></td>
   <td><%= Routine.get_routine_recurrence(routine) %></td>
 
-  <td><%= Routine.get_routine_days_of_week_short_str(routine) %> 
-     </td>
+  <td>
+    <% Routine.get_routine_days_of_week_short_list(routine).each do |d| %>
+      <%= link_to d, daily_path(:day => d) %>
+    <% end %>
+ </td>
 
   <% if routine.start_time %>
   <td><%= routine.start_time.strftime("%I:%M%P") %></td>

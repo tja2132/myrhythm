@@ -1,26 +1,58 @@
- <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+<%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+
+
+<div class="p-5 mb-4 bg-body-tertiary rounded-3">
+  <div class="container">
+    <h1>MyRhythm</h1>
+    <h3>Sync to the Beat of Your life</h3>
+    <p>
+      <%= button_to 'Discover New Routines', "/discover", :method => :get, :class => "btn btn-primary" %>
+    </p>
+  </div>
+</div>
+
+<div class="row align-items-md-stretch">
+  <div class="col-md-6">
+    <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+      <h2>Find your own rhythm.</h2>
+      <p>Maximize your time and minimize distractions</p>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+      <h2>Save time, decrease stress, find your flow.</h2>
+      <p>Create smart routines that help you </p>
+    </div>
+  </div>
+
+
+  <div class="p-5 mb-4">
     <div class="container">
-      <h1>MyRhythm</h1>
-      <h3>Sync to the Beat of Your life</h3>
-      <br>
+    <h2>Plan your day efficiently</h2>
+    <%= timeline [
+                   ["Morning Skincare", Time.local(2023,1,1,8,0), Time.local(2023,1,1,8,15)],
+                   ["Morning Podcast", Time.local(2023,1,1,8,0), Time.local(2023,1,1,9,0)],
+                   ["Commute", Time.local(2023,1,1,8,30), Time.local(2023,1,1,9,0)],
+                   ["Work", Time.local(2023,1,1,9,0), Time.local(2023,1,1,17,0)],
+                   ["Lunch Break", Time.local(2023,1,1,12,0), Time.local(2023,1,1,12,45)],
+                   ["Evening Workout", Time.local(2023,1,1,17,10), Time.local(2023,1,1,18,0)],
+                   ["Commute", Time.local(2023,1,1,18,0), Time.local(2023,1,1,18,40)],
+                   ["Prepare Dinner", Time.local(2023,1,1,18,45), Time.local(2023,1,1,19,0)],
+                   ["Dinner", Time.local(2023,1,1,19,0), Time.local(2023,1,1,19,45)],
+                 ], height: "380px" %>
+    </div>
+  </div>
+
+  <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+    <div class="container">
+      <h3>Join the MyRhythm Community</h3>
       <p>
-        <%= button_to 'Discover New Routines', "/discover", :method => :get,  :class => "btn btn-primary btn-lg"%>
+        <%= button_to 'Sign Up', "/users/sign_up", :method => :get, :class => "btn btn-primary" %>
       </p>
     </div>
   </div>
 
-  <div class="row align-items-md-stretch">
-    <div class="col-md-6">
-      <div class="h-100 p-5 bg-body-tertiary border rounded-3">
-        <h2>Find your own rhythm.</h2>
-        <p>Maximize your time and minimize distractions</p>
-      </div>
-    </div>
+</div>
 
-    <div class="col-md-6">
-      <div class="h-100 p-5 bg-body-tertiary border rounded-3">
-        <h2>Save time, decrease stress, find your flow.</h2>
-        <p>Create smart routines that help you </p>
-      </div>
-    </div>
-  </div>
+
