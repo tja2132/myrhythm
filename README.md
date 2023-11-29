@@ -133,3 +133,4 @@ Reference Links:
 * [Simple Calendar](https://github.com/excid3/simple_calendar)
 * [Devise](https://github.com/heartcombo/devise)
 * [Chartkick](https://chartkick.com/)
+* [Google charts - timeline](https://developers.google.com/chart/interactive/docs/gallery/timeline)
