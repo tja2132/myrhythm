@@ -1,0 +1,59 @@
+<h3><b>My Insights</b></h3>
+
+
+<div class="container">
+  <div class="container text-center">
+
+
+        <%# @completions.each do |c| %>
+        <%#= "Completed " + c.routine.title + " on " + c.created_at.to_s %>
+<!--          <br>-->
+        <%# end %>
+
+        <br>
+
+        <% ["Day", "Week", "Month"].each do |g|  %>
+          <%= link_to "By " + g, :completion_grouping => g %>
+        <% end %>
+
+        <% if @timeframe == 0 %>
+
+        <% else %>
+
+        <% end%>
+
+<!--        TODO: @completions.where('created_at >= ?', 1.week.ago).count-->
+
+        <% if @completion_grouping == "Day" %>
+          <%= line_chart @completions.group_by_day(:created_at).count %>
+
+        <% elsif @completion_grouping == "Week" %>
+          <%= line_chart @completions.group_by_week(:created_at).count %>
+
+        <% elsif @completion_grouping == "Month" %>
+          <%= line_chart @completions.group_by_month(:created_at).count %>
+
+        <% else %>
+          <%= line_chart @completions.group_by_year(:created_at).count %>
+
+        <% end %>
+
+
+
+
+        <br>
+
+        <% [7, 30, 90].each do |t|  %>
+          <%= link_to t.to_s + " days", :timeframe => t %>
+        <% end %>
+        <%= link_to "All time", :timeframe => 0 %>
+
+        <br>
+
+
+        <br><br><br>
+
+    </div>
+  </div>
+
+</div>

@@ -32,6 +32,10 @@ Rails.application.routes.draw do
     get :day, on: :member    
   end
 
+  resource :completions do
+    get '/completions', :to => 'completions#show'
+  end
+
   get '/daily' => 'calendars#daily'
   get '/weekly' => 'calendars#weekly'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
