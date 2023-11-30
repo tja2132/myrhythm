@@ -4,7 +4,14 @@ class RoutinesController < ApplicationController
 
   # GET /routines/discover
   def discover
-    @routines = Routine.where(:is_public => true)
+    @all_tags = Routine.get_tags
+    if params[:tags].nil?
+      @tags_to_show = []
+    else
+      tagHash = params[:tags]
+      @tags_to_show = tagHash.keys
+    end
+    @routines = Routine.with_tags(@tags_to_show)
   end
   
   # GET /routines or /routines.json

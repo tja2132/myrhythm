@@ -13,7 +13,7 @@ class Routine < ApplicationRecord
   end
 
   def self.get_tags()
-    ['Work', 'School', 'Home']
+    ['work', 'school', 'home']
   end
 
   def self.get_routine_recurrence(routine)
@@ -98,4 +98,18 @@ class Routine < ApplicationRecord
       return routine.start_time + Routine.total_duration(routine).minutes
     end
   end
+
+  def self.with_tags(tag_list)
+    if tag_list.empty?
+      return Routine.where(:is_public => true)
+    else
+      routines_with_tags = []
+      tag_list.each do |tag|
+        puts tag
+        routines_with_tags.concat(Routine.where("#{tag} = true AND is_public = true"))
+      end
+      return routines_with_tags
+    end
+  end
+
 end
