@@ -25,33 +25,46 @@
 <!--        TODO: @completions.where('created_at >= ?', 1.week.ago).count-->
 
         <% if @completion_grouping == "Day" %>
+
+          <h2> Tasks Completed in the last 30 days </h2>
+
+          <% @completions = @completions.where('created_at >= ?', 30.day.ago)  %>
+
           <%= line_chart @completions.group_by_day(:created_at).count %>
 
         <% elsif @completion_grouping == "Week" %>
+
+          <h2> Tasks Completed in the last 3 months </h2>
+
+          <% @completions = @completions.where('created_at >= ?', 3.month.ago)  %>
+
           <%= line_chart @completions.group_by_week(:created_at).count %>
 
         <% elsif @completion_grouping == "Month" %>
-          <%= line_chart @completions.group_by_month(:created_at).count %>
 
-        <% else %>
-          <%= line_chart @completions.group_by_year(:created_at).count %>
+        <h2> Tasks Completed in the last Year </h2>
+
+      <% @completions = @completions.where('created_at >= ?', 1.year.ago)  %>
+
+      <%= line_chart @completions.group_by_month(:created_at).count %>
 
         <% end %>
 
+    <br>
+
+    <h2> Most productive day of the week </h2>
+
+    <%= column_chart @completions.group_by_day_of_week(:created_at, format: "%a").count %>
+
+    <h2> Most Completed Routines </h2>
+
+    <%= pie_chart @completions.group(:routine_id ).count %>
+
+    <%#= pie_chart @completions.joins(:routine).group(:title).count %>
 
 
 
-        <br>
-
-        <% [7, 30, 90].each do |t|  %>
-          <%= link_to t.to_s + " days", :timeframe => t %>
-        <% end %>
-        <%= link_to "All time", :timeframe => 0 %>
-
-        <br>
-
-
-        <br><br><br>
+    <br><br><br>
 
     </div>
   </div>

@@ -1,5 +1,4 @@
 class CompletionsController < ApplicationController
-  before_action :set_timeframe, only: %i[ show ]
   before_action :set_completion_grouping, only: %i[ show ]
 
   def show
@@ -7,15 +6,12 @@ class CompletionsController < ApplicationController
   end
 
   private
-  def set_timeframe
-    @timeframe = params[:timeframe] || 7
-  end
 
   def set_completion_grouping
-    @completion_grouping = params[:completion_grouping] || "Day"
+    @completion_grouping = params[:completion_grouping] || "Week"
   end
 
   def completion_params
-    params.require(:completion).permit(:routine, :user, :completion_grouping, :timeframe, :created, :updated)
+    params.require(:completion).permit(:routine, :user, :completion_grouping, :created, :updated)
   end
 end

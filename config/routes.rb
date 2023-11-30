@@ -26,15 +26,14 @@ Rails.application.routes.draw do
       get :up, on: :member
       get :down, on: :member
     end
+    get :complete, on: :member
   end
 
   resource :calendar do
     get :day, on: :member    
   end
 
-  resource :completions do
-    get '/completions', :to => 'completions#show'
-  end
+  resource :completions
 
   get '/daily' => 'calendars#daily'
   get '/weekly' => 'calendars#weekly'
