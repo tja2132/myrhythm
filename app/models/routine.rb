@@ -10,7 +10,11 @@ class Routine < ApplicationRecord
 
   def self.get_short_days_of_week()
     ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
- end
+  end
+
+  def self.get_tags()
+    ['Work', 'School', 'Home']
+  end
 
   def self.get_routine_recurrence(routine)
 
@@ -57,6 +61,22 @@ class Routine < ApplicationRecord
     end
 
     return daysofweek
+
+  end
+
+  def self.get_tag_str(routine)
+
+    tags = Routine.get_tags()
+    tags = tags.map { |tag| tag.downcase }
+
+    selectedTags = []
+    tags.each do |tag|
+      if routine.read_attribute(tag)
+        selectedTags.append(tag.capitalize)
+      end
+    end
+
+    return selectedTags.join(', ')
 
   end
 

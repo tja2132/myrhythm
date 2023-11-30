@@ -4,7 +4,7 @@ class RoutinesController < ApplicationController
 
   # GET /routines/discover
   def discover
-    @routines = Routine.all
+    @routines = Routine.where(:is_public => true)
   end
   
   # GET /routines or /routines.json
@@ -73,6 +73,6 @@ class RoutinesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def routine_params
-      params.require(:routine).permit(:title, :description, :daysofweek, :recurrence, :start_time, :created, :updated, :mon, :tue, :wed, :thu, :fri, :sat, :sun)
+      params.require(:routine).permit(:title, :description, :daysofweek, :recurrence, :start_time, :created, :updated, :mon, :tue, :wed, :thu, :fri, :sat, :sun, :is_public, :home, :work, :school)
     end
 end

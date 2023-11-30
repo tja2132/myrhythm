@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_22_075047) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_30_054306) do
   create_table "routines", force: :cascade do |t|
     t.string "title", default: "New Routine"
     t.text "description"
@@ -25,6 +25,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_22_075047) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
+    t.boolean "is_public", default: false, null: false
+    t.boolean "home", default: false, null: false
+    t.boolean "work", default: false, null: false
+    t.boolean "school", default: false, null: false
     t.index ["user_id"], name: "index_routines_on_user_id"
   end
 

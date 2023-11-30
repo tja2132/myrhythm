@@ -49,8 +49,32 @@
    </div><div class="form-check">  
     <%= form.check_box :sun, class: "form-check-input"  %>
     <%= form.label :sun, class: "form-check-label"  %>
-    
+  </div>
   </fieldset>
+
+    <br>
+
+  <fieldset class="form-group">
+    <legend class="mt-4">Tags</legend>
+    <div class="form-check">
+      <%= form.check_box :home, class: "form-check-input" %>
+      <%= form.label :home, class: "form-check-label" %>
+    </div><div class="form-check">
+    <%= form.check_box :work, class: "form-check-input"  %>
+    <%= form.label :work, class: "form-check-label"  %>
+  </div><div class="form-check">
+    <%= form.check_box :school, class: "form-check-input"  %>
+    <%= form.label :school, class: "form-check-label"  %>
+  </div>
+  </fieldset>
+
+
+  <h2>Privacy</h2>
+    <div class="form-check">
+    <%= form.check_box :is_public, class: "form-check-input"  %>
+    <%= form.label :is_public, class: "form-check-label"  %>
+  </div>
+
 <br>
   <div>
     <%= link_to "Cancel", @routine, :class => 'btn btn-outline-primary'  %>
