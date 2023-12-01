@@ -14,11 +14,14 @@ Rails.application.routes.draw do
   get '/discover' => 'routines#discover'
   
   as :user do
-    get '/me', :to => 'users#show', :as => :user_root
+    get '/me', :to => 'users#show', :as => :user
   end
 
   authenticated :user do
     root to: 'routines#index', as: :authenticated_root
+    resources :users do
+      post 'update_settings'
+    end
   end
   
   resources :routines do
