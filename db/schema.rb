@@ -10,20 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_29_070107) do
-  create_table "completions", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "routine_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["routine_id"], name: "index_completions_on_routine_id"
-    t.index ["user_id"], name: "index_completions_on_user_id"
-  end
-
+ActiveRecord::Schema[7.1].define(version: 2023_11_30_054306) do
   create_table "routines", force: :cascade do |t|
     t.string "title", default: "New Routine"
     t.text "description"
-    t.time "start_time", default: "2000-01-01 05:00:00"
+    t.time "start_time", default: "2000-01-01 08:00:00"
     t.boolean "mon", default: false, null: false
     t.boolean "tue", default: false, null: false
     t.boolean "wed", default: false, null: false
@@ -34,6 +25,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_29_070107) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
+    t.boolean "is_public", default: false, null: false
+    t.boolean "home", default: false, null: false
+    t.boolean "work", default: false, null: false
+    t.boolean "school", default: false, null: false
     t.index ["user_id"], name: "index_routines_on_user_id"
   end
 
@@ -68,8 +63,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_29_070107) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "completions", "routines"
-  add_foreign_key "completions", "users"
   add_foreign_key "routines", "users"
   add_foreign_key "tasks", "routines"
 end

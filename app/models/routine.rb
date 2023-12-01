@@ -10,7 +10,11 @@ class Routine < ApplicationRecord
 
   def self.get_short_days_of_week()
     ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
- end
+  end
+
+  def self.get_tags()
+    ['work', 'school', 'home']
+  end
 
   def self.get_routine_recurrence(routine)
 
@@ -60,6 +64,22 @@ class Routine < ApplicationRecord
 
   end
 
+  def self.get_tag_str(routine)
+
+    tags = Routine.get_tags()
+    tags = tags.map { |tag| tag.downcase }
+
+    selectedTags = []
+    tags.each do |tag|
+      if routine.read_attribute(tag)
+        selectedTags.append(tag.capitalize)
+      end
+    end
+
+    return selectedTags.join(', ')
+
+  end
+
   def self.total_duration(routine)
     total_duration = 0
     tasks = routine.tasks
@@ -78,4 +98,18 @@ class Routine < ApplicationRecord
       return routine.start_time + Routine.total_duration(routine).minutes
     end
   end
+
+  def self.with_tags(tag_list)
+    if tag_list.empty?
+      return Routine.where(:is_public => true)
+    else
+      routines_with_tags = []
+      tag_list.each do |tag|
+        puts tag
+        routines_with_tags.concat(Routine.where("#{tag} = true AND is_public = true"))
+      end
+      return routines_with_tags
+    end
+  end
+
 end
