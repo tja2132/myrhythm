@@ -109,23 +109,27 @@ class Routine < ApplicationRecord
     else
       routines_with_tags = []
       tag_list.each do |tag|
-        puts tag
         routines_with_tags.concat(Routine.where("#{tag} = true AND is_public = true"))
       end
       return routines_with_tags
     end
   end
 
-  def self.with_recurrence(recurrence_list)
+  def self.with_recurrence(routines, recurrence_list)
     if recurrence_list.empty?
       return Routine.where(:is_public => true)
     else
+      puts "list"
+      puts recurrence_list
       routines_with_recurrence = []
-      recurrence_list.each do |recurrence|
-        puts recurrence
-        # routines_with_recurrence.concat(where(recurrence: recurrence_list.map(&:upcase)))
-        # routines_with_recurrence.concat(Routine.where("Routine.get_routine_recurrence() = #{recurrence}"))
-        routines_with_recurrence.concat(Routine.where("recurrence = #{recurrence}"))
+      routines.each do |routine_select|
+        recurrence_val = Routine.get_routine_recurrence(routine_select)
+        puts routine_select.title
+        puts recurrence_val
+        if recurrence_list.include?(recurrence_val)
+          puts "going to add"
+          routines_with_recurrence.concat(Routine.where(id: routine_select.id))
+        end
       end
       return routines_with_recurrence
     end

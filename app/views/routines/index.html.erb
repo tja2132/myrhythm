@@ -17,7 +17,7 @@
           <% @all_recurrence.each do |recurrence| %>
             <div class="form-check  form-check-inline">
               <%= label_tag "recurrence[#{recurrence}]", recurrence, class: 'form-check-label' %>
-              <%= check_box_tag "recurrence[#{recurrence}]", '1', (@recurrence_to_show_hash.include?(recurrence)),
+              <%= check_box_tag "recurrence[#{recurrence}]", '1', (@recurrence_to_show.include?(recurrence)),
                                 class: 'form-check-input' %>
             </div>
           <% end %>
@@ -30,7 +30,7 @@
           <% @all_recurrence.each do |recurrence| %>
             <div class="form-check  form-check-inline">
               <%= label_tag "recurrence[#{recurrence}]", recurrence, class: 'form-check-label' %>
-              <%= check_box_tag "recurrence[#{recurrence}]", '1', (@recurrence_to_show_hash.include?(recurrence)),
+              <%= check_box_tag "recurrence[#{recurrence}]", '1', (@recurrence_to_show.include?(recurrence)),
                                 class: 'form-check-input' %>
             </div>
           <% end %>
