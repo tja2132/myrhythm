@@ -1,14 +1,14 @@
 
-<div class="container">
+<div class="container-fluid">
 
-  <div class="d-flex flex-column">
-
-    <div class="align-self-end">
-      <%= link_to "Daily Calendar", daily_path(:day => Date.today.strftime("%a")), :class => 'btn btn-primary btn-sm mx-2' %>
+  <div class="d-flex justify-content-between align-items-center">
+        <h2 class="me-auto flex-child">
+          <strong>My Week</strong>
+        </h2>
+      <span class="ms-md-auto flex-child">
+        <%= link_to "Daily Calendar", daily_path(:day => Date.today.strftime("%a")), :class => 'btn btn-outline-info mx-2' %>
+      </span>
     </div>
-    <h2><b>My Week</b></h2>
-
-  </div>
 
 <% if current_user.routines.size > 0 %>
   <%= week_calendar do |date| %>

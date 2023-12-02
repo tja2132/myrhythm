@@ -14,16 +14,15 @@
 
 <% if current_user.routines.size > 0 %>
 
-  <div class="container">
+  <div class="container-fluid">
 
-    <div class="d-flex flex-column">
-
-      <div class="align-self-end">
-        <%= link_to "Weekly Calendar", weekly_path, :class => 'btn btn-primary btn-sm mx-2' %>
-      </div>
-
-    <h3> <b> My <%= Routine.get_full_days_of_week().grep(/^#{@day}/).first %> </b> </h3>
-
+     <div class="d-flex justify-content-between align-items-center">
+        <h2 class="me-auto flex-child">
+          <strong> My <%= Routine.get_full_days_of_week().grep(/^#{@day}/).first %> </strong>
+        </h2>
+      <span class="ms-md-auto flex-child">
+        <%= link_to "Weekly Calendar", weekly_path, :class => 'btn btn-primary btn-outline-info mx-2' %>
+      </span>
     </div>
 
     <%= timeline routine_timeline  %>
