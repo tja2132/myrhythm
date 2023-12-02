@@ -119,15 +119,10 @@ class Routine < ApplicationRecord
     if recurrence_list.empty?
       return Routine.where(:is_public => true)
     else
-      puts "list"
-      puts recurrence_list
       routines_with_recurrence = []
       routines.each do |routine_select|
         recurrence_val = Routine.get_routine_recurrence(routine_select)
-        puts routine_select.title
-        puts recurrence_val
         if recurrence_list.include?(recurrence_val)
-          puts "going to add"
           routines_with_recurrence.concat(Routine.where(id: routine_select.id))
         end
       end

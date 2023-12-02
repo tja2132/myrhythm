@@ -24,9 +24,6 @@ class RoutinesController < ApplicationController
       @recurrence_to_show = recurrenceHash.keys
     end
     @routines = Routine.with_recurrence(current_user.routines.all, @recurrence_to_show)
-    # @routines = current_user.routines #.with_recurrence(recurrence_list)
-    # @routines = Routine.with_recurrence(recurrence_list) #@recurrence_to_show_hash)
-    # @recurrence_to_show_hash = recurrence_hash
     @all_recurrence = Routine.all_recurrence
     @sortBy = params[:sortBy]
     if @sortBy == "title" or @sortBy == "start_time"
@@ -98,11 +95,4 @@ class RoutinesController < ApplicationController
       params.require(:routine).permit(:title, :description, :daysofweek, :recurrence, :start_time, :created, :updated, :mon, :tue, :wed, :thu, :fri, :sat, :sun, :is_public, :home, :work, :school)
     end
 
-    # def recurrence_list
-    #   params[:recurrence]&.keys || session[:recurrence] || Routine.all_recurrence
-    # end
-    #
-    # def recurrence_hash
-    #   Hash[recurrence_list.collect { |item| [item, "1"] }]
-    # end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_02_171947) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_02_183631) do
   create_table "routines", force: :cascade do |t|
     t.string "title", default: "New Routine"
     t.text "description"
@@ -29,8 +29,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_02_171947) do
     t.boolean "home", default: false, null: false
     t.boolean "work", default: false, null: false
     t.boolean "school", default: false, null: false
-    t.string "recurrence"
-    t.boolean "active", default: true
     t.index ["user_id"], name: "index_routines_on_user_id"
   end
 
