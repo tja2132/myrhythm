@@ -130,10 +130,8 @@ class RoutinesController < ApplicationController
   def complete
     @routine.completions.create
 
-    puts " TEST IS THIS CALLED?"
-
     respond_to do |format|
-      format.html { redirect_to routines_url, notice: "Routine was successfully completed." }
+      format.html { redirect_to routines_url, notice: @routine.title + " was successfully completed." }
       format.json { head :no_content }
     end
   end

@@ -106,7 +106,6 @@ class Routine < ApplicationRecord
     else
       routines_with_tags = []
       tag_list.each do |tag|
-        puts tag
         routines_with_tags.concat(Routine.where("#{tag} = true AND is_public = true"))
       end
       return routines_with_tags
