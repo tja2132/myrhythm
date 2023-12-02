@@ -23,11 +23,14 @@ class RoutinesController < ApplicationController
       recurrenceHash = params[:recurrence]
       @recurrence_to_show = recurrenceHash.keys
     end
+    @sortBy = params[:sortBy]
     @routines = Routine.with_recurrence(current_user.routines.all, @recurrence_to_show)
     @all_recurrence = Routine.all_recurrence
-    @sortBy = params[:sortBy]
-    if @sortBy == "title" or @sortBy == "start_time"
-      @routines = @routines.order(@sortBy)
+
+    if @sortBy == "title"
+      @routines = @routines.sort_by { |routine | routine.title }
+    elsif @sortBy == "start_time"
+      @routines = @routines.sort_by { |routine | routine.start_time }
     elsif @sortBy == "recurrence"
       @routines = @routines.sort_by { |routine | Routine.get_routine_recurrence(routine) }
     elsif @sortBy == "end_time"
