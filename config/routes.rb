@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   root to: redirect('/home')
 
   get '/discover' => 'routines#discover'
+
+  get '/edit_routine_copy' => 'routines#edit_routine_copy'
+
+  post '/copy_routine' => 'routines#copy_routine'
   
   as :user do
     get '/me', :to => 'users#show', :as => :user_root
