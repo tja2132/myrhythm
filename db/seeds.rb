@@ -133,6 +133,4 @@ guest_user.routines.all.each do |r|
       end
     end
   end
-
-
 end

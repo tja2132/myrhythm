@@ -1,6 +1,6 @@
 class RoutinesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[ discover discover_show]
-  before_action :set_routine, only: %i[ show edit update destroy edit_routine_copy]
+  before_action :set_routine, only: %i[ show edit complete update destroy edit_routine_copy]
 
   # GET /routines/discover
   def discover
@@ -117,7 +117,9 @@ class RoutinesController < ApplicationController
   end
 
   def complete
-    @routine.completions.create!
+    @routine.completions.create
+
+    puts " TEST IS THIS CALLED?"
 
     respond_to do |format|
       format.html { redirect_to routines_url, notice: "Routine was successfully completed." }
