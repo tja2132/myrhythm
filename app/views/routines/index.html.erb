@@ -3,6 +3,18 @@
 
 <table class="table table-hover" id="routines">
   <thead>
+      <%= form_tag routines_path, method: :get, id: 'recurrence_form' do %>
+        Recurrence Filter:
+        <% @all_recurrence.each do |recurrence| %>
+          <div class="form-check  form-check-inline">
+            <%= label_tag "recurrence[#{recurrence}]", recurrence, class: 'form-check-label' %>
+            <%= check_box_tag "recurrence[#{recurrence}]", '1', (@recurrence_to_show.include?(recurrence)),
+                              class: 'form-check-input' %>
+          </div>
+        <% end %>
+        <%= submit_tag 'Refresh', id: 'recurrence_submit', class: 'btn btn-primary' %>
+      <% end %>
+
       <%if @sortBy == 'title' %>
         <th scope="col" class="bg-light"><%= link_to 'Name', routines_path(:sortBy => 'title'), :id => 'name' %></th>
       <%else %>
@@ -12,30 +24,8 @@
 
       <%if @sortBy == 'recurrence' %>
         <th scope="col" class="bg-light"><%= link_to 'Recurrence', routines_path(:sortBy => 'recurrence'), :id => 'recurrence' %></th>
-        <%= form_tag routines_path, method: :get, id: 'recurrence_form' do %>
-          Recurrence Filter:
-          <% @all_recurrence.each do |recurrence| %>
-            <div class="form-check  form-check-inline">
-              <%= label_tag "recurrence[#{recurrence}]", recurrence, class: 'form-check-label' %>
-              <%= check_box_tag "recurrence[#{recurrence}]", '1', (@recurrence_to_show.include?(recurrence)),
-                                class: 'form-check-input' %>
-            </div>
-          <% end %>
-          <%= submit_tag 'Refresh', id: 'recurrence_submit', class: 'btn btn-primary' %>
-        <% end %>
       <%else %>
         <th scope="col"><%= link_to 'Recurrence', routines_path(:sortBy => 'recurrence'), :id => 'recurrence' %></th>
-        <%= form_tag routines_path, method: :get, id: 'recurrence_form' do %>
-          Recurrence Filter:
-          <% @all_recurrence.each do |recurrence| %>
-            <div class="form-check  form-check-inline">
-              <%= label_tag "recurrence[#{recurrence}]", recurrence, class: 'form-check-label' %>
-              <%= check_box_tag "recurrence[#{recurrence}]", '1', (@recurrence_to_show.include?(recurrence)),
-                                class: 'form-check-input' %>
-            </div>
-          <% end %>
-          <%= submit_tag 'Refresh', id: 'recurrence_submit', class: 'btn btn-primary' %>
-        <% end %>
       <%end %>
 
       <th>Day of the Week</th>
