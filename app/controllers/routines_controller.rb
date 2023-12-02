@@ -1,6 +1,6 @@
 class RoutinesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[ discover ]
-  before_action :set_routine, only: %i[ show edit update destroy edit_routine_copy discover_show]
+  skip_before_action :authenticate_user!, only: %i[ discover discover_show]
+  before_action :set_routine, only: %i[ show edit update destroy edit_routine_copy]
 
   # GET /routines/discover
   def discover
@@ -55,6 +55,7 @@ class RoutinesController < ApplicationController
   end
 
   def discover_show
+    @routine = Routine.find(params[:id])
   end
   
   # GET /routines or /routines.json
