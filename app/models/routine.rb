@@ -116,4 +116,19 @@ class Routine < ApplicationRecord
     end
   end
 
+  def self.with_recurrence(recurrence_list)
+    if recurrence_list.empty?
+      return Routine.where(:is_public => true)
+    else
+      routines_with_recurrence = []
+      recurrence_list.each do |recurrence|
+        puts recurrence
+        # routines_with_recurrence.concat(where(recurrence: recurrence_list.map(&:upcase)))
+        # routines_with_recurrence.concat(Routine.where("Routine.get_routine_recurrence() = #{recurrence}"))
+        routines_with_recurrence.concat(Routine.where("recurrence = #{recurrence}"))
+      end
+      return routines_with_recurrence
+    end
+  end
+
 end

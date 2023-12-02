@@ -10,7 +10,8 @@
 <br>
 
 <ul>
-    <li>Recurrence: <%= Routine.get_routine_days_of_week_short_str(@routine) %></li>
+<!--    <li>Recurrence: <%#= Routine.get_routine_days_of_week_short_str(@routine) %></li>-->
+    <li>Recurrence: <%= @routine.recurrence %></li>
     <li>Total Duration: <%= Routine.total_duration(@routine) %> minutes</li>
     <li>Start Time: <%= @routine.start_time.strftime("%I:%M%P") %></li>
     <li>End Time: <%= Routine.end_time(@routine).strftime("%I:%M%P") %></li>

@@ -100,7 +100,7 @@ class TasksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:title, :description, :duration, :sequence)
+      params.require(:task).permit(:title, :description, :duration, :sequence, :url)
     end
 
     # Ensure tasks all have a unique order number in routine

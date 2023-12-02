@@ -18,8 +18,10 @@ class RoutinesController < ApplicationController
   # GET /routines or /routines.json
   def index
     @routines = current_user.routines.all
-    @all_recurrence = Routine.all_recurrence
+    # @routines = current_user.routines.with_recurrence(recurrence_list)
+    # @routines = Routine.with_recurrence(recurrence_list) #@recurrence_to_show_hash)
     @recurrence_to_show_hash = recurrence_hash
+    @all_recurrence = Routine.all_recurrence
     @sortBy = params[:sortBy]
     if @sortBy == "title" or @sortBy == "start_time"
       @routines = @routines.order(@sortBy)
@@ -34,12 +36,14 @@ class RoutinesController < ApplicationController
 
   # GET /routines/new
   def new
-  @routine = current_user.routines.new
+    @routine = current_user.routines.new
     @routine.created_at = Time.current
+    @routine.recurrence = Routine.get_routine_recurrence(@routine)
   end
 
   # GET /routines/1 or /routines/1.json
   def show
+    @routine.recurrence = Routine.get_routine_recurrence(@routine)
   end
 
   # GET /routines/1/edit
@@ -49,6 +53,7 @@ class RoutinesController < ApplicationController
   # POST /routines or /routines.json
   def create
     @routine = current_user.routines.create!(routine_params)
+    @routine.recurrence = Routine.get_routine_recurrence(@routine)
 
     respond_to do |format|
       if @routine.save
