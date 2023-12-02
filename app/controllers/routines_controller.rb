@@ -73,7 +73,7 @@ class RoutinesController < ApplicationController
   end
 
   def complete
-    current_user.completions.create!(user: current_user, routine: @routine)
+    @routine.completions.create!
 
     respond_to do |format|
       format.html { redirect_to routines_url, notice: "Routine was successfully completed." }

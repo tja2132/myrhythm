@@ -1,6 +1,6 @@
 <h3><b>My Routine Completion Insights</b></h3>
 
-<% if current_user.completions.size > 0 %>
+<% if @completions.size > 0 %>
 
 <div class="container">
   <div class="container text-center">
@@ -16,21 +16,21 @@
 
     <% if @timeframe == 0 %>
     <h2> All Time Tasks Completed </h2>
-    <%= line_chart @completions.all.group_by_week(:created_at).count %>
+    <%= line_chart @completions.all.group_by_week(:created_at).references(:completion).count %>
     <% else %>
     <h2> Tasks Completed in the last <%= @timeframe %> days </h2>
-    <% @completions = @completions.where('created_at >= ?', @timeframe.day.ago)  %>
-    <%= line_chart @completions.group_by_day(:created_at).count %>
+    <% @completions = @completions.where('completions.created_at >= ?', @timeframe.day.ago)  %>
+    <%= line_chart @completions.group_by_day(:created_at).references(:completion).count %>
     <% end %>
     <br>
 
     <h2> Most productive day of the week </h2>
 
-    <%= column_chart @completions.group_by_day_of_week(:created_at, format: "%a").count %>
+    <%= column_chart @completions.group_by_day_of_week(:created_at, format: "%a").references(:completion).count %>
 
     <h2> Most Completed Routines </h2>
 
-    <%= pie_chart @completions.group(:routine_id ).count %>
+    <%= pie_chart @completions.group(:title).count %>
 
     <br><br><br>
 

@@ -1,7 +1,6 @@
 class CreateCompletions < ActiveRecord::Migration[7.1]
   def up
     create_table :completions do |t|
-      t.references  :user, null: false, foreign_key: true
       t.references  :routine, null: false, foreign_key: true
       t.timestamps
     end
@@ -9,7 +8,6 @@ class CreateCompletions < ActiveRecord::Migration[7.1]
 
   def down
     drop_table :completions do |t|
-      t.remove_references  :user, null: false, foreign_key: true
       t.remove_references  :routine, null: false, foreign_key: true
     end
   end

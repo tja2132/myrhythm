@@ -1,14 +1,16 @@
 class CompletionsController < ApplicationController
-  before_action :set_completion_grouping, only: %i[ show ]
+  before_action :set_completions, only: %i[ show ]
 
   def show
-    @completions = current_user.completions.all
   end
 
   private
 
-  def set_completion_grouping
-    @completion_grouping = params[:completion_grouping] || "Week"
+  def set_completions
+      # @completions = current_user.routines.all.flat_map(&:completions)
+      @completions = Completion.joins(:routine).where(routines: { user_id: current_user.id })
+      puts @completions.inspect
+
   end
 
   def completion_params

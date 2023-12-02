@@ -129,7 +129,7 @@ guest_user.routines.all.each do |r|
   (1..11).each do |m|
     (1..30).each do |d|
       if rand(10) > 5
-        guest_user.completions.create!(user: guest_user, routine: r, created_at: Time.local(2023, m, d, 12, 0))
+        r.completions.create!(created_at: Time.local(2023, m, d, 12, 0))
       end
     end
   end

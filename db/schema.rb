@@ -12,12 +12,10 @@
 
 ActiveRecord::Schema[7.1].define(version: 2023_12_01_170413) do
   create_table "completions", force: :cascade do |t|
-    t.integer "user_id", null: false
     t.integer "routine_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["routine_id"], name: "index_completions_on_routine_id"
-    t.index ["user_id"], name: "index_completions_on_user_id"
   end
 
   create_table "routines", force: :cascade do |t|
@@ -75,7 +73,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_01_170413) do
   end
 
   add_foreign_key "completions", "routines"
-  add_foreign_key "completions", "users"
   add_foreign_key "routines", "users"
   add_foreign_key "tasks", "routines"
 end
