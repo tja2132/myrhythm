@@ -1,5 +1,14 @@
-<h2><b>My Week</b></h2>
-<br>
+
+<div class="container">
+
+  <div class="d-flex flex-column">
+
+    <div class="align-self-end">
+      <%= link_to "Daily Calendar", daily_path(:day => Date.today.strftime("%a")), :class => 'btn btn-primary btn-sm mx-2' %>
+    </div>
+    <h2><b>My Week</b></h2>
+
+  </div>
 
 <% if current_user.routines.size > 0 %>
   <%= week_calendar do |date| %>
@@ -26,3 +35,4 @@
   <p> Add a Routine </p>
   <%= link_to "My Routines", routines_path, :class => 'btn btn-primary btn-md mx-2' %>
 <% end %>
+</div>
