@@ -7,36 +7,46 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+users = [
+    { :email => 'email@columbia.edu', :password => '1234qwer',
+      :first_name => "guest", :last_name => "user", :columbia_uni => "guest1204"}
+  ]
+
+users.each do | user |
+    User.create!(user)
+end
+
+guest_user = User.find_by_email('email@columbia.edu')
 
 routines = [
   {:title => 'Evening Workout', :description => "A quick evening workout", :mon => true, :tue => true, :fri => true,
-   :start_time => Time.local(2023, 1, 1, 14, 0)},
+   :start_time => Time.local(2023, 1, 1, 14, 0), :is_public => true, :home => true},
   {:title => 'Skincare Routine', :description => "A simple skincare regiment", :mon => true, :tue => true, :wed => true,
-   :thu => true, :fri => true, :sat => true, :sun => true, :start_time => Time.local(2023, 1, 1, 1, 0)},
+   :thu => true, :fri => true, :sat => true, :sun => true, :start_time => Time.local(2023, 1, 1, 1, 0), :is_public => true, :home => true},
   {:title => 'The Perfect Grilled Cheese', :description => "All the steps for a perfect sandwich",
-   :start_time => Time.local(2023, 1, 1, 7, 0)},
+   :start_time => Time.local(2023, 1, 1, 7, 0), :home => true},
   {:title => 'Morning Meditation', :description => "Start your day with mindfulness", :mon => true, :wed => true,
-   :fri => true, :start_time => Time.local(2023, 1, 1, 4, 0)},
+   :fri => true, :start_time => Time.local(2023, 1, 1, 4, 0), :is_public => true, :home => true},
   {:title => 'Weekly Meal Prep', :description => "Plan and prepare your meals for the week", :sun => true,
-   :start_time => Time.local(2023, 1, 1, 14, 0)},
+   :start_time => Time.local(2023, 1, 1, 14, 0), :is_public => true, :work => true},
   {:title => 'Yoga Session', :description => "A relaxing yoga routine", :tue => true, :thu => true, :sat => true,
-   :start_time => Time.local(2023, 1, 1, 9, 0)},
+   :start_time => Time.local(2023, 1, 1, 9, 0), :home => true},
   {:title => 'Reading Hour', :description => "Dedicated time for reading", :mon => true, :wed => true, :fri => true,
-   :start_time => Time.local(2023, 1, 1, 8, 0)},
+   :start_time => Time.local(2023, 1, 1, 8, 0), :school => true},
   {:title => 'Gardening Time', :description => "Tending to the garden", :sat => true, :sun => true,
-   :start_time => Time.local(2023, 1, 1, 10, 0)},
+   :start_time => Time.local(2023, 1, 1, 10, 0), :home => true},
   {:title => 'Daily Journaling', :description => "Reflect on your day", :mon => true, :tue => true, :wed => true,
-   :thu => true, :fri => true, :sat => true, :sun => true, :start_time => Time.local(2023, 1, 1, 17, 0)},
+   :thu => true, :fri => true, :sat => true, :sun => true, :start_time => Time.local(2023, 1, 1, 17, 0), :home => true},
   {:title => 'Language Learning', :description => "Practice a new language", :mon => true, :wed => true, :fri => true,
-   :start_time => Time.local(2023, 1, 1, 18, 0)},
+   :start_time => Time.local(2023, 1, 1, 18, 0), :is_public => true, :school => true},
   {:title => 'Baking Sunday', :description => "Bake something new each Sunday", :sun => true,
-   :start_time => Time.local(2023, 1, 1, 15, 0)},
+   :start_time => Time.local(2023, 1, 1, 15, 0), :home => true},
   {:title => 'Cycling Adventure', :description => "A bike ride to enjoy nature", :tue => true, :thu => true,
-   :start_time => Time.local(2023, 1, 1, 8, 0)}
+   :start_time => Time.local(2023, 1, 1, 8, 0), :is_public => true, :home => true}
 ]
 
 routines.each do | routine |
-    Routine.create!(routine)
+  guest_user.routines.create!(routine)
 end
 
 tasks = [{:sequence => 1, :routine => Routine.find_by_title("Evening Workout"), :title => 'Bench press', :description => "5x5rep bench press", duration: 8},

@@ -1,20 +1,17 @@
 <div class="simple-calendar">
 
-  <table class="table">
-    <thead>
-      <tr>
-        <% date_range.slice(0, 7).each do |day| %>
-          <th>
-            <%= link_to t('date.abbr_day_names')[day.wday], day_calendar_path(:day => Routine.get_days_of_week[day.wday-1]), :class => 'nav-link'  %>
-          </th>
-        <% end %>
-      </tr>
-    </thead>
-
-    <tbody>
+  <div class="container-fluid">
+    <div class="row row-cols-7" style="--bs-gutter-x:1rem;">
+      <% date_range.slice(0, 7).each do |day| %>
+        <div class="col">
+          <h3><%= link_to t('date.abbr_day_names')[day.wday], daily_path(:day => Routine.get_short_days_of_week[day.wday - 1]), :class => 'nav-link' %></h3>
+        </div>
+      <% end %>
+    </div>
+    <div class="row row-cols-7" style="--bs-gutter-x:1rem;">
       <% date_range.each_slice(7) do |week| %>
-        <tr>
-          <% week.each do |day| %>
+        <% week.each do |day| %>
+          <div class="col">
             <%= content_tag :td, class: calendar.td_classes_for(day) do %>
               <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
                 <% capture_haml(day, sorted_events.fetch(day, []), &passed_block) %>
@@ -22,9 +19,9 @@
                 <% passed_block.call day, sorted_events.fetch(day, []) %>
               <% end %>
             <% end %>
-          <% end %>
-        </tr>
+          </div>
+        <% end %>
       <% end %>
-    </tbody>
-  </table>
+    </div>
+  </div>
 </div>

@@ -1,7 +1,6 @@
 #in spec/fixtures/routines.yml
 
 meteor_routine:
-  id: 1
   title: Watch meteor shower
   description: "Watch the annual meteor shower"
   start_time: Time.zone.parse('2000-01-01 6:0:0')
@@ -12,9 +11,9 @@ meteor_routine:
   fri: false
   sat: false
   sun: false
+  user: guest_user
 
 work_routine:
-  id: 2
   title: Get ready for work
   description: R
   mon: true
@@ -24,9 +23,9 @@ work_routine:
   fri: true
   sat: true
   sun: true
+  user: guest_user
 
 food_routine:
-  id: 3
   title: Make Dinner
   description: Cook food.
   mon: true
@@ -36,3 +35,4 @@ food_routine:
   fri: false
   sat: false
   sun: false
+  user: guest_user

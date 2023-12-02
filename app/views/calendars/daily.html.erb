@@ -1,11 +1,11 @@
 <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
 
-<% routines = CalendarsController.get_routines_by_day(@day) %>
+<% routines = current_user.get_user_routines_by_day(@day) %>
 <% routine_timeline = [] %>
 
 <% routines.each do |r| %>
 
-  <% routine_timeline.append([r.title, Time.local(2023,1,1,
+<% routine_timeline.append([r.title, Time.local(2023,1,1,
                                                         r.start_time.strftime("%H"),
                                                         r.start_time.strftime("%M")),
                                                         Time.local(2023,1,
@@ -16,13 +16,13 @@
 
 <div class="container">
 
-  <% Routine.get_days_of_week.each do |d|  %>
-    <%= link_to d, day_calendar_path(:day => d), :class => 'btn btn-primary btn-sm' %>
+  <% Routine.get_short_days_of_week.each do |d|  %>
+    <%= link_to d, daily_path(:day => d), :class => 'btn btn-primary btn-sm' %>
   <% end %>
 
   <br> <br>
 
-  <h3> <b> My <%= CalendarsController.get_full_day_str(@day) %> </b> </h3>
+  <h3> <b> My <%= Routine.get_full_days_of_week().grep(/^#{@day}/).first %> </b> </h3>
 
   <br>
 

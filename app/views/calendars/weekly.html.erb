@@ -1,0 +1,36 @@
+<h2><b>My Weekly Calendar</b></h2>
+<br>
+<%
+  # map each day to an array of routines occurring on that day
+  routine_by_day = {}
+
+  Routine.all.order(:start_time).each do |routine|
+    Routine.get_short_days_of_week.each do |day|
+      if Routine.get_routine_days_of_week_short_str(routine).include? day
+        unless routine_by_day.has_key? day
+          routine_by_day[day] = []
+        end
+        routine_by_day[day].append routine
+      end
+    end
+  end
+%>
+
+<%= week_calendar do |date| %>
+  <% if routine_by_day.has_key?(date.strftime("%a").to_s) %>
+    <% routine_by_day[date.strftime("%a")].each do |r| %>
+    <div class="card bg-light mb-3">
+      <div class="card-header">
+        <small><%= r.start_time.strftime("%I:%M") %> - <%= Routine.end_time(r).strftime("%I:%M%P") %></small>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to "#{r.title}", r, class: "card-link" %></h5>
+        <p><%= r.description %></p>
+        <span class="badge bg-info rounded-pill"><%= r.tasks.count %></span>
+      </div>
+    </div>
+    <%end%>
+  <%else%>
+    <li> None </li>
+  <%end%>
+<% end %>

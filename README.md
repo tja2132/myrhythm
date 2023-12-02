@@ -18,6 +18,17 @@ decrease stress, save time, and help you find your flow.
 * Utilize nested resources for routine:task relation
 * Minimal bootsrap UI 
 
+## Functionality covered in iteration 2:
+
+* New bootstrap UI with navbar and drastically improved routine visualization
+* Calendar view - quickly see your week of routines at a glance
+* Routine sorting - Sort your routine list by name, recurrence, or start/end time
+* Task re-ordering - Update the sequence of tasks in a routine using the up/down buttons
+* Streamlined and improved routine creation form
+* Database optimizations and improved seed data
+* Initial steps towards tracking task completion statistics over time
+* Reorganized feature directory - all user stories passing with 100% rspec coverage
+
 ### Quick Start
 For initial install:
 ```sh 
@@ -120,3 +131,6 @@ Reference Links:
 * [DO - RoR App with Nested Resources](https://www.digitalocean.com/community/tutorials/how-to-create-nested-resources-for-a-ruby-on-rails-application)
 * [RoR Docs - Nested Resources](https://guides.rubyonrails.org/routing.html#nested-resources)
 * [Simple Calendar](https://github.com/excid3/simple_calendar)
+* [Devise](https://github.com/heartcombo/devise)
+* [Chartkick](https://chartkick.com/)
+* [Google charts - timeline](https://developers.google.com/chart/interactive/docs/gallery/timeline)

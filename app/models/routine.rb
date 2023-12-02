@@ -1,4 +1,5 @@
 class Routine < ApplicationRecord
+  belongs_to :user
   has_many :tasks, dependent: :destroy
   validates :title, presence: true
 
@@ -7,16 +8,23 @@ class Routine < ApplicationRecord
   end
 
   # three day abbreviations consistent with strftime("%a")
-  def self.get_days_of_week()
-     ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+  def self.get_full_days_of_week()
+     ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
   end
 
-  def self.get_recurrence_str(routine)
+  def self.get_short_days_of_week()
+    ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+  end
 
-    alldaysofweek = Routine.get_days_of_week()
+  def self.get_tags()
+    ['work', 'school', 'home']
+  end
+
+  def self.get_routine_recurrence(routine)
+
+    alldaysofweek = Routine.get_short_days_of_week()
     alldaysofweek = alldaysofweek.map { |day| day.downcase }
-    columns = alldaysofweek.join(',')
-    days = Routine.where(id: routine.id).pick(columns)
+    days = Routine.where(id: routine.id).pick(alldaysofweek)
     days_str = days.join(',')
 
     if !days_str.include?("false")
@@ -28,9 +36,9 @@ class Routine < ApplicationRecord
     end
   end
 
-  def self.get_days_of_week_str(routine)
+  def self.get_routine_days_of_week_short_str(routine)
 
-    alldaysofweek = Routine.get_days_of_week()
+    alldaysofweek = Routine.get_short_days_of_week()
     alldaysofweek = alldaysofweek.map { |day| day.downcase }
     
     daysofweek = []
@@ -41,6 +49,38 @@ class Routine < ApplicationRecord
     end
 
     return daysofweek.join(', ')
+
+  end
+
+  def self.get_routine_days_of_week_short_list(routine)
+
+    alldaysofweek = Routine.get_short_days_of_week()
+    alldaysofweek = alldaysofweek.map { |day| day.downcase }
+    
+    daysofweek = []
+    alldaysofweek.each do |day| 
+      if routine.read_attribute(day)
+        daysofweek.append(day.capitalize)
+      end
+    end
+
+    return daysofweek
+
+  end
+
+  def self.get_tag_str(routine)
+
+    tags = Routine.get_tags()
+    tags = tags.map { |tag| tag.downcase }
+
+    selectedTags = []
+    tags.each do |tag|
+      if routine.read_attribute(tag)
+        selectedTags.append(tag.capitalize)
+      end
+    end
+
+    return selectedTags.join(', ')
 
   end
 
@@ -62,4 +102,18 @@ class Routine < ApplicationRecord
       return routine.start_time + Routine.total_duration(routine).minutes
     end
   end
+
+  def self.with_tags(tag_list)
+    if tag_list.empty?
+      return Routine.where(:is_public => true)
+    else
+      routines_with_tags = []
+      tag_list.each do |tag|
+        puts tag
+        routines_with_tags.concat(Routine.where("#{tag} = true AND is_public = true"))
+      end
+      return routines_with_tags
+    end
+  end
+
 end
