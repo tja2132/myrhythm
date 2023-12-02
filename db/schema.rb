@@ -10,11 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_30_054306) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_01_170413) do
+  create_table "completions", force: :cascade do |t|
+    t.integer "routine_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["routine_id"], name: "index_completions_on_routine_id"
+  end
+
   create_table "routines", force: :cascade do |t|
     t.string "title", default: "New Routine"
     t.text "description"
-    t.time "start_time", default: "2000-01-01 08:00:00"
+    t.time "start_time", default: "2000-01-01 05:00:00"
     t.boolean "mon", default: false, null: false
     t.boolean "tue", default: false, null: false
     t.boolean "wed", default: false, null: false
@@ -59,10 +66,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_30_054306) do
     t.string "last_name"
     t.string "columbia_uni"
     t.datetime "deleted_on"
+    t.string "default_calendar"
+    t.string "default_insights"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "completions", "routines"
   add_foreign_key "routines", "users"
   add_foreign_key "tasks", "routines"
 end

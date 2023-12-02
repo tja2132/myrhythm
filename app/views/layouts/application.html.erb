@@ -27,14 +27,22 @@
           <%= link_to "Discover", "/discover", :class => 'nav-link'  %>
           </li>
           <% if user_signed_in? %>
+
             <li class="nav-item d-flex justify-content-between align-items-center">
             <%= link_to "My Routines", routines_path, :class => 'nav-link' %>
             <span class="badge text-bg-primary"><%= current_user.routines.count %></span>
-            </li><li class="nav-item d-flex justify-content-between align-items-center">
-            <%= link_to "My Calendar", "/weekly", :class => 'nav-link'  %>
             </li>
-            <li><%= link_to "My Day", daily_path, :class => 'nav-link'  %></li>
-          <% end %>
+
+            <% if current_user.default_calendar == "Daily" %>
+              <li><%= link_to "Calendar", daily_path(:day => Date.today.strftime("%a")), :class => 'nav-link'  %></li>
+             <% else %>
+              <li><%= link_to "Calendar", weekly_path, :class => 'nav-link'  %></li>
+             <% end %>
+
+            <li><%= link_to "Insights", completions_path(:timeframe => current_user.default_insights.to_i || 7), :class => 'nav-link'  %></li>
+
+        <% end %>
+
           <li class="nav-item d-flex justify-content-between align-items-center">
           </li><!--<li class="nav-item">
         <%= link_to "Sign in", "", :class => 'nav-link'  %>

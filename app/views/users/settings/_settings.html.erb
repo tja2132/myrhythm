@@ -1,0 +1,24 @@
+<%= form_for :user, :url => user_update_settings_path(@user) do |form| %>
+  <h2> User Settings</h2>
+  <div class="form-group">
+    <%= form.label :default_calendar, "Default Calendar View", class: "form-label" %>
+    <%= form.select :default_calendar, ["Daily", "Weekly"], class: "form-control" %>
+  </div>
+  <br>
+
+  <div class="form-group">
+    <%= form.label :default_insights, "Default Number of Days Shown on Insights Page", class: "form-label" %>
+    <%= form.select :default_insights, [7, 30, 90], class: "form-control" %>
+  </div>
+  <br>
+
+<!--  <div class="form-group">-->
+    <%#= form.label :first_day_of_week, "First Day of the Week", class: "form-label" %>
+    <%#= form.select :first_day_of_week, Routine.get_full_days_of_week, class: "form-control" %>
+<!--  </div>-->
+<!--  <br>-->
+  <%= form.submit "Update Settings", :class => 'btn btn-sm btn-outline-success'%>
+  <br><br>
+
+
+<% end %>

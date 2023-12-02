@@ -1,6 +1,7 @@
 class Routine < ApplicationRecord
   belongs_to :user
   has_many :tasks, dependent: :destroy
+  has_many :completions, dependent: :destroy
   validates :title, presence: true
 
   # three day abbreviations consistent with strftime("%a")

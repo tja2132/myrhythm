@@ -21,8 +21,8 @@
 
   <div class="col-md-6">
     <div class="h-100 p-5 bg-body-tertiary border rounded-3">
-      <h2>Save time, decrease stress, find your flow.</h2>
-      <p>Create smart routines that help you </p>
+      <h2>Save time, decrease stress.</h2>
+      <p>Create smart routines that fit your schedule </p>
     </div>
   </div>
 
@@ -44,6 +44,38 @@
     </div>
   </div>
 
+  <div class="row align-items-md-stretch">
+
+    <div class="col-md-6">
+      <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+        <h2>Form healthy habits. </h2>
+        <p>There's no better time to start than today </p>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+        <h2>Find your flow.</h2>
+        <p>Created by you, for you </p>
+      </div>
+    </div>
+
+    <div class="p-5 mb-4">
+      <div class="container">
+        <h2>Track your progress, keep consistent</h2>
+        <%= line_chart [
+                         {name: "Workout", data:
+                           {"2021-01-01" => 3, "2021-01-08" => 4, "2021-01-15" => 5, "2021-01-23" => 1, "2021-01-30" => 8}},
+                         {name: "Language Study", data:
+                           {"2021-01-01" => 2, "2021-01-08" => 7, "2021-01-15" => 1, "2021-01-23" => 4, "2021-01-30" => 6}},
+                         {name: "Journaling", data:
+                           {"2021-01-01" => 4, "2021-01-08" => 3, "2021-01-15" => 9, "2021-01-23" => 3, "2021-01-30" => 3}},
+
+            ], height: "380px"  %>
+      </div>
+    </div>
+  </div>
+
   <div class="p-5 mb-4 bg-body-tertiary rounded-3">
     <div class="container">
       <h3>Join the MyRhythm Community</h3>
@@ -52,7 +84,6 @@
       </p>
     </div>
   </div>
-
 </div>
 
 

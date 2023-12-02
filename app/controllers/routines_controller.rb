@@ -116,6 +116,15 @@ class RoutinesController < ApplicationController
     end
   end
 
+  def complete
+    @routine.completions.create!
+
+    respond_to do |format|
+      format.html { redirect_to routines_url, notice: "Routine was successfully completed." }
+      format.json { head :no_content }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_routine
