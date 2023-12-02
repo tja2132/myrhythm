@@ -19,10 +19,17 @@ class RoutinesController < ApplicationController
   end
 
   def copy_routine
-    @user = current_user
     @routine_params = params[:routine]
-    @source_routine_id = flash[:routine_id]
-    @source_routine = Routine.find(@source_routine_id)
+
+    if params[:quick_add].nil?
+      @source_routine_id = flash[:routine_id]
+      @source_routine = Routine.find(@source_routine_id)
+    else
+      @source_routine_id = params[:id]
+      @source_routine = Routine.find(@source_routine_id)
+    end
+
+
     #@routine_params[:user_id] = @user.id
     #@source = @routine.dup.tap { |copied_routine| copied_routine.user_id = @user}
     tasks = @source_routine.tasks
@@ -52,6 +59,10 @@ class RoutinesController < ApplicationController
 
     flash[:notice] = "#{routine_params[:title]} Routine Copied to My Routines"
     redirect_to discover_path
+  end
+
+  def quick_add
+
   end
 
   def discover_show
@@ -124,6 +135,6 @@ class RoutinesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def routine_params
-      params.require(:routine).permit(:title, :description, :daysofweek, :recurrence, :start_time, :created, :updated, :mon, :tue, :wed, :thu, :fri, :sat, :sun, :is_public, :home, :work, :school)
+      params.require(:routine).permit(:title, :description, :daysofweek, :recurrence, :start_time, :created, :updated, :mon, :tue, :wed, :thu, :fri, :sat, :sun, :is_public, :home, :work, :school, :quick_add)
     end
 end

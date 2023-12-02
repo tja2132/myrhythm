@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   post '/copy_routine' => 'routines#copy_routine'
 
+  get '/copy_routine' => 'routines#copy_routine'
+
   get '/discover_show' => 'routines#discover_show'
   
   as :user do
