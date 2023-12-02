@@ -25,8 +25,8 @@
           <p><%= r.description %></p>
           <p class="card-title"><%= link_to "Tasks", r, class: "card-link"%>
           <span class="badge bg-info rounded-pill"><%= r.tasks.count %></span></p>
-          <%= link_to "Show", r, :class => 'btn btn-primary btn-sm', :id => "view_routine_#{r.id}"%>
-          <%= link_to " Copy", edit_routine_path(r), :class => 'bi bi-pencil-square btn btn-outline-primary btn-sm', :id => "copy_routine_#{r.id}"%>
+          <%= link_to "Show", discover_show_path(id: r), :class => 'btn btn-primary btn-sm', :id => "view_routine_#{r.id}"%>
+          <%= link_to "Copy", edit_routine_copy_path(id: r), :class => 'bi bi-pencil-square btn btn-outline-primary btn-sm', :id => "copy_routine_#{r.id}"%>
         </div>
       </div>
     </div>
