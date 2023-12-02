@@ -1,6 +1,6 @@
 class RoutinesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[ discover ]
-  before_action :set_routine, only: %i[ show edit update destroy edit_routine_copy]
+  before_action :set_routine, only: %i[ show edit update destroy edit_routine_copy discover_show]
 
   # GET /routines/discover
   def discover
@@ -52,6 +52,9 @@ class RoutinesController < ApplicationController
 
     flash[:notice] = "#{routine_params[:title]} Routine Copied to My Routines"
     redirect_to discover_path
+  end
+
+  def discover_show
   end
   
   # GET /routines or /routines.json
