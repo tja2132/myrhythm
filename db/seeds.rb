@@ -51,7 +51,7 @@ end
 
 tasks = [{:sequence => 1, :routine => Routine.find_by_title("Evening Workout"), :title => 'Bench press', :description => "5x5rep bench press", duration: 8},
          {:sequence => 2, :routine => Routine.find_by_title("Evening Workout"), :title => 'Bicep curls', :description => "3x12reps standing bicep curls", duration: 4},
-         {:sequence => 3, :routine => Routine.find_by_title("Skincare Routine"), :title => 'Treadmill', :description => "30 minute treadmill", duration: 30},
+         {:sequence => 3, :routine => Routine.find_by_title("Evening Workout"), :title => 'Treadmill', :description => "30 minute treadmill", duration: 30},
          {:sequence => 1, :routine => Routine.find_by_title("Skincare Routine"), :title => 'Face wash', :description => "Skincare routine step 1"},
          {:sequence => 2, :routine => Routine.find_by_title("Skincare Routine"), :title => 'Toner', :description => "Skincare routine step 2"},
          {:sequence => 3, :routine => Routine.find_by_title("Skincare Routine"), :title => 'Moisturize', :description => "Skincare routine step 3"},

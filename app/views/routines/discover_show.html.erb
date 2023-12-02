@@ -30,7 +30,6 @@
       <th>Name</th>
       <th>Description</th>
       <th>Duration</th>
-      <th>Done?</th>
       <th></th>
     </tr>
     </thead>
@@ -39,7 +38,7 @@
       No tasks yet
     <% else %>
       <% for task in @routine.tasks.order(:sequence) %>
-        <%= render task %>
+        <%= render "tasks/task_discover", task: task %>
       <% end %>
     <% end %>
     </tbody>
