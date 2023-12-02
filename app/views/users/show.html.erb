@@ -2,6 +2,7 @@
 
   <% if user_signed_in? %>
     <%= render @user %>
+    <%= render "users/settings/settings", user: @user %>
   <% end %>
 
 <%= link_to 'Logout', destroy_user_session_path, 'data-turbo-method': :delete, class: "btn btn-sm btn-outline-primary"  %>

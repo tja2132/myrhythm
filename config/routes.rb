@@ -22,11 +22,14 @@ Rails.application.routes.draw do
   get '/discover_show' => 'routines#discover_show'
   
   as :user do
-    get '/me', :to => 'users#show', :as => :user_root
+    get '/me', :to => 'users#show', :as => :user
   end
 
   authenticated :user do
     root to: 'routines#index', as: :authenticated_root
+    resources :users do
+      post 'update_settings'
+    end
   end
   
   resources :routines do
@@ -34,11 +37,14 @@ Rails.application.routes.draw do
       get :up, on: :member
       get :down, on: :member
     end
+    get :complete, on: :member
   end
 
   resource :calendar do
     get :day, on: :member    
   end
+
+  resource :completions
 
   get '/daily' => 'calendars#daily'
   get '/weekly' => 'calendars#weekly'

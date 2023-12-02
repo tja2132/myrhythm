@@ -1,0 +1,75 @@
+<h3><b>My Routine Completion Insights</b></h3>
+
+<% if @completions.size > 0 %>
+
+<div class="container">
+  <div class="container text-center">
+
+    <% @timeframe = params[:timeframe].to_i %>
+
+    <% if @timeframe > 0 %>
+    <% @completions = @completions.where('completions.created_at >= ?', @timeframe.day.ago)  %>
+    <% end %>
+
+    <h1> Summary </h1>
+
+    <h3>
+      Total Tasks Completed: <%= @completions.count %> completions
+    </h3>
+
+    <% most_prod = @completions.group_by_day_of_week(:created_at, format: "%a").references(:completion).count.max %>
+
+    <h3>
+      Most productive day of the week: <%= most_prod[0].to_s + " with " + most_prod[1].to_s + " completions" %>
+    </h3>
+
+    <% most_comp = @completions.group(:title).count.max %>
+
+    <h3>
+      Most Completed Routine: <%= most_comp[0].to_s + " with " + most_comp[1].to_s + " completions" %>
+    </h3>
+
+
+    <h3>  </h3>
+
+
+
+
+    <br>
+
+    <% [7, 30, 90].each do |g|  %>
+      <%= link_to "Last " + g.to_s + " days", :timeframe => g %>
+       |
+    <% end %>
+    <%= link_to "All time", :timeframe => 0 %>
+
+    <br><br>
+
+
+
+    <% if @timeframe == 0 %>
+    <h2> All Time Tasks Completed </h2>
+      <%= line_chart @completions.all.group_by_week(:created_at).references(:completion).count %>
+    <% else %>
+    <h2> Tasks Completed in the last <%= @timeframe %> days </h2>
+    <%= line_chart @completions.group_by_day(:created_at).references(:completion).count %>
+    <% end %>
+    <br>
+
+    <h2> Productivity by day of the week </h2>
+
+    <%= column_chart @completions.group_by_day_of_week(:created_at, format: "%a").references(:completion).count %>
+
+    <h2> Most Completed Routines </h2>
+
+    <%= pie_chart @completions.group(:title).count %>
+
+    <br><br><br>
+
+    </div>
+  </div>
+</div>
+<% else %>
+  <h2> You have not completed any routines Yet </h2>
+  <%= link_to "My Routines", routines_path, :class => 'btn btn-primary btn-md mx-2' %>
+<% end %>
