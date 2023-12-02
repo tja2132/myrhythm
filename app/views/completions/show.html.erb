@@ -1,55 +1,27 @@
-<h3><b>My Insights</b></h3>
+<h3><b>My Routine Completion Insights</b></h3>
 
+<% if current_user.completions.size > 0 %>
 
 <div class="container">
   <div class="container text-center">
 
+    <br>
 
-        <%# @completions.each do |c| %>
-        <%#= "Completed " + c.routine.title + " on " + c.created_at.to_s %>
-<!--          <br>-->
-        <%# end %>
+    <% [7, 30, 90].each do |g|  %>
+      <%= link_to "Last " + g.to_s + " days", :timeframe => g %>
+    <% end %>
+    <%= link_to "All time", :timeframe => 0 %>
 
-        <br>
+    <% @timeframe = params[:timeframe].to_i %>
 
-        <% ["Day", "Week", "Month"].each do |g|  %>
-          <%= link_to "By " + g, :completion_grouping => g %>
-        <% end %>
-
-        <% if @timeframe == 0 %>
-
-        <% else %>
-
-        <% end%>
-
-<!--        TODO: @completions.where('created_at >= ?', 1.week.ago).count-->
-
-        <% if @completion_grouping == "Day" %>
-
-          <h2> Tasks Completed in the last 30 days </h2>
-
-          <% @completions = @completions.where('created_at >= ?', 30.day.ago)  %>
-
-          <%= line_chart @completions.group_by_day(:created_at).count %>
-
-        <% elsif @completion_grouping == "Week" %>
-
-          <h2> Tasks Completed in the last 3 months </h2>
-
-          <% @completions = @completions.where('created_at >= ?', 3.month.ago)  %>
-
-          <%= line_chart @completions.group_by_week(:created_at).count %>
-
-        <% elsif @completion_grouping == "Month" %>
-
-        <h2> Tasks Completed in the last Year </h2>
-
-      <% @completions = @completions.where('created_at >= ?', 1.year.ago)  %>
-
-      <%= line_chart @completions.group_by_month(:created_at).count %>
-
-        <% end %>
-
+    <% if @timeframe == 0 %>
+    <h2> All Time Tasks Completed </h2>
+    <%= line_chart @completions.all.group_by_week(:created_at).count %>
+    <% else %>
+    <h2> Tasks Completed in the last <%= @timeframe %> days </h2>
+    <% @completions = @completions.where('created_at >= ?', @timeframe.day.ago)  %>
+    <%= line_chart @completions.group_by_day(:created_at).count %>
+    <% end %>
     <br>
 
     <h2> Most productive day of the week </h2>
@@ -60,13 +32,12 @@
 
     <%= pie_chart @completions.group(:routine_id ).count %>
 
-    <%#= pie_chart @completions.joins(:routine).group(:title).count %>
-
-
-
     <br><br><br>
 
     </div>
   </div>
-
 </div>
+<% else %>
+  <h2> You have not completed any routines Yet </h2>
+  <%= link_to "My Routines", routines_path, :class => 'btn btn-primary btn-md mx-2' %>
+<% end %>

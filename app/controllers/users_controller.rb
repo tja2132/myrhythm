@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
     @user.default_calendar = params[:user][:default_calendar]
     @user.default_insights = params[:user][:default_insights]
+    # @user.first_day_of_week = params[:user][:first_day_of_week]
 
     respond_to do |format|
       if @user.save
