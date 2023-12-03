@@ -23,7 +23,7 @@
   <% if @completions.size > 0 %>
       <br>
     <div class="container-fluid">
-      <h3>Tasks Completed</h3>
+      <h3>Routines Completed</h3>
       <% if @timeframe == 0 %>
         <%= line_chart @completions.all.group_by_week(:created_at).references(:completion).count %>
       <% else %>
