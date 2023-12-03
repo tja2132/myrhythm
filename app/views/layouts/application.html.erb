@@ -55,6 +55,7 @@
             <% if user_signed_in? %>
               <%= link_to "Me", "/me", :class => 'bi bi-person btn btn-sm btn-outline-dark' %>      
             <% else %>
+
               <%= link_to ' Login', new_user_session_path, :class => 'bi bi-person btn btn-sm btn-outline-success'  %>  
             <% end %>
             
