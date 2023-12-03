@@ -1,33 +1,37 @@
-<h2><strong>My Stats</strong></h2>
-
-<% if @completions.size > 0 %>
-
-  <div class="container-fluid">
-    <div class="container">
+<div class="container-fluid">
+  <div class="d-flex justify-content-between align-items-center">
+    <h2 class="me-auto flex-child"><strong>My Stats<% if @timeframe == 0 %>: All Time
+      <% else %>: Last <%= @timeframe %> Days
+      <% end %></strong>
+    </h2>
+    <span class="ms-md-auto flex-child">
       <div class="btn-toolbar justify-content-center">
         <div class="btn-group me-2">
         <% [7, 30, 90].each do |g| %>
-          <%= button_tag :timeframe => g, :class => 'btn btn-secondary' do %>
+          <%= button_tag :class => 'btn btn-secondary', :onclick => "location.href = '/completions?timeframe=#{g}'" do %>
             <%= "Last " + g.to_s + " days" %>
           <% end %>
         <% end %>
-        <%= button_tag ":timeframe => 0", :class => 'btn btn-secondary' do %>
+        <%= button_tag :class => 'btn btn-secondary', :onclick => "location.href = '/completions?timeframe=0'" do %>
           <%= "All time" %>
         <% end %>
         </div>
       </div>
-      <br><br>
-      
+    </span>
+  </div>
+
+  <% if @completions.size > 0 %>
+      <br>
+    <div class="container-fluid">
+      <h3>Tasks Completed</h3>
       <% if @timeframe == 0 %>
-        <h2> All Time Tasks Completed </h2>
         <%= line_chart @completions.all.group_by_week(:created_at).references(:completion).count %>
       <% else %>
-        <h2> Tasks Completed in the last <%= @timeframe %> days </h2>
         <%= line_chart @completions.group_by_day(:created_at).references(:completion).count %>
       <% end %>
       <br>
 
-      <h2> Productivity by day of the week </h2>
+      <h2> Routines Completed by Day </h2>
       <%= column_chart @completions.group_by_day_of_week(:created_at, format: "%a").references(:completion).count %>
 
       <h2> Most Completed Routines </h2>
@@ -36,6 +40,7 @@
       <br><br><br>
 
     </div>
+  <% if @timeframe == 0 %>
     <div class="container text-center">
       <h1> All-time Stats </h1>
     </div>
@@ -68,6 +73,8 @@
       </div>
     </div>
     <br>
+    <% end %>
+
 <% else %>
   <h2> You have not completed any routines Yet </h2>
   <%= link_to "My Routines", routines_path, :class => 'btn btn-primary btn-md mx-2' %>
