@@ -40,7 +40,6 @@ Feature: display list of routines
     Then I should see "Routine was successfully updated."
 
   Scenario: modify routine on the routine page
-    When I follow "The Perfect Grilled Cheese"
     When I follow the "edit" button for the routine "The Perfect Grilled Cheese"
     And I fill in "Title" with "The Best Grilled Cheese"
     And I press "Update Routine"
