@@ -23,11 +23,13 @@
         </div>
         <div class="card-body">
           <p><%= r.description %></p>
-          <p class="card-title"><%= link_to "Tasks", discover_show_path(id: r), class: "card-link"%>
-          <span class="badge bg-info rounded-pill"><%= r.tasks.count %></span></p>
-          <%= link_to "Show", discover_show_path(id: r), :class => 'btn btn-primary btn-sm', :id => "view_routine_#{r.id}"%>
-          <%= link_to "Modify", edit_routine_copy_path(id: r), :class => 'bi bi-pencil-square btn btn-outline-primary btn-sm', :id => "copy_routine_#{r.id}"%>
-          <%= link_to "", copy_routine_path(id: r, quick_add: true, routine: r.attributes), :class => 'bi bi-plus-circle btn btn-outline-primary btn-sm', :id => "quick_add_routine_#{r.id}"%>
+          <p class="card-title"><%= link_to discover_show_path(id: r), class: "badge bg-info rounded-pill", style:"text-decoration:none;" , :id => "view_routine_#{r.id}" do %>
+          <i class="bi bi-bar-chart-steps"></i> <%= r.tasks.count %> Tasks<% end %>
+          <%= link_to edit_routine_copy_path(id: r), :class => 'btn btn-outline-primary btn-sm', :id => "copy_routine_#{r.id}" do %>
+          <i class="bi bi-pencil-square "></i><% end %>
+          <%= link_to copy_routine_path(id: r, quick_add: true, routine: r.attributes), :class => 'btn btn-outline-success btn-sm', :id => "quick_add_routine_#{r.id}" do%>
+          <i class="bi bi-plus-circle"></i><% end %>
+          </p>
         </div>
       </div>
     </div>
