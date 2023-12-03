@@ -1,14 +1,45 @@
-<h3><b>My Routine Completion Insights</b></h3>
+<h2><strong>My Stats</strong></h2>
 
 <% if @completions.size > 0 %>
 
-  <div class="container">
-
-
-    <div class="container text-center">
-      <h1> Summary </h1>
-    </div>
+  <div class="container-fluid">
     <div class="container">
+      <div class="btn-toolbar justify-content-center">
+        <div class="btn-group me-2">
+        <% [7, 30, 90].each do |g| %>
+          <%= button_tag :timeframe => g, :class => 'btn btn-secondary' do %>
+            <%= "Last " + g.to_s + " days" %>
+          <% end %>
+        <% end %>
+        <%= button_tag ":timeframe => 0", :class => 'btn btn-secondary' do %>
+          <%= "All time" %>
+        <% end %>
+        </div>
+      </div>
+      <br><br>
+      
+      <% if @timeframe == 0 %>
+        <h2> All Time Tasks Completed </h2>
+        <%= line_chart @completions.all.group_by_week(:created_at).references(:completion).count %>
+      <% else %>
+        <h2> Tasks Completed in the last <%= @timeframe %> days </h2>
+        <%= line_chart @completions.group_by_day(:created_at).references(:completion).count %>
+      <% end %>
+      <br>
+
+      <h2> Productivity by day of the week </h2>
+      <%= column_chart @completions.group_by_day_of_week(:created_at, format: "%a").references(:completion).count %>
+
+      <h2> Most Completed Routines </h2>
+      <%= pie_chart @completions.group(:title).count %>
+
+      <br><br><br>
+
+    </div>
+    <div class="container text-center">
+      <h1> All-time Stats </h1>
+    </div>
+    <div class="table">
       <div class="row">
         <div class="col">
           <h3>
@@ -37,35 +68,6 @@
       </div>
     </div>
     <br>
-    <div class="container text-center">
-
-      <% [7, 30, 90].each do |g| %>
-        <%= link_to "Last " + g.to_s + " days", :timeframe => g %>
-        |
-      <% end %>
-      <%= link_to "All time", :timeframe => 0 %>
-
-      <br><br>
-
-      <% if @timeframe == 0 %>
-        <h2> All Time Tasks Completed </h2>
-        <%= line_chart @completions.all.group_by_week(:created_at).references(:completion).count %>
-      <% else %>
-        <h2> Tasks Completed in the last <%= @timeframe %> days </h2>
-        <%= line_chart @completions.group_by_day(:created_at).references(:completion).count %>
-      <% end %>
-      <br>
-
-      <h2> Productivity by day of the week </h2>
-      <%= column_chart @completions.group_by_day_of_week(:created_at, format: "%a").references(:completion).count %>
-
-      <h2> Most Completed Routines </h2>
-      <%= pie_chart @completions.group(:title).count %>
-
-      <br><br><br>
-
-    </div>
-
 <% else %>
   <h2> You have not completed any routines Yet </h2>
   <%= link_to "My Routines", routines_path, :class => 'btn btn-primary btn-md mx-2' %>

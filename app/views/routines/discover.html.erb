@@ -1,5 +1,6 @@
 <!--<p style="color: green"><%= notice %></p> -->
-<h2><b>Discover New Routines!</b></h2>
+<div class="container-fluid">
+<h2><strong>Discover New Routines!</strong></h2>
 <br>
 
 <%= form_tag discover_path, method: :get, id: 'tags_form' do %>
@@ -10,9 +11,12 @@
       <%= check_box_tag "tags[#{tag}]", "1",  @tags_to_show.include?(tag), class: 'form-check-input' %>
     </div>
   <% end %>
-  <%= submit_tag 'Refresh', id: 'tags_submit', class: 'btn btn-primary' %>
+  <%= button_tag(id: 'tags_submit', class: 'btn btn-outline-primary btn-sm') do %>
+  <i class="bi bi-arrow-clockwise"></i> Refresh
+  <% end %>
 <% end %>
-
+</div>
+<br>
 <div class="container-fluid">
   <div class="row row-cols-4" style="--bs-gutter-x:1.25rem;" >
     <% @routines.each do | r | %>

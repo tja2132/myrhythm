@@ -6,10 +6,13 @@
           <strong>My Week</strong>
         </h2>
       <span class="ms-md-auto flex-child">
-        <%= link_to "Daily Calendar", daily_path(:day => Date.today.strftime("%a")), :class => 'btn btn-outline-info mx-2' %>
+        <%= link_to daily_path(:day => Date.today.strftime("%a")), :class => 'btn btn-outline-info mx-2' do %>
+        <i class="bi bi-calendar-day"></i> Daily<% end %>
       </span>
     </div>
-
+</div>
+<br>
+<div class="container-fluid">
 <% if current_user.routines.size > 0 %>
   <%= week_calendar do |date| %>
     <% current_user.routines.where((date.strftime("%a").to_s)).order(:start_time).each do |r| %>

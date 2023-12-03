@@ -21,10 +21,13 @@
           <strong> My <%= Routine.get_full_days_of_week().grep(/^#{@day}/).first %> </strong>
         </h2>
       <span class="ms-md-auto flex-child">
-        <%= link_to "Weekly Calendar", weekly_path, :class => 'btn btn-primary btn-outline-info mx-2' %>
+        <%= link_to weekly_path, :class => 'btn btn-primary btn-outline-info mx-2' do %>
+        <i class="bi bi-calendar-week"></i> Weekly<% end %>
       </span>
     </div>
-
+</div>
+<br>
+<div class="container-fluid">
     <%= timeline routine_timeline  %>
 
     <div class="container text-center">
