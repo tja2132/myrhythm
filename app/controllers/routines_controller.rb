@@ -1,7 +1,7 @@
 class RoutinesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[ discover discover_show]
   before_action :set_routine, only: %i[ show edit complete update destroy edit_routine_copy]
-  Time.zone = 'EST'
+  # Time.zone = 'EST'
 
 
   # GET /routines/discover
@@ -22,11 +22,14 @@ class RoutinesController < ApplicationController
 
   def copy_routine
     @routine_params = params[:routine]
+    @quick_add = false
 
     if params[:quick_add].nil?
       @source_routine_id = flash[:routine_id]
       @source_routine = Routine.find(@source_routine_id)
     else
+      @quick_add = true
+      @routine_params[:is_public] = false
       @source_routine_id = params[:id]
       @source_routine = Routine.find(@source_routine_id)
     end
@@ -50,7 +53,7 @@ class RoutinesController < ApplicationController
       :home => @routine_params[:home],
       :work => @routine_params[:work],
       :school => @routine_params[:school],
-      :is_public => routine_params[:is_public]
+      :is_public => @routine_params[:is_public]
     )
 
     tasks.each do |task|
@@ -80,8 +83,8 @@ class RoutinesController < ApplicationController
       @recurrence_to_show = recurrenceHash.keys
     end
     @sortBy = params[:sortBy]
-    @routines = Routine.with_recurrence(current_user.routines.all, @recurrence_to_show)
     @all_recurrence = Routine.all_recurrence
+    @routines = Routine.with_recurrence(current_user.routines.all, @recurrence_to_show)
 
     if @sortBy == "title"
       @routines = @routines.sort_by { |routine | routine.title }
