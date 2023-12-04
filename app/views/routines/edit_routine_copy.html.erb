@@ -1,10 +1,12 @@
-<%= form_with(model: routine) do |form| %>
-  <% if routine.errors.any? %>
+<h1 class="bi bi-pencil-square" ><%= @routine.title %></h1>
+
+<%= form_with(model: @routine, url: copy_routine_path, method: :post) do |form| %>
+  <% if @routine.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(routine.errors.count, "error") %> prohibited this routine from being saved:</h2>
 
       <ul>
-        <% routine.errors.each do |error| %>
+        <% @routine.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
@@ -15,12 +17,12 @@
     <%= form.label :title, class: "form-label" %>
     <%= form.text_field :title, class: "form-control" %>
   </div>
-<br>
+  <br>
   <div class="form-group">
     <%= form.label :description, class: "form-label" %>
     <%= form.text_area :description, class: "form-control" %>
   </div>
-<br>
+  <br>
   <div class="form-group">
     <%= form.label :start_time, class: "form-label" %>
     <%= form.time_field :start_time, {class: "form-control", ampm: true}%>
@@ -28,31 +30,31 @@
 
   <fieldset class="form-group">
     <legend class="mt-4">Recurrence</legend>
-  <div class="form-check">  
-    <%= form.check_box :mon, class: "form-check-input" %>
-    <%= form.label :mon, class: "form-check-label" %>
-  </div><div class="form-check"> 
+    <div class="form-check">
+      <%= form.check_box :mon, class: "form-check-input" %>
+      <%= form.label :mon, class: "form-check-label" %>
+    </div><div class="form-check">
     <%= form.check_box :tue, class: "form-check-input"  %>
     <%= form.label :tue, class: "form-check-label"  %>
-  </div><div class="form-check">   
+  </div><div class="form-check">
     <%= form.check_box :wed, class: "form-check-input"  %>
     <%= form.label :wed, class: "form-check-label"  %>
-  </div><div class="form-check">   
+  </div><div class="form-check">
     <%= form.check_box :thu, class: "form-check-input"  %>
     <%= form.label :thu, class: "form-check-label"  %>
-  </div><div class="form-check">   
+  </div><div class="form-check">
     <%= form.check_box :fri, class: "form-check-input"  %>
     <%= form.label :fri, class: "form-check-label"  %>
-   </div><div class="form-check">  
+  </div><div class="form-check">
     <%= form.check_box :sat, class: "form-check-input"  %>
     <%= form.label :sat, class: "form-check-label"  %>
-   </div><div class="form-check">  
+  </div><div class="form-check">
     <%= form.check_box :sun, class: "form-check-input"  %>
     <%= form.label :sun, class: "form-check-label"  %>
   </div>
   </fieldset>
 
-    <br>
+  <br>
 
   <fieldset class="form-group">
     <legend class="mt-4">Tags</legend>
@@ -68,18 +70,18 @@
   </div>
   </fieldset>
 
-  <br/>
 
   <h2>Privacy</h2>
-    <div class="form-check">
+  <div class="form-check">
     <%= form.check_box :is_public, class: "form-check-input"  %>
     <%= form.label :is_public, class: "form-check-label"  %>
   </div>
 
-<br>
+  <br>
   <div>
-    <%= link_to "Cancel", @routine, :class => 'btn btn-outline-primary'  %>
-    <%= form.submit :class => 'btn btn-outline-success'%>
-    <!--<%= link_to "My Routines", routines_path, :class => 'btn btn-primary'  %>-->
+    <%= link_to "Cancel", discover_path, :class => 'btn btn-outline-primary'  %>
+    <%= form.submit "Copy Routine", :class => 'btn btn-outline-success'%>
+    <!--<%= link_to "Discover Page", discover_path, :class => 'btn btn-primary'  %>-->
   </div>
+
 <% end %>

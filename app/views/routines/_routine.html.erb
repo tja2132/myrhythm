@@ -20,8 +20,12 @@
   <% end %>
 
   <td>
-    <%= link_to " Edit", edit_routine_path(routine), :class => 'bi bi-pencil-square btn btn-outline-primary btn-sm', :id => "edit_routine_#{routine.id}"%>
-    <%= link_to " Delete", routine, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, :class => 'bi bi-trash btn btn-outline-danger btn-sm', :id => "delete_routine_#{routine.id}" %>
+    <%= link_to complete_routine_path(routine), data: { turbo_method: :complete, turbo_confirm: "Mark this routine as complete?" }, :class => 'btn btn-outline-success btn-sm', :id => "complete_routine_#{routine.id}" do %>
+    <i class="bi bi-check"></i><% end %>
+    <%= link_to edit_routine_path(routine), :class => 'btn btn-outline-primary btn-sm', :id => "edit_routine_#{routine.id}" do %>
+    <i class="bi bi-pencil-square"></i><% end %>
+    <%= link_to routine, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, :class => 'btn btn-outline-danger btn-sm', :id => "delete_routine_#{routine.id}" do %>
+    <i class="bi bi-trash"></i><% end %>
   </td>
 </tr>
 

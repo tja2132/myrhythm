@@ -24,17 +24,30 @@
         <div class="collapse navbar-collapse">
         <ul class="navbar-nav me-auto">
           <li class="nav-item d-flex justify-content-between align-items-center">
-          <%= link_to "Discover", "/discover", :class => 'nav-link'  %>
+          <%= link_to "/discover", :class => 'nav-link' do %>
+          <i class="bi bi-award"></i><span> Discover</span><% end %>
           </li>
           <% if user_signed_in? %>
+
             <li class="nav-item d-flex justify-content-between align-items-center">
-            <%= link_to "My Routines", routines_path, :class => 'nav-link' %>
+            <%= link_to routines_path, :class => 'nav-link' do %>
+          <i class="bi bi-bar-chart-steps"></i><span> My Routines</span><% end %>
             <span class="badge text-bg-primary"><%= current_user.routines.count %></span>
-            </li><li class="nav-item d-flex justify-content-between align-items-center">
-            <%= link_to "My Calendar", "/weekly", :class => 'nav-link'  %>
             </li>
-            <li><%= link_to "My Day", daily_path, :class => 'nav-link'  %></li>
-          <% end %>
+
+            <% if current_user.default_calendar == "Daily" %>
+              <li><%= link_to daily_path(:day => Date.today.strftime("%a")), :class => 'nav-link' do %>
+              <i class="bi bi-calendar-check"></i><span> Calendar</span><% end %></li>
+             <% else %>
+              <li><%= link_to weekly_path, :class => 'nav-link'  do %>
+              <i class="bi bi-calendar-check"></i><span> Calendar</span><% end %></li>
+             <% end %>
+
+            <li><%= link_to completions_path(:timeframe => current_user.default_insights.to_i || 7), :class => 'nav-link' do %>
+              <i class="bi bi-activity"></i><span> Insights</span><% end %></li>
+
+        <% end %>
+
           <li class="nav-item d-flex justify-content-between align-items-center">
           </li><!--<li class="nav-item">
         <%= link_to "Sign in", "", :class => 'nav-link'  %>

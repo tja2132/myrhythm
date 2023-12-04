@@ -3,8 +3,4 @@
   <td><%= link_to "#{task.title}", [@routine,task] %></td>
   <td><%= task.description %></td>
   <td><%= task.duration %></td>
-  <td>
-    <input class="form-check-input" type="checkbox">
-  </td>
-  <%= render "tasks/task_links", task: task %>
 </tr>

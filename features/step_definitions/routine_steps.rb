@@ -39,7 +39,13 @@ Given /the following routines exist for the user "(.*)"/ do |user_email, routine
 
 # TODO
    And /I follow the "(.*)" button for the routine "(.*)"/ do |button_name, routine_name|
-    routine = Routine.find_by(:title => "#{routine_name}")  
-    click_link("#{button_name}_routine_#{routine.id}")
+    #routine = Routine.find_by(:title => "#{routine_name}")  
+    if "#{button_name}" == ("edit")
+      find('tr', text: "#{routine_name}").find(:xpath, ".//a[i[contains(@class, 'bi bi-pencil-square')]]").click
+    elsif "#{button_name}" == ("complete")
+      find('tr', text: "#{routine_name}").find(:xpath, ".//a[i[contains(@class, 'bi bi-check')]]").click
+    elsif "#{button_name}" == ("delete")
+      find('tr', text: "#{routine_name}").find(:xpath, ".//a[i[contains(@class, 'bi bi-trash')]]").click
+    end
    end
 
