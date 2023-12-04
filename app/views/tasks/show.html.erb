@@ -11,7 +11,7 @@
   <br>
   <td><b>Duration:</b> <%= @task.duration %></td>
   <br>
-  <td><b>URL:</b> <%= @task.url %></td>
+  <td><b>URL:</b> <%= link_to @task.url, "#{@task.url}" %></td>
 </tr>
 <br><br>
 <div>
