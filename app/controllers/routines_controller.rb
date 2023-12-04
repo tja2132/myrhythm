@@ -1,7 +1,7 @@
 class RoutinesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[ discover discover_show]
   before_action :set_routine, only: %i[ show edit complete update destroy edit_routine_copy]
-  Time.zone = 'EST'
+  # Time.zone = 'EST'
 
 
   # GET /routines/discover
