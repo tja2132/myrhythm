@@ -1,7 +1,7 @@
 class RoutinesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[ discover discover_show]
   before_action :set_routine, only: %i[ show edit complete update destroy edit_routine_copy]
-  Time.zone = 'EST'
+  # Time.zone = 'EST'
 
 
   # GET /routines/discover
@@ -80,8 +80,8 @@ class RoutinesController < ApplicationController
       @recurrence_to_show = recurrenceHash.keys
     end
     @sortBy = params[:sortBy]
-    @routines = Routine.with_recurrence(current_user.routines.all, @recurrence_to_show)
     @all_recurrence = Routine.all_recurrence
+    @routines = Routine.with_recurrence(current_user.routines.all, @recurrence_to_show)
 
     if @sortBy == "title"
       @routines = @routines.sort_by { |routine | routine.title }

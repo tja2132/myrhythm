@@ -3,7 +3,6 @@
 
 
 <%= form_tag routines_path, method: :get, id: 'recurrence_form' do %>
-  <%= hidden_field_tag 'sortBy', @sortBy %>
   Recurrence Filter:
   <% @all_recurrence.each do |recurrence| %>
     <div class="form-check  form-check-inline">
