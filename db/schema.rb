@@ -47,6 +47,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_01_170413) do
     t.integer "duration", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "url"
     t.index ["routine_id"], name: "index_tasks_on_routine_id"
   end
 

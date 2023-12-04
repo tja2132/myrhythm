@@ -4,6 +4,10 @@ class Routine < ApplicationRecord
   has_many :completions, dependent: :destroy
   validates :title, presence: true
 
+  def self.all_recurrence
+    ['Daily', 'Weekly', 'None']
+  end
+
   # three day abbreviations consistent with strftime("%a")
   def self.get_full_days_of_week()
      ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
@@ -109,6 +113,21 @@ class Routine < ApplicationRecord
         routines_with_tags.concat(Routine.where("#{tag} = true AND is_public = true"))
       end
       return routines_with_tags
+    end
+  end
+
+  def self.with_recurrence(routines, recurrence_list)
+    if recurrence_list.empty?
+      return Routine.where(:is_public => true)
+    else
+      routines_with_recurrence = []
+      routines.each do |routine_select|
+        recurrence_val = Routine.get_routine_recurrence(routine_select)
+        if recurrence_list.include?(recurrence_val)
+          routines_with_recurrence.concat(Routine.where(id: routine_select.id))
+        end
+      end
+      return routines_with_recurrence
     end
   end
 
