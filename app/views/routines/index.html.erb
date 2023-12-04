@@ -1,5 +1,6 @@
-<!--<p style="color: green"><%= notice %></p> REMOVE FORM TAG, add filtering to url -->
-<h3><b>My Routines</b></h3>
+<!--<p style="color: green"><%= notice %></p> -->
+<h2><strong>My Routines</strong></h2>/
+
 
 <%= form_tag routines_path, method: :get, id: 'recurrence_form' do %>
   <%= hidden_field_tag 'sortBy', @sortBy %>

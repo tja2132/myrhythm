@@ -2,9 +2,7 @@
 
 <% routines = current_user.get_user_routines_by_day(@day) %>
 <% routine_timeline = [] %>
-
 <% routines.each do |r| %>
-
 <% routine_timeline.append([r.title, Time.local(2023,1,1,
                                                         r.start_time.strftime("%H"),
                                                         r.start_time.strftime("%M")),
@@ -14,19 +12,38 @@
                                                         Routine.end_time(r).strftime("%M"))]) %>
 <% end %>
 
-<div class="container">
+<% if current_user.routines.size > 0 %>
 
-  <% Routine.get_short_days_of_week.each do |d|  %>
-    <%= link_to d, daily_path(:day => d), :class => 'btn btn-primary btn-sm' %>
-  <% end %>
+  <div class="container-fluid">
 
-  <br> <br>
-
-  <h3> <b> My <%= Routine.get_full_days_of_week().grep(/^#{@day}/).first %> </b> </h3>
-
-  <br>
-
-  <%= timeline routine_timeline  %>
-
+     <div class="d-flex justify-content-between align-items-center">
+        <h2 class="me-auto flex-child">
+          <strong> My <%= Routine.get_full_days_of_week().grep(/^#{@day}/).first %> </strong>
+        </h2>
+      <span class="ms-md-auto flex-child">
+        <%= link_to weekly_path, :class => 'btn btn-primary btn-outline-info mx-2' do %>
+        <i class="bi bi-calendar-week"></i> Weekly<% end %>
+      </span>
+    </div>
 </div>
+<br>
+<div class="container-fluid">
+    <%= timeline routine_timeline  %>
+
+    <div class="container text-center">
+      <div class="row justify-content-center">
+        <div class="col-auto">
+          <% Routine.get_short_days_of_week.each do |d|  %>
+            <%= link_to d, daily_path(:day => d), :class => 'btn btn-primary btn-md mx-2' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+<% else %>
+  <h2> No Routines Yet </h2>
+  <p> Add a Routine </p>
+  <%= link_to "My Routines", routines_path, :class => 'btn btn-primary btn-md mx-2' %>
+<% end %>
 
