@@ -1,5 +1,18 @@
 <!--<p style="color: green"><%= notice %></p> -->
-<h2><strong>My Routines</strong></h2>
+<h2><strong>My Routines</strong></h2>/
+
+
+<%= form_tag routines_path, method: :get, id: 'recurrence_form' do %>
+  Recurrence Filter:
+  <% @all_recurrence.each do |recurrence| %>
+    <div class="form-check  form-check-inline">
+      <%= label_tag "recurrence[#{recurrence}]", recurrence, class: 'form-check-label' %>
+      <%= check_box_tag "recurrence[#{recurrence}]", '1', (@recurrence_to_show.include?(recurrence)),
+                        class: 'form-check-input' %>
+    </div>
+  <% end %>
+  <%= submit_tag 'Refresh', id: 'recurrence_submit', class: 'btn btn-primary' %>
+<% end %>
 
 <table class="table table-hover" id="routines">
   <thead>
@@ -18,6 +31,12 @@
 
       <th>Day of the Week</th>
 
+      <%if @sortBy == 'total_duration' %>
+        <th class="bg-light"><%= link_to 'Total Duration', routines_path(:sortBy => 'total_duration'), :id => 'total_duration' %></th>
+      <%else %>
+        <th><%= link_to 'Total Duration', routines_path(:sortBy => 'total_duration'), :id => 'total_duration' %></th>
+      <%end %>
+
       <%if @sortBy == 'start_time' %>
         <th class="bg-light"><%= link_to 'Start Time', routines_path(:sortBy => 'start_time'), :id => 'start_time' %></th>
       <%else %>
@@ -29,6 +48,7 @@
       <%else %>
         <th><%= link_to 'End Time', routines_path(:sortBy => 'end_time'), :id => 'end_time' %></th>
       <%end %>
+
       <th></th>
   </thead>
   <tbody>

@@ -1,6 +1,8 @@
 class RoutinesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[ discover discover_show]
   before_action :set_routine, only: %i[ show edit complete update destroy edit_routine_copy]
+  # Time.zone = 'EST'
+
 
   # GET /routines/discover
   def discover
@@ -74,20 +76,33 @@ class RoutinesController < ApplicationController
   
   # GET /routines or /routines.json
   def index
-    @routines = current_user.routines.all
+    if params[:recurrence].nil?
+      @recurrence_to_show = []
+    else
+      recurrenceHash = params[:recurrence]
+      @recurrence_to_show = recurrenceHash.keys
+    end
     @sortBy = params[:sortBy]
-    if @sortBy == "title" or @sortBy == "start_time"
-      @routines = @routines.order(@sortBy)
+    @all_recurrence = Routine.all_recurrence
+    @routines = Routine.with_recurrence(current_user.routines.all, @recurrence_to_show)
+
+    if @sortBy == "title"
+      @routines = @routines.sort_by { |routine | routine.title }
+    elsif @sortBy == "start_time"
+      @routines = @routines.sort_by { |routine | routine.start_time }
     elsif @sortBy == "recurrence"
       @routines = @routines.sort_by { |routine | Routine.get_routine_recurrence(routine) }
     elsif @sortBy == "end_time"
       @routines = @routines.sort_by { |routine | routine.start_time.nil? ? Time.zone.parse('1970-01-01 0:0:0') : routine.start_time + Routine.total_duration(routine).minutes}
+    elsif @sortBy == "total_duration"
+      @routines = @routines.sort_by { |routine | Routine.total_duration(routine) }
     end
   end
 
   # GET /routines/new
   def new
     @routine = current_user.routines.new
+    @routine.created_at = Time.current
   end
 
   # GET /routines/1 or /routines/1.json
@@ -116,6 +131,7 @@ class RoutinesController < ApplicationController
       if @routine.update(routine_params)
         format.html { redirect_to routine_url(@routine), notice: "Routine was successfully updated." }
         format.json { render :show, status: :ok, location: @routine }
+        @routine.updated_at = Time.current
       end
     end
   end
@@ -149,4 +165,5 @@ class RoutinesController < ApplicationController
     def routine_params
       params.require(:routine).permit(:title, :description, :daysofweek, :recurrence, :start_time, :created, :updated, :mon, :tue, :wed, :thu, :fri, :sat, :sun, :is_public, :home, :work, :school, :quick_add)
     end
+
 end

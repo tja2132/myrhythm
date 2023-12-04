@@ -30,7 +30,11 @@
     <%= form.label :duration, "Minutes to complete task", class: "form-label" %>
     <%= form.select :duration, 0..240 , :class => "form-range"%>
   </div>
-
+<br>
+  <div class="form-group">
+    <%= form.label :url, "Links", class: "form-label" %>
+    <%= form.text_field :url, class: "form-control"  %>
+  </div>
 <br>
   <div class="form-group">
     <%= link_to "Cancel", [@routine, @task], :class => 'btn btn-outline-primary'  %>
