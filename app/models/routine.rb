@@ -118,7 +118,7 @@ class Routine < ApplicationRecord
 
   def self.with_recurrence(routines, recurrence_list)
     if recurrence_list.empty?
-      return Routine.where(:is_public => true)
+      return routines
     else
       routines_with_recurrence = []
       routines.each do |routine_select|
