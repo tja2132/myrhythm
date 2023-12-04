@@ -24,8 +24,8 @@ class RoutinesController < ApplicationController
       @recurrence_to_show = recurrenceHash.keys
     end
     @sortBy = params[:sortBy]
-    @routines = Routine.with_recurrence(current_user.routines.all, @recurrence_to_show)
     @all_recurrence = Routine.all_recurrence
+    @routines = Routine.with_recurrence(current_user.routines.all, @recurrence_to_show)
 
     if @sortBy == "title"
       @routines = @routines.sort_by { |routine | routine.title }
