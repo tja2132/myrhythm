@@ -22,11 +22,14 @@ class RoutinesController < ApplicationController
 
   def copy_routine
     @routine_params = params[:routine]
+    @quick_add = false
 
     if params[:quick_add].nil?
       @source_routine_id = flash[:routine_id]
       @source_routine = Routine.find(@source_routine_id)
     else
+      @quick_add = true
+      @routine_params[:is_public] = false
       @source_routine_id = params[:id]
       @source_routine = Routine.find(@source_routine_id)
     end
@@ -50,7 +53,7 @@ class RoutinesController < ApplicationController
       :home => @routine_params[:home],
       :work => @routine_params[:work],
       :school => @routine_params[:school],
-      :is_public => routine_params[:is_public]
+      :is_public => @routine_params[:is_public]
     )
 
     tasks.each do |task|
