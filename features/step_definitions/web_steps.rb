@@ -40,6 +40,10 @@ When /I refresh the page/ do
   visit current_path
 end
 
+When /I wait a second/ do
+  sleep(1)
+end
+
 # Multi-line step scoper
 When /^(.*) within (.*[^:]):$/ do |step, parent, table_or_string|
   with_scope(parent) { When "#{step}:", table_or_string }
