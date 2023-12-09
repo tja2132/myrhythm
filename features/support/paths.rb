@@ -21,6 +21,7 @@ module NavigationHelpers
       when /^the (MyRhythm )?home\s?page sorted by "(.*)"$/ then routines_path(:sortBy => $2)
       when /^the login page$/ then '/users/sign_in'
       when /^the signup page$/ then '/users/sign_up'
+      when /^the insights page$/ then '/completions'
 
       # when /^the (.*) routine page$/ then '/routines/($1)'
   

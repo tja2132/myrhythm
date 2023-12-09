@@ -1,8 +1,8 @@
 Feature: display a weekly calendar view of routines for the week.
 
   As a MyRhythm user
-  So that I can plan ahead for the day.
-  I want to see today's routines at a glance
+  So that I can plan ahead for the upcoming week.
+  I want to see a week's worth of routines at one time
 
   Background: routines have been added to database
 
@@ -18,8 +18,19 @@ Feature: display a weekly calendar view of routines for the week.
 
     And I am on the routines page
 
-  Scenario: navigate to the insights page
+  Scenario: update default insights timeframe
     When I follow "Insights"
-    Then I should be on the insights page
-
+    Then I should see "My Stats: All Time"
+    When I follow "Me"
+    And I select "30" from "Default Number of Days Shown on Insights Page"
+    And I press "Update Settings"
+    Then I should see "User settings updated"
+    When I follow "Insights"
+    Then I should see "My Stats: Last 30 Days"
+    When I follow "Me"
+    And I select "90" from "Default Number of Days Shown on Insights Page"
+    And I press "Update Settings"
+    Then I should see "User settings updated"
+    When I follow "Insights"
+    Then I should see "My Stats: Last 90 Days"
     

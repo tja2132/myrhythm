@@ -8,7 +8,7 @@
       <div class="btn-toolbar justify-content-center">
         <div class="btn-group me-2">
         <% [7, 30, 90].each do |g| %>
-          <%= button_tag :class => 'btn btn-secondary', :onclick => "location.href = '/completions?timeframe=#{g}'" do %>
+          <%= button_tag :class => 'btn btn-secondary', :id => "last_" + g.to_s, :onclick => "location.href = '/completions?timeframe=#{g}'" do %>
             <%= "Last " + g.to_s + " days" %>
           <% end %>
         <% end %>
