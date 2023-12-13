@@ -1,4 +1,4 @@
-Feature: display a weekly calendar view of routines for the week.
+Feature: display a calendar view of routines for the day.
 
   As a MyRhythm user
   So that I can plan ahead for the day.

@@ -1,8 +1,9 @@
-Feature: display a weekly calendar view of routines for the week.
+Feature: display a user's routine completion insights page
 
   As a MyRhythm user
-  So that I can plan ahead for the day.
-  I want to see today's routines at a glance
+  So that I can improve my productivity
+  I want to see how many routines I have completed
+  and insights about my completion history
 
   Background: routines have been added to database
 
@@ -21,5 +22,41 @@ Feature: display a weekly calendar view of routines for the week.
   Scenario: navigate to the insights page
     When I follow "Insights"
     Then I should be on the insights page
+    And I should see "My Stats: All Time"
+
+  Scenario: complete a routine and see your stats update
+    When I follow "Insights"
+    Then I should be on the insights page
+    And I should see "My Stats: All Time"
+    And I should see "You have not completed any routines Yet"
+    When I go to the routines page
+    And I follow the "complete" button for the routine "Evening Workout"
+    Then I should see "Evening Workout was successfully completed."
+    And I follow the "complete" button for the routine "Skincare Routine"
+    Then I should see "Skincare Routine was successfully completed."
+    And I follow the "complete" button for the routine "Weekend Routine"
+    Then I should see "Weekend Routine was successfully completed."
+    When I follow "Insights"
+    Then I should be on the insights page
+    And I should see "My Stats: All Time"
+    And I should see "Total Routines Completed: 3"
+
+  Scenario: see your most completed routine
+    When I go to the routines page
+    And I follow the "complete" button for the routine "Evening Workout"
+    And I follow the "complete" button for the routine "Evening Workout"
+    And I go to the insights page
+    Then I should see "Total Routines Completed: 2"
+    And I should see "Most Completed Routine: Evening Workout with 2 completions"
+    When I go to the routines page
+    And I follow the "complete" button for the routine "Skincare Routine"
+    And I follow the "complete" button for the routine "Skincare Routine"
+    And I follow the "complete" button for the routine "Skincare Routine"
+    And I go to the insights page
+    Then I should see "Total Routines Completed: 5"
+    And I should see "Most Completed Routine: Skincare Routine with 3 completions"
+
+
+
 
     

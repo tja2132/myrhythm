@@ -56,7 +56,4 @@ class CompletionsController < ApplicationController
     [day, max]
   end
 
-  def completion_params
-    params.require(:completion).permit(:routine, :user, :completion_grouping, :created, :updated)
-  end
 end

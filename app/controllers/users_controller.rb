@@ -28,8 +28,4 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
-  def user_params
-    params.require(:id).permit(:default_calendar, :default_insights)
-  end
-
 end

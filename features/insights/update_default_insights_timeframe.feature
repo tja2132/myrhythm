@@ -1,8 +1,8 @@
-Feature: display a weekly calendar view of routines for the week.
+Feature: update default insights timeframe
 
   As a MyRhythm user
-  So that I can plan ahead for the upcoming week.
-  I want to see a week's worth of routines at one time
+  So that I can customize my experience
+  I want to change the default timeframe displayed on the insights page
 
   Background: routines have been added to database
 

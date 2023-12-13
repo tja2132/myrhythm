@@ -20,6 +20,7 @@ module NavigationHelpers
       when /^the daily calendar page$/ then '/daily'
       when /^the (MyRhythm )?home\s?page sorted by "(.*)"$/ then routines_path(:sortBy => $2)
       when /^the login page$/ then '/users/sign_in'
+      when /^the logout page$/ then '/users/sign_out'
       when /^the signup page$/ then '/users/sign_up'
       when /^the insights page$/ then '/completions'
 
