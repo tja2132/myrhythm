@@ -1,4 +1,4 @@
-Feature: display list of routines
+Feature: Display Routine List
 
   As a stressed student
   So that I can focus on my studies and get to class on time

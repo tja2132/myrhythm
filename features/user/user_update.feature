@@ -29,3 +29,19 @@ Scenario: Update Default Calendar page
   Then I should see "User settings updated"
   When I follow "Calendar"
   Then I should be on the daily calendar page
+
+Scenario: Update Default Insights Timeframe
+  When I follow "Insights"
+  Then I should see "My Stats: All Time"
+  When I follow "Me"
+  And I select "30" from "Default Number of Days Shown on Insights Page"
+  And I press "Update Settings"
+  Then I should see "User settings updated"
+  When I follow "Insights"
+  Then I should see "My Stats: Last 30 Days"
+  When I follow "Me"
+  And I select "90" from "Default Number of Days Shown on Insights Page"
+  And I press "Update Settings"
+  Then I should see "User settings updated"
+  When I follow "Insights"
+  Then I should see "My Stats: Last 90 Days"

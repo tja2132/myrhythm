@@ -1,10 +1,10 @@
-Feature: display list of routines
+Feature: Discover New Routines as a user of MyRhythm
 
   As a stressed student
   So that I can focus on my studies and get to class on time
   I want to manage my schedule more effectively
 
-  Background: routines have been added to database
+  Background: Routines have been added to database
 
     Given the following user exists and is logged in:
     | first_name | last_name | columbia_uni | email              | password | 

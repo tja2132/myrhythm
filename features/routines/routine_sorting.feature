@@ -1,4 +1,4 @@
-Feature: sort my routines
+Feature: Sort my routines
 
   As a stressed student
   So that I can prioritize my work and get to class on time

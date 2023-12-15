@@ -1,4 +1,4 @@
-Feature: Display all Information for a Routine
+Feature: Update a Routine's information
 
   As a stressed student
   So that I can focus on my studies
@@ -17,11 +17,17 @@ Feature: Display all Information for a Routine
     And I am on the routines page
     Then I should see "Study Routine"
 
-  Scenario: View the Routine
+  Scenario: adding a task to a routine with a non-zero duration increases the routine end time
     Given I am on the routines page
     When I follow "Study Routine"
-    Then I should see "Study Routine"
-    And I should see "Recurrence: Mon, Tue, Wed, Thu, Fri, Sat"
     And I should see "Total Duration: 0 min"
     And I should see "Start Time: 12:00pm"
     And I should see "End Time: 12:00pm"
+    When I follow "Add Task"
+    And I fill in "Task Name" with "Algebra"
+    And I select "20" from "Minutes to complete task"
+    And I press "Create Task"
+    And I follow "Back to Routine"
+    Then I should see "Total Duration: 20 minutes"
+    And I should see "Start Time: 12:00pm"
+    And I should see "End Time: 12:20pm"
