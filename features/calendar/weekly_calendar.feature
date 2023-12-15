@@ -21,16 +21,8 @@ Feature: display a weekly calendar view of routines for the week.
   Scenario: navigate to the weekly calendar page
     When I follow "Calendar"
     Then I should see "My Week"
-    And I should see "Mon"
-    And I should see "Tue"
-    And I should see "Wed"
-    And I should see "Thu"
-    And I should see "Fri"
-    And I should see "Sat"
-    And I should see "Sun"
-    And I should see "Skincare Routine"
-    And I should see "Evening Workout"
-    And I should see "Weekend Routine"
+    And I should see the following: Mon, Tue, Wed, Thu, Fri, Sat, Sun
+    And I should see the following: Skincare Routine, Evening Workout, Weekend Routine
 
   Scenario: routines are displayed on the correct days
     When I am on the weekly calendar page
@@ -38,5 +30,3 @@ Feature: display a weekly calendar view of routines for the week.
     And I should see "Skincare Routine" before "Evening Workout"
     And I should not see "Weekend Routine" before "Sat"
     And I should see "Weekend Routine" after "Sun"
-
-

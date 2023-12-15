@@ -17,6 +17,13 @@ Given /the following routines exist for the user "(.*)"/ do |user_email, routine
     expect(Routine.count).to eq n_seeds.to_i
   end
 
+  Then /I should see the following: (.*)/ do | day_list |
+    day_list.split(', ').each do | day |
+      step %{I should see "#{day}"}
+      #expect(page).to have_content(routine_name, count: freq)
+    end
+  end
+
   Then /I should see "(.*)" (\d) times?/ do | routine_name, freq |
     expect(page).to have_content(routine_name, count: freq)
   end
