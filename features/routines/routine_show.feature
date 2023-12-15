@@ -26,6 +26,7 @@ Feature: display all relevant information about a single routine and ensure it u
     And I should see "Start Time: 12:00pm"
     And I should see "End Time: 12:00pm"
 
+
   Scenario: adding a task to a routine with a non-zero duration increases the routine end time
     Given I am on the routines page
     When I follow "Study Routine"
