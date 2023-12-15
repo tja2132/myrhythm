@@ -1,8 +1,4 @@
-<<<<<<< HEAD:features/routines/routine_discover.feature
 Feature: Discover New Routines as a user of MyRhythm
-=======
-Feature: discover new routines
->>>>>>> 10ddc2207c5ee03ce1b109745f907f57b6d640cc:features/routines/discover_page.feature
 
   As a stressed student
   So that I can focus on my studies and get to class on time
@@ -25,9 +21,6 @@ Feature: discover new routines
 
   Scenario: Navigate to discover page
     When I follow "Discover"
-<<<<<<< HEAD:features/routines/routine_discover.feature
-    Then I should see "Discover"
-=======
     Then I should see "Discover"
     And I should see "Evening Workout"
     And I should not see "Skincare Routine"
@@ -47,4 +40,3 @@ Feature: discover new routines
     And I should see "The Perfect Grilled Cheese"
     Then I should not see "Evening Workout"
     And I should not see "Skincare Routine"
->>>>>>> 10ddc2207c5ee03ce1b109745f907f57b6d640cc:features/routines/discover_page.feature

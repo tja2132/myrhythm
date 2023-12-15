@@ -24,9 +24,6 @@ Feature: Display all Information for a Routine
     And I should see "Recurrence: Mon, Tue, Wed, Thu, Fri, Sat"
     And I should see "Total Duration: 0 min"
     And I should see "Start Time: 12:00pm"
-<<<<<<< HEAD
-    And I should see "End Time: 12:00pm"
-=======
     And I should see "End Time: 12:00pm"
     And I should see "Tags: Home"
 
@@ -44,4 +41,3 @@ Feature: Display all Information for a Routine
     Then I should see "Total Duration: 20 minutes"
     And I should see "Start Time: 12:00pm"
     And I should see "End Time: 12:20pm"
->>>>>>> 10ddc2207c5ee03ce1b109745f907f57b6d640cc
