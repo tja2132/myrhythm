@@ -11,8 +11,8 @@ Feature: display all relevant information about a single routine and ensure it u
     | Guest      | User      | aaaa1234     | guest@columbia.edu | 1234qwer |
 
     Given the following routines exist for the user "guest@columbia.edu":
-      | title                       | description                        | mon  | tue | wed | thu | fri | sat | sun  | start_time |
-      | Study Routine               | A nightly study plan               | true | true| true| true| true| true| false| 12:00:00   |
+      | title                       | description                        | mon  | tue | wed | thu | fri | sat | sun  | start_time | home |
+      | Study Routine               | A nightly study plan               | true | true| true| true| true| true| false| 12:00:00   | true |
 
     And I am on the routines page
     Then I should see "Study Routine"
@@ -25,6 +25,7 @@ Feature: display all relevant information about a single routine and ensure it u
     And I should see "Total Duration: 0 min"
     And I should see "Start Time: 12:00pm"
     And I should see "End Time: 12:00pm"
+    And I should see "Tags: Home"
 
   Scenario: adding a task to a routine with a non-zero duration increases the routine end time
     Given I am on the routines page

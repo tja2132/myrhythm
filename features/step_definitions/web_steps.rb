@@ -83,7 +83,16 @@ end
 #
 # TODO: Add support for checkbox, select or option
 # based on naming conventions.
-#
+
+When /^(?:|I )check (?:the\s+)?"([^"]*)"(?:\s*checkbox)?$/ do |field|
+  check(field)
+end
+
+When /^(?:|I )uncheck (?:the\s+)?"([^"]*)"(?:\s*checkbox)?$/ do |field|
+  uncheck(field)
+end
+
+
 When /^(?:|I )fill in the following:$/ do |fields|
   fields.rows_hash.each do |name, value|
     When %{I fill in "#{name}" with "#{value}"}
