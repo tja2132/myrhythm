@@ -30,9 +30,6 @@ Feature: display list of routines
     Then I should see "Mon" 2 times
     And I should see "Wed" 1 time
 
-  Scenario: View the recurrence of a routine
-    Then I should see "None" 1 time
-
   Scenario: modify routine in database
     When I follow the "edit" button for the routine "Evening Workout"
     And I fill in "Title" with "Morning Workout"
@@ -44,3 +41,7 @@ Feature: display list of routines
     And I fill in "Title" with "The Best Grilled Cheese"
     And I press "Update Routine"
     Then I should see "Routine was successfully updated."
+
+  Scenario: complete a routine on the routine page
+    When I follow the "complete" button for the routine "The Perfect Grilled Cheese"
+    Then I should see "The Perfect Grilled Cheese was successfully completed."

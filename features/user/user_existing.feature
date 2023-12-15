@@ -1,4 +1,4 @@
-Feature: Sign in to MyRhythm
+Feature: Sign in to and out of MyRhythm
 
 Background: User has already registered with MyRhythm
 
@@ -12,3 +12,4 @@ Scenario: Log in to the system
   And I fill in "user_password" with "1234qwer"
   And I press "Sign in"
   Then I should see "Signed in successfully."
+
