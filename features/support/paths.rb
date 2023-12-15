@@ -23,6 +23,7 @@ module NavigationHelpers
       when /^the logout page$/ then '/users/sign_out'
       when /^the signup page$/ then '/users/sign_up'
       when /^the insights page$/ then '/completions'
+      when /^my profile page$/ then '/me'
 
       # when /^the (.*) routine page$/ then '/routines/($1)'
   

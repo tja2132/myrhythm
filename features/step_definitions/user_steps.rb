@@ -29,3 +29,7 @@ Given /^the following users do not exist:$/ do |user_table|
         expect(user).not_to be_an_instance_of User
     end
 end
+
+Then('I click on {string}') do |string|
+    click_on(string)
+end

@@ -1,8 +1,8 @@
-Feature: display a calendar view of routines for the day.
+Feature: display a weekly calendar view of routines for the week.
 
   As a MyRhythm user
-  So that I can plan ahead for the day.
-  I want to see today's routines at a glance
+  So that I can plan ahead for the upcoming week.
+  I want to see a week's worth of routines at one time
 
   Background: routines have been added to database
 
@@ -18,19 +18,15 @@ Feature: display a calendar view of routines for the day.
 
     And I am on the routines page
 
-  Scenario: navigate to the daily calendar page
+  Scenario: navigate to the weekly calendar page
     When I follow "Calendar"
-    And I follow "Mon"
-    Then I should see "My Monday"
-    And I follow "Tue"
-    Then I should see "My Tuesday"
-    And I follow "Wed"
-    Then I should see "My Wednesday"
-    And I follow "Thu"
-    Then I should see "My Thursday"
-    And I follow "Fri"
-    Then I should see "My Friday"
-    And I follow "Sat"
-    Then I should see "My Saturday"
-    And I follow "Sun"
-    Then I should see "My Sunday"
+    Then I should see "My Week"
+    And I should see the following: Mon, Tue, Wed, Thu, Fri, Sat, Sun
+    And I should see the following: Skincare Routine, Evening Workout, Weekend Routine
+
+  Scenario: routines are displayed on the correct days
+    When I am on the weekly calendar page
+    Then I should see "Mon" before "Skincare Routine"
+    And I should see "Skincare Routine" before "Evening Workout"
+    And I should not see "Weekend Routine" before "Sat"
+    And I should see "Weekend Routine" after "Sun"

@@ -1,8 +1,8 @@
-Feature: update default insights timeframe
+Feature: View the daily calendar for your routines.
 
   As a MyRhythm user
-  So that I can customize my experience
-  I want to change the default timeframe displayed on the insights page
+  So that I can plan ahead for the day.
+  I want to see today's routines at a glance
 
   Background: routines have been added to database
 
@@ -18,19 +18,19 @@ Feature: update default insights timeframe
 
     And I am on the routines page
 
-  Scenario: update default insights timeframe
-    When I follow "Insights"
-    Then I should see "My Stats: All Time"
-    When I follow "Me"
-    And I select "30" from "Default Number of Days Shown on Insights Page"
-    And I press "Update Settings"
-    Then I should see "User settings updated"
-    When I follow "Insights"
-    Then I should see "My Stats: Last 30 Days"
-    When I follow "Me"
-    And I select "90" from "Default Number of Days Shown on Insights Page"
-    And I press "Update Settings"
-    Then I should see "User settings updated"
-    When I follow "Insights"
-    Then I should see "My Stats: Last 90 Days"
-    
+  Scenario: Navigate through the daily calendar pages
+    When I follow "Calendar"
+    And I follow "Mon"
+    Then I should see "My Monday"
+    And I follow "Tue"
+    Then I should see "My Tuesday"
+    And I follow "Wed"
+    Then I should see "My Wednesday"
+    And I follow "Thu"
+    Then I should see "My Thursday"
+    And I follow "Fri"
+    Then I should see "My Friday"
+    And I follow "Sat"
+    Then I should see "My Saturday"
+    And I follow "Sun"
+    Then I should see "My Sunday"

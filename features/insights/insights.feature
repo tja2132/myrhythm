@@ -1,4 +1,4 @@
-Feature: display a user's routine completion insights page
+Feature: View Display a user's routine completion insights page
 
   As a MyRhythm user
   So that I can improve my productivity

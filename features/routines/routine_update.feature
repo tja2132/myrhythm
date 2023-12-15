@@ -1,4 +1,4 @@
-Feature: Display all Information for a Routine
+Feature: Update a Routine's information
 
   As a stressed student
   So that I can focus on my studies
@@ -11,22 +11,11 @@ Feature: Display all Information for a Routine
     | Guest      | User      | aaaa1234     | guest@columbia.edu | 1234qwer |
 
     Given the following routines exist for the user "guest@columbia.edu":
-      | title                       | description                        | mon  | tue | wed | thu | fri | sat | sun  | start_time | home |
-      | Study Routine               | A nightly study plan               | true | true| true| true| true| true| false| 12:00:00   | true |
+      | title                       | description                        | mon  | tue | wed | thu | fri | sat | sun  | start_time |
+      | Study Routine               | A nightly study plan               | true | true| true| true| true| true| false| 12:00:00   |
 
     And I am on the routines page
     Then I should see "Study Routine"
-
-  Scenario: View the Routine
-    Given I am on the routines page
-    When I follow "Study Routine"
-    Then I should see "Study Routine"
-    And I should see "Recurrence: Mon, Tue, Wed, Thu, Fri, Sat"
-    And I should see "Total Duration: 0 min"
-    And I should see "Start Time: 12:00pm"
-    And I should see "End Time: 12:00pm"
-    And I should see "Tags: Home"
-
 
   Scenario: adding a task to a routine with a non-zero duration increases the routine end time
     Given I am on the routines page

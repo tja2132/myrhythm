@@ -17,6 +17,13 @@ Given /the following routines exist for the user "(.*)"/ do |user_email, routine
     expect(Routine.count).to eq n_seeds.to_i
   end
 
+  Then /I should see the following: (.*)/ do | day_list |
+    day_list.split(', ').each do | day |
+      step %{I should see "#{day}"}
+      #expect(page).to have_content(routine_name, count: freq)
+    end
+  end
+
   Then /I should see "(.*)" (\d) times?/ do | routine_name, freq |
     expect(page).to have_content(routine_name, count: freq)
   end
@@ -49,3 +56,18 @@ Given /the following routines exist for the user "(.*)"/ do |user_email, routine
     end
    end
 
+When /I (un)?check the following options: (.*)/ do |uncheck, option_list|
+  # HINT: use String#split to split up the rating_list, then
+  #   iterate over the ratings and reuse the "When I check..." or
+  #   "When I uncheck..." steps in lines 89-95 of web_steps.rb
+  if uncheck
+    check_param = "uncheck"
+  else
+    check_param = "check"
+  end
+
+  for i in option_list.split(",") do
+    param = i.strip()
+    steps %Q{When I #{check_param} the "#{param}" checkbox}
+  end
+end
