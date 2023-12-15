@@ -11,8 +11,8 @@ Feature: Display all Information for a Routine
     | Guest      | User      | aaaa1234     | guest@columbia.edu | 1234qwer |
 
     Given the following routines exist for the user "guest@columbia.edu":
-      | title                       | description                        | mon  | tue | wed | thu | fri | sat | sun  | start_time |
-      | Study Routine               | A nightly study plan               | true | true| true| true| true| true| false| 12:00:00   |
+      | title                       | description                        | mon  | tue | wed | thu | fri | sat | sun  | start_time | home |
+      | Study Routine               | A nightly study plan               | true | true| true| true| true| true| false| 12:00:00   | true |
 
     And I am on the routines page
     Then I should see "Study Routine"
@@ -24,4 +24,24 @@ Feature: Display all Information for a Routine
     And I should see "Recurrence: Mon, Tue, Wed, Thu, Fri, Sat"
     And I should see "Total Duration: 0 min"
     And I should see "Start Time: 12:00pm"
+<<<<<<< HEAD
     And I should see "End Time: 12:00pm"
+=======
+    And I should see "End Time: 12:00pm"
+    And I should see "Tags: Home"
+
+  Scenario: adding a task to a routine with a non-zero duration increases the routine end time
+    Given I am on the routines page
+    When I follow "Study Routine"
+    And I should see "Total Duration: 0 min"
+    And I should see "Start Time: 12:00pm"
+    And I should see "End Time: 12:00pm"
+    When I follow "Add Task"
+    And I fill in "Task Name" with "Algebra"
+    And I select "20" from "Minutes to complete task"
+    And I press "Create Task"
+    And I follow "Back to Routine"
+    Then I should see "Total Duration: 20 minutes"
+    And I should see "Start Time: 12:00pm"
+    And I should see "End Time: 12:20pm"
+>>>>>>> 10ddc2207c5ee03ce1b109745f907f57b6d640cc
