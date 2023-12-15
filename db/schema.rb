@@ -32,7 +32,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_02_183631) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
-    t.boolean "is_public", default: false, null: false
+    t.boolean "is_public"
     t.boolean "home", default: false, null: false
     t.boolean "work", default: false, null: false
     t.boolean "school", default: false, null: false
