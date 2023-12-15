@@ -1,4 +1,4 @@
-Feature: Sign in to and out of MyRhythm
+Feature: Sign in to MyRhythm
 
 Background: User has already registered with MyRhythm
 

@@ -1,4 +1,4 @@
-Feature: display a calendar view of routines for the day.
+Feature: View the daily calendar for your routines.
 
   As a MyRhythm user
   So that I can plan ahead for the day.
@@ -18,7 +18,7 @@ Feature: display a calendar view of routines for the day.
 
     And I am on the routines page
 
-  Scenario: navigate to the daily calendar page
+  Scenario: Navigate through the daily calendar pages
     When I follow "Calendar"
     And I follow "Mon"
     Then I should see "My Monday"
