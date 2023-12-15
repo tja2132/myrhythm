@@ -29,6 +29,18 @@ decrease stress, save time, and help you find your flow.
 * Initial steps towards tracking task completion statistics over time
 * Reorganized feature directory - all user stories passing with 100% rspec coverage
 
+## Functionality covered in demo/launch:
+* Discover page where users can view, edit or copy public routines
+* User authentication
+* Control visibility of routines
+* User preferences to control Insights and Calendar page
+* Daily Calendar View using Gantt chart
+* Mark routines as complete and update Insights page accordingly
+* Sort routines by total duration
+* Filter routines by recurrence
+* Auto-generate created and updated fields for a routine
+* Add links associated with Tasks
+
 ### Quick Start
 For initial install:
 ```sh 
