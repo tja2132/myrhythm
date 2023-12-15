@@ -1,10 +1,6 @@
 class CalendarsController < ApplicationController
   before_action :set_day, only: %i[ daily ]
 
-  def show
-    @routines = current_user.routines.all
-  end
-
   def weekly
     
   end

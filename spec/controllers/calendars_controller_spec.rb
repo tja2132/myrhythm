@@ -5,28 +5,25 @@ RSpec.describe CalendarsController, type: :controller do
   login_user
   fixtures :routines
 
-  describe "show" do
+  describe "calendar" do
     it "should have a current_user" do
       # note the fact that you should remove the "validate_session" parameter if this was a scaffold-generated controller
       expect(subject.current_user).to_not eq(nil)
     end
-
-    it "lists all routines in calendar view" do
-      get :show
-      expect(assigns(:routines)).to eq(subject.current_user.routines.all)
+  end
+describe 'get new' do
+    it "display blank new routine form" do
+      get :daily
+      expect(response).to be_successful()
+      expect(response).to render_template(:daily)
     end
   end
 
-  describe "day" do
-    xit "lists all routines for a given day" do
-      get :day
-      expect(Routine.get_days_of_week.include?(@day))
-    end
-  end
-
-  describe "get routines by day" do
-    xit "returns routines mapped by day" do
-    expect(CalendarsController.get_routines_by_day.keys).to eq(Routine.get_days_of_week)
+describe 'get new' do
+    it "display blank new routine form" do
+      get :weekly
+      expect(response).to be_successful()
+      expect(response).to render_template(:weekly)
     end
   end
 
