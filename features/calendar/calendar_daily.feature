@@ -1,7 +1,7 @@
-Feature: View the daily calendar for your routines.
+Feature: View the daily calendar page
 
   As a MyRhythm user
-  So that I can plan ahead for the day.
+  So that I can plan ahead for the day
   I want to see today's routines at a glance
 
   Background: routines have been added to database
@@ -11,10 +11,10 @@ Feature: View the daily calendar for your routines.
     | Guest      | User      | aaaa1234     | guest@columbia.edu | 1234qwer |
 
     Given the following routines exist for the user "guest@columbia.edu":
-      | title                         | description                           | mon  | wed  | thu  | sat  | sun  | start_time |
-      | Evening Workout               | A quick evening workout               | true | true | true | true | true | 18:00:00   |
-      | Skincare Routine              | A simple skincare regiment            | true | false| false| false| false| 08:00:00   |
-      | Weekend Routine               | A great way to start the weekend      | false| false| false| true | true | 12:00:00   |
+    | title                         | description                           | mon  | wed  | thu  | sat  | sun  | start_time |
+    | Evening Workout               | A quick evening workout               | true | true | true | true | true | 18:00:00   |
+    | Skincare Routine              | A simple skincare regiment            | true | false| false| false| false| 08:00:00   |
+    | Weekend Routine               | A great way to start the weekend      | false| false| false| true | true | 12:00:00   |
 
     And I am on the routines page
 

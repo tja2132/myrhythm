@@ -2,7 +2,7 @@ Feature: Update a Routine's information
 
   As a stressed student
   So that I can focus on my studies
-  I want to update and view my routines effectively
+  I want to easily view and update my routines
 
   Background: routines have been added to database
 
@@ -11,8 +11,8 @@ Feature: Update a Routine's information
     | Guest      | User      | aaaa1234     | guest@columbia.edu | 1234qwer |
 
     Given the following routines exist for the user "guest@columbia.edu":
-      | title                       | description                        | mon  | tue | wed | thu | fri | sat | sun  | start_time |
-      | Study Routine               | A nightly study plan               | true | true| true| true| true| true| false| 12:00:00   |
+    | title                       | description                        | mon  | tue | wed | thu | fri | sat | sun  | start_time |
+    | Study Routine               | A nightly study plan               | true | true| true| true| true| true| false| 12:00:00   |
 
     And I am on the routines page
     Then I should see "Study Routine"

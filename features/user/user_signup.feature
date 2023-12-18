@@ -1,5 +1,9 @@
 Feature: Sign up for MyRhythm
 
+  As a potential MyRhythm user
+  So that I can do more routine management
+  I want to sign-up for the MyRhythm site
+
 Background: User does not exist in MyRhythm
 
   Given the following users do not exist:

@@ -4,6 +4,10 @@ As a potential MyRhythm user
 So that I can learn more about the site features
 I want to see the home page
 
+Background: I am on the home Page
+  
+  Given I am on the home page
+
 Scenario: navigate to the home page
   When I am on the home page
   Then I should see "MyRhythm"

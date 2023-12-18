@@ -1,5 +1,9 @@
 Feature: Update User's Profile in MyRhythm
 
+  As a MyRhythm user
+  So my identity remains secure
+  I want to sign-out of MyRhythm
+
 Background: User has already registered with MyRhythm
 
   Given the following user exists and is logged in:

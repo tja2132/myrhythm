@@ -1,11 +1,9 @@
-Feature: display public routines that users can add to their routine libraries
+Feature: Display and Add customized public routines
 
-  As a MyRhythm user, I would like to be able to mark certain routines as
-  public so that other members of the MyRhythm community can find them on the
-  Discover Page and copy them.
-
-  Users should be able to view public routines on the Discover page,
-  add them as is or be able to modify them before adding them.
+  As a MyRhythm user
+  So I can find new ways of being efficient
+  I would like discover new routines
+  and add them to my routine list
 
   Background: routines have been added to database
 
@@ -14,14 +12,14 @@ Feature: display public routines that users can add to their routine libraries
     | Guest      | User      | aaaa1234     | guest@columbia.edu | 1234qwer |
 
     Given the following routines exist for the user "guest@columbia.edu":
-      | title                         | description                           | mon  | wed  | start_time | is_public | home | work | school |
-      | Evening Workout               | A quick evening workout               | true | true | 06:58:50   | true      | true | false | false |
-      | Skincare Routine              | A simple skincare regiment            | true | false | 18:00:00  | false    | false | true | false |
-      | The Perfect Grilled Cheese    | All the steps for a perfect sandwich  | false| false| 22:00:00   | true      | false | false | true |
+    | title                         | description                           | mon  | wed  | start_time | is_public | home | work | school |
+    | Evening Workout               | A quick evening workout               | true | true | 06:58:50   | true      | true | false | false |
+    | Skincare Routine              | A simple skincare regiment            | true | false | 18:00:00  | false    | false | true | false |
+    | The Perfect Grilled Cheese    | All the steps for a perfect sandwich  | false| false| 22:00:00   | true      | false | false | true |
 
     Given the following tasks exist for the "Evening Workout":
-      | title              | description     | sequence | duration | routine_id |
-      | Bicep curls       | 10 sets of 5     | 1        | 30       | 1          |
+    | title              | description     | sequence | duration | routine_id |
+    | Bicep curls       | 10 sets of 5     | 1        | 30       | 1          |
 
     And I am on the routines page
     Then I should see all the routines for the email "guest@columbia.edu"

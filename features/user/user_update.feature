@@ -1,4 +1,4 @@
-Feature: update default calendar page
+Feature: Update User Profile
 
   As a MyRhythm user
   So that I can customize my experience

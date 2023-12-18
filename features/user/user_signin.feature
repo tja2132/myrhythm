@@ -1,5 +1,9 @@
 Feature: Sign in to MyRhythm
 
+  As a MyRhythm user
+  So that I can keep track of my routines
+  I want to sign-in and view my routines
+
 Background: User has already registered with MyRhythm
 
   Given the following users exist:
