@@ -71,7 +71,6 @@ rspec
 # rspec artifacts are not commited to the repository and must be run locally
 ```
 
-
 ### Development Setup
 <details> 
 <summary>Click to Expand</summary>
