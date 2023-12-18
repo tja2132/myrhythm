@@ -1,45 +1,46 @@
 # MyRhythm - Sync to the Beat of Your life
 
-MyRhythm is a routine and task building application that allows you to find
-your own rhythm in a chaotic life. Create routines, reminders, and habits that
-decrease stress, save time, and help you find your flow.
+MyRhythm is a routine and task management application that allows you to optimize your life to find your rhythm in a chaotic life. Create routines to drive healthy habit creation and decrease stress, save time, and help you find your flow.
 
-### [GitHub Repository](https://github.com/tja2132/myrhythm) | [Heroku Deployment](https://myrhythm-60a89a182585.herokuapp.com/)
+### [GitHub Repository](https://github.com/tja2132/myrhythm)
+### [Heroku Deployment](https://my-rhythm-d77c6a857e16.herokuapp.com/)
 
-### Developers:
+## Developers:
+
 * Melissa Pothen   - mp4138
 * Hannah Haldren   - hvh2105
 * Tyler Andrews    - tja2132
 * Nathan Coulibaly - nmc2169
 
-## Functionality covered in iteration 1:
+## Functionality in Iter-1:
+
 * View, Create, Update, and Delete Routines
 * View, Create, Update, and Delete Tasks within routines
 * Utilize nested resources for routine:task relation
 * Minimal bootsrap UI 
 
-## Functionality covered in iteration 2:
+## Functionality in Iter-2:
 
 * New bootstrap UI with navbar and drastically improved routine visualization
-* Calendar view - quickly see your week of routines at a glance
+* Weekly Calendar view - View your week of routines at a glance
 * Routine sorting - Sort your routine list by name, recurrence, or start/end time
-* Task re-ordering - Update the sequence of tasks in a routine using the up/down buttons
+* Task re-ordering - Update task ordering in a routine using the up and down buttons
 * Streamlined and improved routine creation form
 * Database optimizations and improved seed data
 * Initial steps towards tracking task completion statistics over time
 * Reorganized feature directory - all user stories passing with 100% rspec coverage
 
-## Functionality covered in demo/launch:
-* Discover page where users can view, edit or copy public routines
+## Functionality in demo & launch:
+
 * User authentication
-* Control visibility of routines
-* User preferences to control Insights and Calendar page
-* Daily Calendar View using Gantt chart
-* Mark routines as complete and update Insights page accordingly
-* Sort routines by total duration
-* Filter routines by recurrence
-* Auto-generate created and updated fields for a routine
-* Add links associated with Tasks
+* Discover page where users can view, edit or copy public routines
+* Public Routines - Control whether routines are shown on the discover page or private
+* Daily Calendar View - View your routines for each day
+* User Profile Page - Update your user information or set defaults for Insights and Calendar page
+* Complete Routines! - Mark your routines complete when you finish them
+* Insights Page - Keep track of your routine completions!
+* Sort and Filter your Routines - Sort routines by total duration, Filter routines by Daily, Weekly, or No Recurrence
+* Links on tasks - Keep track of items used for a task by adding links
 
 ### Quick Start
 For initial install:
@@ -53,7 +54,7 @@ rake db:setup
 rails server
 ```
 
-## Testing User stories with cucumber
+## Testing User Stories with Cucumber
 
 ```angular2html
 cucumber features/*
@@ -61,7 +62,7 @@ cucumber features/*
 
 See features/*.feature for user stories.
 
-## Testing code coverage with rspec
+## Testing Code Coverage with RSpec
 ```
 rspec
 
